@@ -10,7 +10,6 @@ COPY build ./build
 COPY public ./public
 COPY worker ./worker
 COPY mv82-4-automation-fields.json ./
-COPY mv82-4-fields.json ./
 COPY next.config.ts postcss.config.mjs tsconfig.json vite.config.ts ./
 RUN npm run build
 
@@ -22,7 +21,6 @@ ENV NODE_ENV=production \
 WORKDIR /app
 COPY --from=build /app/node_modules ./node_modules
 COPY --from=build /app/dist ./dist
-COPY --from=build /app/public ./public
 COPY --from=build /app/package.json ./package.json
 COPY frontend-server.mjs ./frontend-server.mjs
 
