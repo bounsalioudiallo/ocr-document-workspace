@@ -227,15 +227,18 @@ function PdfEditor({
 }) {
   const [pages, setPages] = useState<string[]>([]);
   const [renderError, setRenderError] = useState("");
+  const [loadAttempt, setLoadAttempt] = useState(0);
   const [pageNumber, setPageNumber] = useState(1);
   const [editorZoom, setEditorZoom] = useState(.95);
 
   useEffect(() => {
     let cancelled = false;
+    setPages([]);
+    setRenderError("");
     void (async () => {
       try {
-        const response = await fetch("/mv82-4.pdf");
-        if (!response.ok) throw new Error("Template unavailable");
+        const response = await fetch(`/mv82-4.pdf?editor=20260816-1&attempt=${loadAttempt}`, { cache: "no-store" });
+        if (!response.ok) throw new Error(`template request returned HTTP ${response.status}`);
         const pdfjs = await import("pdfjs-dist/legacy/build/pdf.mjs");
         pdfjs.GlobalWorkerOptions.workerSrc = new URL("pdfjs-dist/legacy/build/pdf.worker.min.mjs", import.meta.url).toString();
         const pdf = await pdfjs.getDocument({ data: new Uint8Array(await response.arrayBuffer()) }).promise;
@@ -253,12 +256,14 @@ function PdfEditor({
         }
         await pdf.destroy();
         if (!cancelled) setPages(renderedPages);
-      } catch {
-        if (!cancelled) setRenderError("The MV-82 editor could not load. Return to the form and try again.");
+      } catch (loadError) {
+        console.error("MV-82 editor load failed", loadError);
+        const reason = loadError instanceof Error ? loadError.message : "unknown browser error";
+        if (!cancelled) setRenderError(`The MV-82 editor could not load (${reason}).`);
       }
     })();
     return () => { cancelled = true; };
-  }, []);
+  }, [loadAttempt]);
 
   const pageFields = PDF_EDITOR_FIELDS.flatMap((field) => field.widgets
     .filter((widget) => widget.page === pageNumber)
@@ -280,7 +285,11 @@ function PdfEditor({
         </div>
         <button className="primary pdf-editor-download" onClick={onDownload} disabled={downloading}>{downloading ? "Preparing…" : "Download edited PDF"}</button>
       </header>
-      {(error || renderError) && <div className="pdf-editor-error" role="alert">{error || renderError}</div>}
+      {error && <div className="pdf-editor-error" role="alert">{error}</div>}
+      {renderError && <div className="pdf-editor-error" role="alert">
+        <span>{renderError}</span>
+        <button type="button" onClick={() => setLoadAttempt((attempt) => attempt + 1)}>Retry loading</button>
+      </div>}
       <div className="pdf-editor-stage">
         {!pages.length && !renderError ? <div className="pdf-editor-loading"><span /> Loading editable PDF…</div> : null}
         {pages[pageNumber - 1] && (
