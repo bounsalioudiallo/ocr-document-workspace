@@ -1,0 +1,388 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MV-82 Digital Twin Prototype</title>
+  <style>
+    :root {
+      --ink:#172033;
+      --muted:#687386;
+      --line:#d9dee8;
+      --soft:#f4f6f9;
+      --panel:#fff;
+      --blue:#195ec8;
+      --blue-soft:#eaf2ff;
+      --green:#18794e;
+      --green-soft:#e9f7f0;
+      --amber:#9a5b10;
+      --amber-soft:#fff5e5;
+      --red:#b42318;
+      --shadow:0 18px 50px rgba(24,35,58,.12);
+    }
+    * { box-sizing:border-box; }
+    body { margin:0; background:#edf0f4; color:var(--ink); font:14px/1.4 Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; }
+    button,input,select,textarea { font:inherit; }
+    button { cursor:pointer; }
+    .app-shell { min-height:100vh; display:grid; grid-template-rows:auto 1fr; }
+    .topbar { position:sticky; z-index:20; top:0; display:flex; align-items:center; gap:18px; min-height:66px; border-bottom:1px solid #d8dde7; background:rgba(255,255,255,.96); padding:10px 22px; backdrop-filter:blur(14px); }
+    .brand { display:flex; align-items:center; gap:11px; min-width:250px; }
+    .brand-mark { width:36px; height:36px; display:grid; place-items:center; border-radius:10px; background:#101827; color:#fff; font-weight:800; letter-spacing:-.06em; }
+    .brand strong { display:block; font-size:15px; }
+    .brand small { display:block; color:var(--muted); font-size:11px; }
+    .progress { flex:1; display:flex; align-items:center; justify-content:center; gap:10px; }
+    .progress-bar { width:min(220px,20vw); height:7px; overflow:hidden; border-radius:10px; background:#e3e7ee; }
+    .progress-bar span { display:block; width:82%; height:100%; border-radius:inherit; background:var(--green); }
+    .progress strong { font-size:12px; color:var(--green); }
+    .top-actions { display:flex; gap:8px; }
+    .button { min-height:38px; border:1px solid var(--line); border-radius:8px; background:#fff; color:var(--ink); padding:8px 13px; font-weight:650; }
+    .button.primary { border-color:var(--blue); background:var(--blue); color:#fff; }
+    .workspace { width:100%; max-width:1700px; margin:0 auto; display:grid; grid-template-columns:minmax(700px,1fr) minmax(330px,420px); gap:18px; padding:18px; }
+    .form-column { min-width:0; }
+    .form-nav { display:flex; align-items:center; justify-content:space-between; margin-bottom:12px; }
+    .page-tabs { display:flex; gap:4px; border:1px solid var(--line); border-radius:9px; background:#fff; padding:3px; }
+    .page-tabs button { border:0; border-radius:6px; background:transparent; color:var(--muted); padding:7px 13px; font-weight:700; }
+    .page-tabs button.active { background:#182235; color:#fff; }
+    .form-nav-note { color:var(--muted); font-size:12px; }
+    .paper { overflow:hidden; border:1px solid #cfd5df; border-radius:12px; background:var(--panel); box-shadow:var(--shadow); }
+    .paper-heading { display:grid; grid-template-columns:1fr auto; align-items:center; gap:20px; border-bottom:4px solid #172033; padding:18px 22px 14px; }
+    .dmv-title { display:flex; align-items:center; gap:15px; }
+    .dmv-seal { width:52px; height:52px; display:grid; place-items:center; border:2px solid #182235; border-radius:50%; color:#182235; font-size:11px; font-weight:900; text-align:center; line-height:1; }
+    .dmv-title h1 { margin:0; font-size:21px; letter-spacing:-.025em; }
+    .dmv-title p { margin:2px 0 0; color:var(--muted); font-size:12px; }
+    .form-code { text-align:right; }
+    .form-code strong { display:block; font-size:19px; }
+    .form-code small { color:var(--muted); }
+    .form-section { border-bottom:1px solid var(--line); }
+    .section-heading { display:flex; align-items:center; gap:11px; background:#f1f3f6; padding:9px 18px; }
+    .section-number { min-width:28px; height:28px; display:grid; place-items:center; border-radius:7px; background:#172033; color:#fff; font-size:12px; font-weight:800; }
+    .section-heading h2 { margin:0; font-size:13px; letter-spacing:.02em; text-transform:uppercase; }
+    .section-heading p { margin-left:auto; color:var(--muted); font-size:11px; }
+    .section-body { padding:16px 18px 18px; }
+    .choice-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:8px; }
+    .choice-card { position:relative; display:flex; align-items:center; gap:9px; min-height:42px; border:1px solid var(--line); border-radius:8px; padding:9px 11px; font-size:12px; font-weight:650; }
+    .choice-card:has(input:checked) { border-color:var(--blue); background:var(--blue-soft); color:#124d9f; }
+    .choice-card input { width:16px; height:16px; margin:0; accent-color:var(--blue); }
+    .field-grid { display:grid; grid-template-columns:repeat(12,minmax(0,1fr)); gap:12px; }
+    .field { grid-column:span 3; min-width:0; }
+    .field.span-2 { grid-column:span 2; }
+    .field.span-4 { grid-column:span 4; }
+    .field.span-5 { grid-column:span 5; }
+    .field.span-6 { grid-column:span 6; }
+    .field.span-7 { grid-column:span 7; }
+    .field.span-8 { grid-column:span 8; }
+    .field.span-12 { grid-column:1 / -1; }
+    .field label,.legend { display:flex; align-items:center; justify-content:space-between; gap:5px; margin:0 0 5px; color:#4e596b; font-size:10px; font-weight:800; letter-spacing:.035em; text-transform:uppercase; }
+    .field label em { border-radius:8px; background:var(--amber-soft); color:var(--amber); padding:2px 5px; font-size:8px; font-style:normal; letter-spacing:0; }
+    .field input,.field select,.field textarea { width:100%; min-height:39px; border:1px solid #bbc4d2; border-radius:7px; background:#fff; color:var(--ink); padding:8px 10px; outline:none; }
+    .field textarea { min-height:72px; resize:vertical; }
+    .field input:focus,.field select:focus,.field textarea:focus { border-color:var(--blue); box-shadow:0 0 0 3px rgba(25,94,200,.12); }
+    .field.missing input,.field.missing select { border-color:#d19448; background:#fffaf2; }
+    .inline-choices { display:flex; flex-wrap:wrap; gap:8px; min-height:39px; align-items:center; }
+    .inline-choices label { display:flex; align-items:center; gap:6px; min-height:36px; margin:0; border:1px solid var(--line); border-radius:7px; padding:6px 9px; color:var(--ink); font-size:11px; letter-spacing:0; text-transform:none; }
+    .inline-choices label:has(input:checked) { border-color:var(--blue); background:var(--blue-soft); }
+    .inline-choices input { width:15px; min-height:15px; margin:0; padding:0; box-shadow:none; accent-color:var(--blue); }
+    .review-callout { display:flex; align-items:flex-start; gap:9px; margin-top:12px; border:1px solid #efd39c; border-radius:8px; background:var(--amber-soft); color:#70450d; padding:10px 12px; font-size:11px; }
+    .review-callout strong { white-space:nowrap; }
+    .page-two { display:none; }
+    .paper.show-page-two .page-one { display:none; }
+    .paper.show-page-two .page-two { display:block; }
+    details.form-section > summary { list-style:none; cursor:pointer; }
+    details.form-section > summary::-webkit-details-marker { display:none; }
+    details.form-section > summary::after { content:"+"; margin-left:auto; font-size:18px; font-weight:500; }
+    details.form-section[open] > summary::after { content:"−"; }
+    .ocr-panel { position:sticky; top:84px; align-self:start; min-width:0; max-height:calc(100vh - 102px); display:grid; grid-template-rows:auto auto 1fr; overflow:hidden; border:1px solid #cfd5df; border-radius:12px; background:#fff; box-shadow:var(--shadow); }
+    .ocr-header { display:flex; align-items:center; justify-content:space-between; border-bottom:1px solid var(--line); padding:14px 16px; }
+    .ocr-header h2 { margin:0; font-size:14px; }
+    .ocr-header span { display:flex; align-items:center; gap:6px; color:var(--green); font-size:11px; font-weight:800; }
+    .ocr-header span::before { content:""; width:7px; height:7px; border-radius:50%; background:var(--green); }
+    .ocr-tabs { display:flex; gap:4px; border-bottom:1px solid var(--line); padding:8px 12px; }
+    .ocr-tabs button { border:0; border-radius:6px; background:transparent; color:var(--muted); padding:7px 9px; font-size:11px; font-weight:700; }
+    .ocr-tabs button.active { background:var(--blue-soft); color:var(--blue); }
+    .ocr-content { overflow:auto; background:#fbfcfe; padding:16px; }
+    .ocr-content pre { margin:0; color:#2b3547; font:12px/1.65 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace; white-space:pre-wrap; }
+    .ocr-content mark { border-radius:3px; background:#fff0a8; padding:1px 2px; }
+    .review-list { display:none; }
+    .review-list.active { display:block; }
+    .review-list h3 { margin:0 0 10px; font-size:12px; }
+    .review-item { display:flex; align-items:center; justify-content:space-between; gap:10px; margin-bottom:8px; border:1px solid #ead2a3; border-radius:8px; background:#fffaf2; padding:9px 10px; font-size:11px; }
+    .review-item button { border:0; background:transparent; color:var(--blue); font-size:11px; font-weight:750; }
+    .toast { position:fixed; z-index:50; right:20px; bottom:20px; max-width:360px; border-radius:10px; background:#172033; color:#fff; padding:13px 16px; box-shadow:var(--shadow); transform:translateY(120px); opacity:0; transition:.25s ease; }
+    .toast.show { transform:translateY(0); opacity:1; }
+    @media (max-width:1100px) {
+      .workspace { grid-template-columns:1fr; }
+      .ocr-panel { position:relative; top:auto; max-height:520px; grid-row:1; }
+      .brand { min-width:0; }
+      .progress { display:none; }
+      .topbar { flex-wrap:wrap; }
+      .top-actions { margin-left:auto; }
+    }
+    @media (max-width:720px) {
+      .workspace { padding:10px; }
+      .topbar { padding:9px 11px; }
+      .brand small,.form-nav-note { display:none; }
+      .button { padding:7px 9px; font-size:11px; }
+      .paper-heading { grid-template-columns:1fr; }
+      .form-code { display:none; }
+      .choice-grid { grid-template-columns:1fr; }
+      .field { grid-column:span 6; }
+      .field.span-2,.field.span-3,.field.span-4,.field.span-5 { grid-column:span 6; }
+      .field.span-6,.field.span-7,.field.span-8,.field.span-12 { grid-column:1 / -1; }
+      .section-heading p { display:none; }
+    }
+  </style>
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <div class="brand">
+        <span class="brand-mark">GI</span>
+        <span><strong>Registration Workspace</strong><small>MV-82 digital preparation</small></span>
+      </div>
+      <div class="progress" aria-label="Form completion">
+        <span class="progress-bar"><span id="progressFill"></span></span>
+        <strong id="progressLabel">82% complete</strong>
+      </div>
+      <div class="top-actions">
+        <button class="button" id="saveButton">Save draft</button>
+        <button class="button" id="previewButton">Preview PDF</button>
+        <button class="button primary" id="downloadButton">Download MV-82</button>
+      </div>
+    </header>
+
+    <main class="workspace">
+      <section class="form-column">
+        <div class="form-nav">
+          <div class="page-tabs" role="tablist" aria-label="MV-82 pages">
+            <button class="active" data-page="one">Page 1 · Registration</button>
+            <button data-page="two">Page 2 · Certification</button>
+          </div>
+          <span class="form-nav-note">Digital replica · PDF generated in the background</span>
+        </div>
+
+        <form class="paper" id="digitalForm">
+          <div class="paper-heading">
+            <div class="dmv-title">
+              <span class="dmv-seal">NEW<br>YORK</span>
+              <div><h1>Vehicle Registration / Title Application</h1><p>A clearer digital workspace based on New York DMV form MV-82</p></div>
+            </div>
+            <div class="form-code"><strong>MV-82</strong><small>Page <span id="pageNumber">1</span> of 2</small></div>
+          </div>
+
+          <div class="page-one">
+            <section class="form-section">
+              <div class="section-heading"><span class="section-number">A</span><h2>Transaction</h2><p>What should DMV do?</p></div>
+              <div class="section-body">
+                <div class="choice-grid">
+                  <label class="choice-card"><input type="radio" name="purpose" checked> Register a vehicle</label>
+                  <label class="choice-card"><input type="radio" name="purpose"> Renew registration</label>
+                  <label class="choice-card"><input type="radio" name="purpose"> Change registration</label>
+                  <label class="choice-card"><input type="radio" name="purpose"> Replace items</label>
+                  <label class="choice-card"><input type="radio" name="purpose"> Get title only</label>
+                  <label class="choice-card"><input type="radio" name="purpose"> Transfer plates</label>
+                </div>
+              </div>
+            </section>
+
+            <section class="form-section">
+              <div class="section-heading"><span class="section-number">1</span><h2>Primary registrant</h2><p>OCR values are ready for review</p></div>
+              <div class="section-body">
+                <div class="field-grid">
+                  <div class="field span-7"><label for="name">Name of primary registrant</label><input id="name" value="SEKOU CAMARA" data-required></div>
+                  <div class="field span-5 missing"><label for="nysid">NYS driver license / ID <em>Needs review</em></label><input id="nysid" placeholder="9-digit DMV client ID" data-required></div>
+                  <div class="field span-4"><label for="dob">Date of birth</label><input id="dob" type="date"></div>
+                  <div class="field span-4"><span class="legend">Sex</span><div class="inline-choices"><label><input type="radio" name="sex"> M</label><label><input type="radio" name="sex"> F</label><label><input type="radio" name="sex"> X</label></div></div>
+                  <div class="field span-4"><label for="phone">Telephone or mobile</label><input id="phone" type="tel" placeholder="(000) 000-0000"></div>
+                  <div class="field span-12"><label for="email">Email</label><input id="email" type="email" placeholder="name@example.com"></div>
+                </div>
+              </div>
+            </section>
+
+            <section class="form-section">
+              <div class="section-heading"><span class="section-number">1B</span><h2>Registrant address</h2><p>Mailing and residence</p></div>
+              <div class="section-body">
+                <div class="field-grid">
+                  <div class="field span-6"><label for="street">Street address</label><input id="street" value="501 WYONA ST" data-required></div>
+                  <div class="field span-2"><label for="apt">Apartment</label><input id="apt" value="FL 2"></div>
+                  <div class="field span-4"><label for="city">City or town</label><input id="city" value="BROOKLYN" data-required></div>
+                  <div class="field span-2"><label for="state">State</label><input id="state" value="NY" maxlength="2" data-required></div>
+                  <div class="field span-3"><label for="zip">ZIP code</label><input id="zip" value="11207" data-required></div>
+                  <div class="field span-4"><label for="county">County of residence</label><input id="county" value="KINGS"></div>
+                  <div class="field span-3"><span class="legend">Address change?</span><div class="inline-choices"><label><input type="radio" name="addressChange"> Yes</label><label><input type="radio" name="addressChange" checked> No</label></div></div>
+                </div>
+              </div>
+            </section>
+
+            <section class="form-section">
+              <div class="section-heading"><span class="section-number">2</span><h2>Vehicle information</h2><p>Matched from registration document</p></div>
+              <div class="section-body">
+                <div class="field-grid">
+                  <div class="field span-7"><label for="vin">Vehicle identification number</label><input id="vin" value="5TDKDRBH0PS527032" data-required></div>
+                  <div class="field span-2"><label for="year">Year</label><input id="year" value="2023" data-required></div>
+                  <div class="field span-3"><label for="make">Make</label><input id="make" value="TOYOT" data-required></div>
+                  <div class="field span-2"><label for="color">Color</label><input id="color" value="BK"></div>
+                  <div class="field span-2"><label for="weight">Unladen weight</label><input id="weight" placeholder="Optional"></div>
+                  <div class="field span-4"><span class="legend">Type of power</span><div class="inline-choices"><label><input type="radio" name="fuel" checked> Gas</label><label><input type="radio" name="fuel"> Diesel</label><label><input type="radio" name="fuel"> Electric</label></div></div>
+                  <div class="field span-2"><label for="cylinders">Cylinders</label><input id="cylinders" value="4"></div>
+                  <div class="field span-2"><label for="seating">Adult seating</label><input id="seating" value="7"></div>
+                  <div class="field span-3"><label for="body">Body type</label><select id="body"><option selected>Suburban / SUV</option><option>4-door</option><option>2-door</option><option>Pickup</option><option>Van</option><option>Other</option></select></div>
+                  <div class="field span-3"><label for="odometer">Odometer</label><input id="odometer" inputmode="numeric" placeholder="Reading in miles"></div>
+                </div>
+                <div class="review-callout"><strong>1 item to confirm</strong><span>The registration did not include an odometer reading. Leave blank only when DMV rules allow it.</span></div>
+              </div>
+            </section>
+
+            <details class="form-section">
+              <summary class="section-heading"><span class="section-number">3</span><h2>Owner information</h2><p>Open only if owner differs from registrant</p></summary>
+              <div class="section-body">
+                <div class="field-grid">
+                  <div class="field span-6"><label for="ownerName">Primary owner name</label><input id="ownerName"></div>
+                  <div class="field span-6"><label for="ownerId">Primary owner NYS license number</label><input id="ownerId"></div>
+                  <div class="field span-12"><label for="ownerAddress">Owner mailing address</label><input id="ownerAddress"></div>
+                </div>
+              </div>
+            </details>
+          </div>
+
+          <div class="page-two">
+            <details class="form-section" open>
+              <summary class="section-heading"><span class="section-number">4</span><h2>Damage disclosure and modifications</h2><p>Required title questions</p></summary>
+              <div class="section-body">
+                <div class="field-grid">
+                  <div class="field span-12"><span class="legend">Has the vehicle been wrecked, destroyed, or damaged beyond the applicable threshold?</span><div class="inline-choices"><label><input type="radio" name="damage"> Yes</label><label><input type="radio" name="damage" checked> No</label></div></div>
+                  <div class="field span-12"><span class="legend">Has the vehicle been modified from original manufacturer specifications?</span><div class="inline-choices"><label><input type="radio" name="modified"> Yes</label><label><input type="radio" name="modified" checked> No</label></div></div>
+                  <div class="field span-12"><label for="modDescription">Describe modifications when applicable</label><textarea id="modDescription"></textarea></div>
+                </div>
+              </div>
+            </details>
+
+            <details class="form-section">
+              <summary class="section-heading"><span class="section-number">5</span><h2>Non-personal vehicle use</h2><p>Expand when applicable</p></summary>
+              <div class="section-body">
+                <div class="choice-grid">
+                  <label class="choice-card"><input type="checkbox"> Commercial tow truck</label>
+                  <label class="choice-card"><input type="checkbox"> Ambulance</label>
+                  <label class="choice-card"><input type="checkbox"> Taxi</label>
+                  <label class="choice-card"><input type="checkbox"> Farm vehicle</label>
+                  <label class="choice-card"><input type="checkbox"> Hearse</label>
+                  <label class="choice-card"><input type="checkbox"> Rental vehicle</label>
+                </div>
+              </div>
+            </details>
+
+            <details class="form-section" open>
+              <summary class="section-heading"><span class="section-number">6</span><h2>Certification</h2><p>Review before printing and signing</p></summary>
+              <div class="section-body">
+                <p style="margin-top:0;color:var(--muted);font-size:12px">I certify that the information provided on this application is true and complete. The downloaded PDF remains available for the required signatures.</p>
+                <div class="field-grid">
+                  <div class="field span-6"><label for="printName">Print name</label><input id="printName" value="SEKOU CAMARA" data-required></div>
+                  <div class="field span-6"><label for="additionalName">Additional print name</label><input id="additionalName"></div>
+                  <div class="field span-12"><span class="legend">Signature fields remain blank in the generated PDF for signing</span></div>
+                </div>
+              </div>
+            </details>
+          </div>
+        </form>
+      </section>
+
+      <aside class="ocr-panel">
+        <header class="ocr-header"><h2>Evidence panel</h2><span>OCR complete</span></header>
+        <div class="ocr-tabs">
+          <button class="active" data-panel="text">OCR Text</button>
+          <button data-panel="review">Needs review <b id="issueCount">2</b></button>
+          <button data-panel="source">Source</button>
+        </div>
+        <div class="ocr-content">
+          <pre id="ocrText">X OMT
+
+<mark>T112764C</mark>
+2023 TOYOT NONTRANSFERABLE
+SUBN BK <mark>5TDKDRBH0PS527032</mark>
+000007 G 4 JM028525 JAN 20 2026
+Wt/Seats Fuel/Cyl STH BRK65C
+
+Expires 02/28/27
+NYMA
+51.75
+
+<mark>CAMARA, SEKOU</mark>
+<mark>501 WYONA ST FL 2</mark>
+<mark>BROOKLYN NY 11207</mark>
+
+ANNUAL CHG
+AMT PAID (INCL ADD CHG)
+476.75
+
+JM028525 VOID IF ALTERED
+EXCEPT FOR ADDRESS</pre>
+          <div class="review-list" id="reviewList">
+            <h3>Information requiring attention</h3>
+            <div class="review-item"><span>NYS driver license / ID is missing</span><button data-focus="nysid">Review</button></div>
+            <div class="review-item"><span>Odometer reading was not found</span><button data-focus="odometer">Review</button></div>
+          </div>
+          <div class="review-list" id="sourcePanel">
+            <h3>Source document</h3>
+            <p style="color:var(--muted);font-size:12px">The document image would appear here only when the user intentionally selects the Source tab.</p>
+            <div style="display:grid;place-items:center;min-height:260px;border:1px dashed #bdc6d3;border-radius:9px;background:#fff;color:#8791a1">Registration image preview</div>
+          </div>
+        </div>
+      </aside>
+    </main>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script>
+    const form = document.getElementById('digitalForm');
+    const toast = document.getElementById('toast');
+    const showToast = (message) => {
+      toast.textContent = message;
+      toast.classList.add('show');
+      window.setTimeout(() => toast.classList.remove('show'), 2600);
+    };
+
+    document.querySelectorAll('.page-tabs button').forEach((button) => {
+      button.addEventListener('click', () => {
+        document.querySelectorAll('.page-tabs button').forEach((item) => item.classList.remove('active'));
+        button.classList.add('active');
+        const pageTwo = button.dataset.page === 'two';
+        form.classList.toggle('show-page-two', pageTwo);
+        document.getElementById('pageNumber').textContent = pageTwo ? '2' : '1';
+        window.scrollTo({ top:0, behavior:'smooth' });
+      });
+    });
+
+    document.querySelectorAll('.ocr-tabs button').forEach((button) => {
+      button.addEventListener('click', () => {
+        document.querySelectorAll('.ocr-tabs button').forEach((item) => item.classList.remove('active'));
+        button.classList.add('active');
+        document.getElementById('ocrText').style.display = button.dataset.panel === 'text' ? 'block' : 'none';
+        document.getElementById('reviewList').classList.toggle('active', button.dataset.panel === 'review');
+        document.getElementById('sourcePanel').classList.toggle('active', button.dataset.panel === 'source');
+      });
+    });
+
+    document.querySelectorAll('[data-focus]').forEach((button) => {
+      button.addEventListener('click', () => {
+        const field = document.getElementById(button.dataset.focus);
+        document.querySelector('[data-page="one"]').click();
+        window.setTimeout(() => { field.scrollIntoView({ behavior:'smooth', block:'center' }); field.focus(); }, 250);
+      });
+    });
+
+    const updateProgress = () => {
+      const required = [...document.querySelectorAll('[data-required]')];
+      const complete = required.filter((field) => field.value.trim()).length;
+      const percent = Math.round((complete / required.length) * 100);
+      document.getElementById('progressFill').style.width = percent + '%';
+      document.getElementById('progressLabel').textContent = percent + '% complete';
+      required.forEach((field) => field.closest('.field').classList.toggle('missing', !field.value.trim()));
+    };
+    form.addEventListener('input', updateProgress);
+    updateProgress();
+
+    document.getElementById('saveButton').addEventListener('click', () => showToast('Prototype draft saved for this session.'));
+    document.getElementById('previewButton').addEventListener('click', () => showToast('In the app, this would generate and display the official MV-82 PDF.'));
+    document.getElementById('downloadButton').addEventListener('click', () => showToast('In the app, this would download the completed editable MV-82.'));
+  </script>
+</body>
+</html>

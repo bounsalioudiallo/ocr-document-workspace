@@ -1,0 +1,6866 @@
+{
+  "schemaVersion": 1,
+  "sourcePdf": "mv82-4.pdf",
+  "document": {
+    "title": "MV-82: Vehicle Registration/Title Application (PDF)",
+    "pages": 2,
+    "encrypted": true,
+    "formType": "AcroForm",
+    "hasXfa": false,
+    "hasDocumentJavaScript": false,
+    "defaultAppearance": "/Helv 0 Tf 0 g ",
+    "signatureFlags": 0,
+    "calculationOrder": null
+  },
+  "summary": {
+    "canonicalFieldCount": 88,
+    "widgetCount": 133,
+    "nonWidgetAnnotationCount": 4,
+    "unmatchedWidgetGroupCount": 0,
+    "fieldTypeCounts": {
+      "button": 30,
+      "choice": 9,
+      "group": 1,
+      "text": 48
+    }
+  },
+  "coordinateNotes": {
+    "units": "PDF points (72 points per inch)",
+    "rectPdfBottomLeft": "PDF coordinate system with origin at the bottom-left",
+    "rectTopLeft": "UI-friendly coordinate system with origin at the top-left"
+  },
+  "fields": [
+    {
+      "index": 1,
+      "name": "REGISTER A VEHICLE",
+      "handler": "REGISTER A VEHICLE",
+      "alternateName": "REGISTER A VEHICLE",
+      "mappingName": null,
+      "type": "button",
+      "typeCode": "/Btn",
+      "subtype": "checkbox",
+      "isTerminal": true,
+      "fillable": true,
+      "childFields": [],
+      "flags": 0,
+      "flagNames": [],
+      "currentValue": null,
+      "defaultValue": null,
+      "maxLength": null,
+      "options": null,
+      "exportValues": [
+        "/On"
+      ],
+      "action": null,
+      "additionalActions": null,
+      "widgets": [
+        {
+          "page": 1,
+          "pageSizePoints": {
+            "width": 612.0,
+            "height": 792.0
+          },
+          "rectPdfBottomLeft": {
+            "x1": 106.76,
+            "y1": 626.6,
+            "x2": 119.6,
+            "y2": 641.44,
+            "width": 12.83999999999999,
+            "height": 14.840000000000032
+          },
+          "rectTopLeft": {
+            "x": 106.76,
+            "y": 150.55999999999995,
+            "width": 12.83999999999999,
+            "height": 14.840000000000032
+          },
+          "objectReference": {
+            "object": 1291,
+            "generation": 0
+          },
+          "appearanceState": "/Off",
+          "appearanceStates": [
+            "/On"
+          ],
+          "annotationFlags": 4,
+          "action": null,
+          "additionalActions": null
+        }
+      ]
+    },
+    {
+      "index": 2,
+      "name": "RENEW A REGISTRATION",
+      "handler": "RENEW A REGISTRATION",
+      "alternateName": "RENEW A REGISTRATION",
+      "mappingName": null,
+      "type": "button",
+      "typeCode": "/Btn",
+      "subtype": "checkbox",
+      "isTerminal": true,
+      "fillable": true,
+      "childFields": [],
+      "flags": 0,
+      "flagNames": [],
+      "currentValue": null,
+      "defaultValue": null,
+      "maxLength": null,
+      "options": null,
+      "exportValues": [
+        "/On"
+      ],
+      "action": null,
+      "additionalActions": null,
+      "widgets": [
+        {
+          "page": 1,
+          "pageSizePoints": {
+            "width": 612.0,
+            "height": 792.0
+          },
+          "rectPdfBottomLeft": {
+            "x1": 221.72,
+            "y1": 626.6,
+            "x2": 234.56,
+            "y2": 641.44,
+            "width": 12.840000000000003,
+            "height": 14.840000000000032
+          },
+          "rectTopLeft": {
+            "x": 221.72,
+            "y": 150.55999999999995,
+            "width": 12.840000000000003,
+            "height": 14.840000000000032
+          },
+          "objectReference": {
+            "object": 1289,
+            "generation": 0
+          },
+          "appearanceState": "/Off",
+          "appearanceStates": [
+            "/On"
+          ],
+          "annotationFlags": 4,
+          "action": null,
+          "additionalActions": null
+        }
+      ]
+    },
+    {
+      "index": 3,
+      "name": "GET A TITLE ONLY",
+      "handler": "GET A TITLE ONLY",
+      "alternateName": "GET A TITLE ONLY",
+      "mappingName": null,
+      "type": "button",
+      "typeCode": "/Btn",
+      "subtype": "checkbox",
+      "isTerminal": true,
+      "fillable": true,
+      "childFields": [],
+      "flags": 0,
+      "flagNames": [],
+      "currentValue": null,
+      "defaultValue": null,
+      "maxLength": null,
+      "options": null,
+      "exportValues": [
+        "/On"
+      ],
+      "action": null,
+      "additionalActions": null,
+      "widgets": [
+        {
+          "page": 1,
+          "pageSizePoints": {
+            "width": 612.0,
+            "height": 792.0
+          },
+          "rectPdfBottomLeft": {
+            "x1": 366.8,
+            "y1": 626.6,
+            "x2": 379.52,
+            "y2": 641.44,
+            "width": 12.71999999999997,
+            "height": 14.840000000000032
+          },
+          "rectTopLeft": {
+            "x": 366.8,
+            "y": 150.55999999999995,
+            "width": 12.71999999999997,
+            "height": 14.840000000000032
+          },
+          "objectReference": {
+            "object": 1287,
+            "generation": 0
+          },
+          "appearanceState": "/Off",
+          "appearanceStates": [
+            "/On"
+          ],
+          "annotationFlags": 4,
+          "action": null,
+          "additionalActions": null
+        }
+      ]
+    },
+    {
+      "index": 4,
+      "name": "REPLACE LOST OR DAMAGED ITEMS",
+      "handler": "REPLACE LOST OR DAMAGED ITEMS",
+      "alternateName": "REPLACE LOST OR DAMAGED ITEMS",
+      "mappingName": null,
+      "type": "button",
+      "typeCode": "/Btn",
+      "subtype": "checkbox",
+      "isTerminal": true,
+      "fillable": true,
+      "childFields": [],
+      "flags": 0,
+      "flagNames": [],
+      "currentValue": null,
+      "defaultValue": null,
+      "maxLength": null,
+      "options": null,
+      "exportValues": [
+        "/On"
+      ],
+      "action": null,
+      "additionalActions": null,
+      "widgets": [
+        {
+          "page": 1,
+          "pageSizePoints": {
+            "width": 612.0,
+            "height": 792.0
+          },
+          "rectPdfBottomLeft": {
+            "x1": 221.72,
+            "y1": 614.6,
+            "x2": 234.56,
+            "y2": 629.44,
+            "width": 12.840000000000003,
+            "height": 14.840000000000032
+          },
+          "rectTopLeft": {
+            "x": 221.72,
+            "y": 162.55999999999995,
+            "width": 12.840000000000003,
+            "height": 14.840000000000032
+          },
+          "objectReference": {
+            "object": 1282,
+            "generation": 0
+          },
+          "appearanceState": "/Off",
+          "appearanceStates": [
+            "/On"
+          ],
+          "annotationFlags": 4,
+          "action": null,
+          "additionalActions": null
+        }
+      ]
+    },
+    {
+      "index": 5,
+      "name": "TRANSFER PLATES",
+      "handler": "TRANSFER PLATES",
+      "alternateName": "TRANSFER PLATES",
+      "mappingName": null,
+      "type": "button",
+      "typeCode": "/Btn",
+      "subtype": "checkbox",
+      "isTerminal": true,
+      "fillable": true,
+      "childFields": [],
+      "flags": 0,
+      "flagNames": [],
+      "currentValue": null,
+      "defaultValue": null,
+      "maxLength": null,
+      "options": null,
+      "exportValues": [
+        "/On"
+      ],
+      "action": null,
+      "additionalActions": null,
+      "widgets": [
+        {
+          "page": 1,
+          "pageSizePoints": {
+            "width": 612.0,
+            "height": 792.0
+          },
+          "rectPdfBottomLeft": {
+            "x1": 366.516,
+            "y1": 614.6,
+            "x2": 379.356,
+            "y2": 629.44,
+            "width": 12.839999999999975,
+            "height": 14.840000000000032
+          },
+          "rectTopLeft": {
+            "x": 366.516,
+            "y": 162.55999999999995,
+            "width": 12.839999999999975,
+            "height": 14.840000000000032
+          },
+          "objectReference": {
+            "object": 1280,
+            "generation": 0
+          },
+          "appearanceState": "/Off",
+          "appearanceStates": [
+            "/On"
+          ],
+          "annotationFlags": 4,
+          "action": null,
+          "additionalActions": null
+        }
+      ]
+    },
+    {
+      "index": 6,
+      "name": "Current Plate Number",
+      "handler": "Current Plate Number",
+      "alternateName": "Current Plate Number",
+      "mappingName": null,
+      "type": "text",
+      "typeCode": "/Tx",
+      "subtype": "text",
+      "isTerminal": true,
+      "fillable": true,
+      "childFields": [],
+      "flags": 8388608,
+      "flagNames": [
+        "doNotScroll"
+      ],
+      "currentValue": null,
+      "defaultValue": null,
+      "maxLength": null,
+      "options": null,
+      "exportValues": [],
+      "action": null,
+      "additionalActions": null,
+      "widgets": [
+        {
+          "page": 1,
+          "pageSizePoints": {
+            "width": 612.0,
+            "height": 792.0
+          },
+          "rectPdfBottomLeft": {
+            "x1": 461.84,
+            "y1": 614.04,
+            "x2": 593.92,
+            "y2": 631.56,
+            "width": 132.07999999999998,
+            "height": 17.519999999999982
+          },
+          "rectTopLeft": {
+            "x": 461.84,
+            "y": 160.44000000000005,
+            "width": 132.07999999999998,
+            "height": 17.519999999999982
+          },
+          "objectReference": {
+            "object": 1278,
+            "generation": 0
+          },
+          "appearanceState": null,
+          "appearanceStates": [],
+          "annotationFlags": 4,
+          "action": null,
+          "additionalActions": null
+        }
+      ]
+    },
+    {
+      "index": 7,
+      "name": "County of Residence",
+      "handler": "County of Residence",
+      "alternateName": "County of Residence",
+      "mappingName": null,
+      "type": "text",
+      "typeCode": "/Tx",
+      "subtype": "text",
+      "isTerminal": true,
+      "fillable": true,
+      "childFields": [],
+      "flags": 8392704,
+      "flagNames": [
+        "multiline",
+        "doNotScroll"
+      ],
+      "currentValue": null,
+      "defaultValue": null,
+      "maxLength": null,
+      "options": null,
+      "exportValues": [],
+      "action": null,
+      "additionalActions": null,
+      "widgets": [
+        {
+          "page": 1,
+          "pageSizePoints": {
+            "width": 612.0,
+            "height": 792.0
+          },
+          "rectPdfBottomLeft": {
+            "x1": 531.84,
+            "y1": 438.0,
+            "x2": 592.72,
+            "y2": 478.8,
+            "width": 60.879999999999995,
+            "height": 40.80000000000001
+          },
+          "rectTopLeft": {
+            "x": 531.84,
+            "y": 313.2,
+            "width": 60.879999999999995,
+            "height": 40.80000000000001
+          },
+          "objectReference": {
+            "object": 1205,
+            "generation": 0
+          },
+          "appearanceState": null,
+          "appearanceStates": [],
+          "annotationFlags": 4,
+          "action": null,
+          "additionalActions": null
+        }
+      ]
+    },
+    {
+      "index": 8,
+      "name": "VEHICLE IDENTIFICATION NUMBER",
+      "handler": "VEHICLE IDENTIFICATION NUMBER",
+      "alternateName": "VEHICLE IDENTIFICATION NUMBER",
+      "mappingName": null,
+      "type": "text",
+      "typeCode": "/Tx",
+      "subtype": "text",
+      "isTerminal": true,
+      "fillable": true,
+      "childFields": [],
+      "flags": 29360128,
+      "flagNames": [
+        "doNotSpellCheck",
+        "doNotScroll",
+        "comb"
+      ],
+      "currentValue": null,
+      "defaultValue": null,
+      "maxLength": null,
+      "options": null,
+      "exportValues": [],
+      "action": null,
+      "additionalActions": null,
+      "widgets": [
+        {
+          "page": 1,
+          "pageSizePoints": {
+            "width": 612.0,
+            "height": 792.0
+          },
+          "rectPdfBottomLeft": {
+            "x1": 33.72,
+            "y1": 402.72,
+            "x2": 347.52,
+            "y2": 420.84,
+            "width": 313.79999999999995,
+            "height": 18.119999999999948
+          },
+          "rectTopLeft": {
+            "x": 33.72,
+            "y": 371.16,
+            "width": 313.79999999999995,
+            "height": 18.119999999999948
+          },
+          "objectReference": {
+            "object": 1193,
+            "generation": 0
+          },
+          "appearanceState": null,
+          "appearanceStates": [],
+          "annotationFlags": 4,
+          "action": null,
+          "additionalActions": null
+        }
+      ]
+    },
+    {
+      "index": 9,
+      "name": "Color",
+      "handler": "Color",
+      "alternateName": "Color",
+      "mappingName": null,
+      "type": "text",
+      "typeCode": "/Tx",
+      "subtype": "text",
+      "isTerminal": true,
+      "fillable": true,
+      "childFields": [],
+      "flags": 8388608,
+      "flagNames": [
+        "doNotScroll"
+      ],
+      "currentValue": null,
+      "defaultValue": null,
+      "maxLength": null,
+      "options": null,
+      "exportValues": [],
+      "action": null,
+      "additionalActions": null,
+      "widgets": [
+        {
+          "page": 1,
+          "pageSizePoints": {
+            "width": 612.0,
+            "height": 792.0
+          },
+          "rectPdfBottomLeft": {
+            "x1": 33.68,
+            "y1": 375.44,
+            "x2": 80.8,
+            "y2": 389.8,
+            "width": 47.12,
+            "height": 14.360000000000014
+          },
+          "rectTopLeft": {
+            "x": 33.68,
+            "y": 402.2,
+            "width": 47.12,
+            "height": 14.360000000000014
+          },
+          "objectReference": {
+            "object": 1161,
+            "generation": 0
+          },
+          "appearanceState": null,
+          "appearanceStates": [],
+          "annotationFlags": 4,
+          "action": null,
+          "additionalActions": null
+        }
+      ]
+    },
+    {
+      "index": 10,
+      "name": "Unladen Weight",
+      "handler": "Unladen Weight",
+      "alternateName": "Unladen Weight",
+      "mappingName": null,
+      "type": "text",
+      "typeCode": "/Tx",
+      "subtype": "text",
+      "isTerminal": true,
+      "fillable": true,
+      "childFields": [],
+      "flags": 8388608,
+      "flagNames": [
+        "doNotScroll"
+      ],
+      "currentValue": null,
+      "defaultValue": null,
+      "maxLength": null,
+      "options": null,
+      "exportValues": [],
+      "action": null,
+      "additionalActions": null,
+      "widgets": [
+        {
+          "page": 1,
+          "pageSizePoints": {
+            "width": 612.0,
+            "height": 792.0
+          },
+          "rectPdfBottomLeft": {
+            "x1": 85.68,
+            "y1": 375.44,
+            "x2": 140.04,
+            "y2": 389.8,
+            "width": 54.359999999999985,
+            "height": 14.360000000000014
+          },
+          "rectTopLeft": {
+            "x": 85.68,
+            "y": 402.2,
+            "width": 54.359999999999985,
+            "height": 14.360000000000014
+          },
+          "objectReference": {
+            "object": 1159,
+            "generation": 0
+          },
+          "appearanceState": null,
+          "appearanceStates": [],
+          "annotationFlags": 4,
+          "action": null,
+          "additionalActions": null
+        }
+      ]
+    },
+    {
+      "index": 11,
+      "name": "Cylinders",
+      "handler": "Cylinders",
+      "alternateName": "Cylinders",
+      "mappingName": null,
+      "type": "text",
+      "typeCode": "/Tx",
+      "subtype": "text",
+      "isTerminal": true,
+      "fillable": true,
+      "childFields": [],
+      "flags": 8388608,
+      "flagNames": [
+        "doNotScroll"
+      ],
+      "currentValue": null,
+      "defaultValue": null,
+      "maxLength": null,
+      "options": null,
+      "exportValues": [],
+      "action": null,
+      "additionalActions": null,
+      "widgets": [
+        {
+          "page": 1,
+          "pageSizePoints": {
+            "width": 612.0,
+            "height": 792.0
+          },
+          "rectPdfBottomLeft": {
+            "x1": 33.68,
+            "y1": 348.68,
+            "x2": 77.8,
+            "y2": 362.92,
+            "width": 44.12,
+            "height": 14.240000000000009
+          },
+          "rectTopLeft": {
+            "x": 33.68,
+            "y": 429.08,
+            "width": 44.12,
+            "height": 14.240000000000009
+          },
+          "objectReference": {
+            "object": 1138,
+            "generation": 0
+          },
+          "appearanceState": null,
+          "appearanceStates": [],
+          "annotationFlags": 4,
+          "action": null,
+          "additionalActions": null
+        }
+      ]
+    },
+    {
+      "index": 12,
+      "name": "Adult Seating Capacity Including Driver",
+      "handler": "Adult Seating Capacity Including Driver",
+      "alternateName": "Adult Seating Capacity (Including Driver)",
+      "mappingName": null,
+      "type": "text",
+      "typeCode": "/Tx",
+      "subtype": "text",
+      "isTerminal": true,
+      "fillable": true,
+      "childFields": [],
+      "flags": 8388608,
+      "flagNames": [
+        "doNotScroll"
+      ],
+      "currentValue": null,
+      "defaultValue": null,
+      "maxLength": null,
+      "options": null,
+      "exportValues": [],
+      "action": null,
+      "additionalActions": null,
+      "widgets": [
+        {
+          "page": 1,
+          "pageSizePoints": {
+            "width": 612.0,
+            "height": 792.0
+          },
+          "rectPdfBottomLeft": {
+            "x1": 259.792,
+            "y1": 349.68,
+            "x2": 305.872,
+            "y2": 366.72,
+            "width": 46.08000000000004,
+            "height": 17.04000000000002
+          },
+          "rectTopLeft": {
+            "x": 259.792,
+            "y": 425.28,
+            "width": 46.08000000000004,
+            "height": 17.04000000000002
+          },
+          "objectReference": {
+            "object": 1134,
+            "generation": 0
+          },
+          "appearanceState": null,
+          "appearanceStates": [],
+          "annotationFlags": 4,
+          "action": null,
+          "additionalActions": null
+        }
+      ]
+    },
+    {
+      "index": 13,
+      "name": "Odometer Reading in Miles",
+      "handler": "Odometer Reading in Miles",
+      "alternateName": "Odometer Reading in Miles",
+      "mappingName": null,
+      "type": "text",
+      "typeCode": "/Tx",
+      "subtype": "text",
+      "isTerminal": true,
+      "fillable": true,
+      "childFields": [],
+      "flags": 8388608,
+      "flagNames": [
+        "doNotScroll"
+      ],
+      "currentValue": null,
+      "defaultValue": null,
+      "maxLength": null,
+      "options": null,
+      "exportValues": [],
+      "action": null,
+      "additionalActions": null,
+      "widgets": [
+        {
+          "page": 1,
+          "pageSizePoints": {
+            "width": 612.0,
+            "height": 792.0
+          },
+          "rectPdfBottomLeft": {
+            "x1": 360.28,
+            "y1": 349.68,
+            "x2": 431.16,
+            "y2": 366.72,
+            "width": 70.88000000000005,
+            "height": 17.04000000000002
+          },
+          "rectTopLeft": {
+            "x": 360.28,
+            "y": 425.28,
+            "width": 70.88000000000005,
+            "height": 17.04000000000002
+          },
+          "objectReference": {
+            "object": 1132,
+            "generation": 0
+          },
+          "appearanceState": null,
+          "appearanceStates": [],
+          "annotationFlags": 4,
+          "action": null,
+          "additionalActions": null
+        }
+      ]
+    },
+    {
+      "index": 14,
+      "name": "PRIMARY OWNER NYS License Number",
+      "handler": "PRIMARY OWNER NYS License Number",
+      "alternateName": "PRIMARY OWNER NYS License Number",
+      "mappingName": null,
+      "type": "text",
+      "typeCode": "/Tx",
+      "subtype": "text",
+      "isTerminal": true,
+      "fillable": true,
+      "childFields": [],
+      "flags": 29360128,
+      "flagNames": [
+        "doNotSpellCheck",
+        "doNotScroll",
+        "comb"
+      ],
+      "currentValue": null,
+      "defaultValue": null,
+      "maxLength": null,
+      "options": null,
+      "exportValues": [],
+      "action": null,
+      "additionalActions": null,
+      "widgets": [
+        {
+          "page": 1,
+          "pageSizePoints": {
+            "width": 612.0,
+            "height": 792.0
+          },
+          "rectPdfBottomLeft": {
+            "x1": 33.312,
+            "y1": 216.96,
+            "x2": 204.727,
+            "y2": 234.84,
+            "width": 171.41500000000002,
+            "height": 17.879999999999995
+          },
+          "rectTopLeft": {
+            "x": 33.312,
+            "y": 557.16,
+            "width": 171.41500000000002,
+            "height": 17.879999999999995
+          },
+          "objectReference": {
+            "object": 1114,
+            "generation": 0
+          },
+          "appearanceState": null,
+          "appearanceStates": [],
+          "annotationFlags": 4,
+          "action": null,
+          "additionalActions": null
+        }
+      ]
+    },
+    {
+      "index": 15,
+      "name": "NAME OF PRIMARY OWNER Last First Middle or Business Name",
+      "handler": "NAME OF PRIMARY OWNER Last First Middle or Business Name",
+      "alternateName": "NAME OF PRIMARY OWNER (Last, First, Middle or Business Name",
+      "mappingName": null,
+      "type": "text",
+      "typeCode": "/Tx",
+      "subtype": "text",
+      "isTerminal": true,
+      "fillable": true,
+      "childFields": [],
+      "flags": 8388608,
+      "flagNames": [
+        "doNotScroll"
+      ],
+      "currentValue": null,
+      "defaultValue": null,
+      "maxLength": null,
+      "options": null,
+      "exportValues": [],
+      "action": null,
+      "additionalActions": null,
+      "widgets": [
+        {
+          "page": 1,
+          "pageSizePoints": {
+            "width": 612.0,
+            "height": 792.0
+          },
+          "rectPdfBottomLeft": {
+            "x1": 208.92,
+            "y1": 216.96,
+            "x2": 433.44,
+            "y2": 234.36,
+            "width": 224.52,
+            "height": 17.400000000000006
+          },
+          "rectTopLeft": {
+            "x": 208.92,
+            "y": 557.64,
+            "width": 224.52,
+            "height": 17.400000000000006
+          },
+          "objectReference": {
+            "object": 1109,
+            "generation": 0
+          },
+          "appearanceState": null,
+          "appearanceStates": [],
+          "annotationFlags": 4,
+          "action": null,
+          "additionalActions": null
+        }
+      ]
+    },
+    {
+      "index": 16,
+      "name": "For Hire direct or indirect compensation  Submit an FH Certificate",
+      "handler": "For Hire direct or indirect compensation  Submit an FH Certificate",
+      "alternateName": "For Hire (direct or indirect compensation) - Submit an FH Certificate",
+      "mappingName": null,
+      "type": "button",
+      "typeCode": "/Btn",
+      "subtype": "checkbox",
+      "isTerminal": true,
+      "fillable": true,
+      "childFields": [],
+      "flags": 0,
+      "flagNames": [],
+      "currentValue": null,
+      "defaultValue": null,
+      "maxLength": null,
+      "options": null,
+      "exportValues": [
+        "/On"
+      ],
+      "action": null,
+      "additionalActions": null,
+      "widgets": [
+        {
+          "page": 2,
+          "pageSizePoints": {
+            "width": 612.0,
+            "height": 792.0
+          },
+          "rectPdfBottomLeft": {
+            "x1": 35.0,
+            "y1": 350.742,
+            "x2": 51.349,
+            "y2": 368.16,
+            "width": 16.348999999999997,
+            "height": 17.418000000000006
+          },
+          "rectTopLeft": {
+            "x": 35.0,
+            "y": 423.84,
+            "width": 16.348999999999997,
+            "height": 17.418000000000006
+          },
+          "objectReference": {
+            "object": 1017,
+            "generation": 0
+          },
+          "appearanceState": "/Off",
+          "appearanceStates": [
+            "/On"
+          ],
+          "annotationFlags": 4,
+          "action": null,
+          "additionalActions": null
+        }
+      ]
+    },
+    {
+      "index": 17,
+      "name": "Not For Hire  Submit a current and valid NYS Insurance ID Card",
+      "handler": "Not For Hire  Submit a current and valid NYS Insurance ID Card",
+      "alternateName": "Not For Hire - Submit a current and valid NYS Insurance ID Card",
+      "mappingName": null,
+      "type": "button",
+      "typeCode": "/Btn",
+      "subtype": "checkbox",
+      "isTerminal": true,
+      "fillable": true,
+      "childFields": [],
+      "flags": 0,
+      "flagNames": [],
+      "currentValue": null,
+      "defaultValue": null,
+      "maxLength": null,
+      "options": null,
+      "exportValues": [
+        "/On"
+      ],
+      "action": null,
+      "additionalActions": null,
+      "widgets": [
+        {
+          "page": 2,
+          "pageSizePoints": {
+            "width": 612.0,
+            "height": 792.0
+          },
+          "rectPdfBottomLeft": {
+            "x1": 35.0,
+            "y1": 325.062,
+            "x2": 51.349,
+            "y2": 342.48,
+            "width": 16.348999999999997,
+            "height": 17.418000000000006
+          },
+          "rectTopLeft": {
+            "x": 35.0,
+            "y": 449.52,
+            "width": 16.348999999999997,
+            "height": 17.418000000000006
+          },
+          "objectReference": {
+            "object": 1015,
+            "generation": 0
+          },
+          "appearanceState": "/Off",
+          "appearanceStates": [
+            "/On"
+          ],
+          "annotationFlags": 4,
+          "action": null,
+          "additionalActions": null
+        }
+      ]
+    },
+    {
+      "index": 18,
+      "name": "DOT Operation  Submit and record the NYS DOT",
+      "handler": "DOT Operation  Submit and record the NYS DOT",
+      "alternateName": "DOT Operation - Submit and record the NYS DOT",
+      "mappingName": null,
+      "type": "button",
+      "typeCode": "/Btn",
+      "subtype": "checkbox",
+      "isTerminal": true,
+      "fillable": true,
+      "childFields": [],
+      "flags": 0,
+      "flagNames": [],
+      "currentValue": null,
+      "defaultValue": null,
+      "maxLength": null,
+      "options": null,
+      "exportValues": [
+        "/On"
+      ],
+      "action": null,
+      "additionalActions": null,
+      "widgets": [
+        {
+          "page": 2,
+          "pageSizePoints": {
+            "width": 612.0,
+            "height": 792.0
+          },
+          "rectPdfBottomLeft": {
+            "x1": 370.04,
+            "y1": 350.742,
+            "x2": 386.389,
+            "y2": 368.16,
+            "width": 16.34899999999999,
+            "height": 17.418000000000006
+          },
+          "rectTopLeft": {
+            "x": 370.04,
+            "y": 423.84,
+            "width": 16.34899999999999,
+            "height": 17.418000000000006
+          },
+          "objectReference": {
+            "object": 1013,
+            "generation": 0
+          },
+          "appearanceState": "/Off",
+          "appearanceStates": [
+            "/On"
+          ],
+          "annotationFlags": 4,
+          "action": null,
+          "additionalActions": null
+        }
+      ]
+    },
+    {
+      "index": 19,
+      "name": "Axles",
+      "handler": "Axles",
+      "alternateName": "Axles",
+      "mappingName": null,
+      "type": "text",
+      "typeCode": "/Tx",
+      "subtype": "text",
+      "isTerminal": true,
+      "fillable": true,
+      "childFields": [],
+      "flags": 8388608,
+      "flagNames": [
+        "doNotScroll"
+      ],
+      "currentValue": null,
+      "defaultValue": null,
+      "maxLength": null,
+      "options": null,
+      "exportValues": [],
+      "action": null,
+      "additionalActions": null,
+      "widgets": [
+        {
+          "page": 1,
+          "pageSizePoints": {
+            "width": 612.0,
+            "height": 792.0
+          },
+          "rectPdfBottomLeft": {
+            "x1": 513.68,
+            "y1": 348.68,
+            "x2": 551.16,
+            "y2": 361.2,
+            "width": 37.48000000000002,
+            "height": 12.519999999999982
+          },
+          "rectTopLeft": {
+            "x": 513.68,
+            "y": 430.8,
+            "width": 37.48000000000002,
+            "height": 12.519999999999982
+          },
+          "objectReference": {
+            "object": 1129,
+            "generation": 0
+          },
+          "appearanceState": null,
+          "appearanceStates": [],
+          "annotationFlags": 4,
+          "action": null,
+          "additionalActions": null
+        }
+      ]
+    },
+    {
+      "index": 20,
+      "name": "Distance",
+      "handler": "Distance",
+      "alternateName": "Distance",
+      "mappingName": null,
+      "type": "text",
+      "typeCode": "/Tx",
+      "subtype": "text",
+      "isTerminal": true,
+      "fillable": true,
+      "childFields": [],
+      "flags": 29360128,
+      "flagNames": [
+        "doNotSpellCheck",
+        "doNotScroll",
+        "comb"
+      ],
+      "currentValue": null,
+      "defaultValue": null,
+      "maxLength": null,
+      "options": null,
+      "exportValues": [],
+      "action": null,
+      "additionalActions": null,
+      "widgets": [
+        {
+          "page": 1,
+          "pageSizePoints": {
+            "width": 612.0,
+            "height": 792.0
+          },
+          "rectPdfBottomLeft": {
+            "x1": 552.009,
+            "y1": 348.68,
+            "x2": 593.489,
+            "y2": 361.2,
+            "width": 41.48000000000002,
+            "height": 12.519999999999982
+          },
+          "rectTopLeft": {
+            "x": 552.009,
+            "y": 430.8,
+            "width": 41.48000000000002,
+            "height": 12.519999999999982
+          },
+          "objectReference": {
+            "object": 1127,
+            "generation": 0
+          },
+          "appearanceState": null,
+          "appearanceStates": [],
+          "annotationFlags": 4,
+          "action": null,
+          "additionalActions": null
+        }
+      ]
+    },
+    {
+      "index": 21,
+      "name": "NYS driver license ID number of COREGISTRANT",
+      "handler": "NYS driver license ID number of COREGISTRANT",
+      "alternateName": "NYS driver license ID number of CO-REGISTRANT",
+      "mappingName": null,
+      "type": "text",
+      "typeCode": "/Tx",
+      "subtype": "text",
+      "isTerminal": true,
+      "fillable": true,
+      "childFields": [],
+      "flags": 29360128,
+      "flagNames": [
+        "doNotSpellCheck",
+        "doNotScroll",
+        "comb"
+      ],
+      "currentValue": null,
+      "defaultValue": null,
+      "maxLength": null,
+      "options": null,
+      "exportValues": [],
+      "action": null,
+      "additionalActions": null,
+      "widgets": [
+        {
+          "page": 1,
+          "pageSizePoints": {
+            "width": 612.0,
+            "height": 792.0
+          },
+          "rectPdfBottomLeft": {
+            "x1": 34.08,
+            "y1": 498.84,
+            "x2": 254.04,
+            "y2": 517.2,
+            "width": 219.95999999999998,
+            "height": 18.36000000000007
+          },
+          "rectTopLeft": {
+            "x": 34.08,
+            "y": 274.79999999999995,
+            "width": 219.95999999999998,
+            "height": 18.36000000000007
+          },
+          "objectReference": {
+            "object": 1237,
+            "generation": 0
+          },
+          "appearanceState": null,
+          "appearanceStates": [],
+          "annotationFlags": 4,
+          "action": null,
+          "additionalActions": null
+        }
+      ]
+    },
+    {
+      "index": 22,
+      "name": "NYS driver license ID number of PRIMARY REGISTRANT",
+      "handler": "NYS driver license ID number of PRIMARY REGISTRANT",
+      "alternateName": "NYS driver license ID number of PRIMARY REGISTRANT",
+      "mappingName": null,
+      "type": "text",
+      "typeCode": "/Tx",
+      "subtype": "text",
+      "isTerminal": true,
+      "fillable": true,
+      "childFields": [],
+      "flags": 29360128,
+      "flagNames": [
+        "doNotSpellCheck",
+        "doNotScroll",
+        "comb"
+      ],
+      "currentValue": null,
+      "defaultValue": null,
+      "maxLength": null,
+      "options": null,
+      "exportValues": [],
+      "action": null,
+      "additionalActions": null,
+      "widgets": [
+        {
+          "page": 1,
+          "pageSizePoints": {
+            "width": 612.0,
+            "height": 792.0
+          },
+          "rectPdfBottomLeft": {
+            "x1": 33.552,
+            "y1": 556.869,
+            "x2": 253.512,
+            "y2": 575.229,
+            "width": 219.96,
+            "height": 18.360000000000014
+          },
+          "rectTopLeft": {
+            "x": 33.552,
+            "y": 216.77099999999996,
+            "width": 219.96,
+            "height": 18.360000000000014
+          },
+          "objectReference": {
+            "object": 1268,
+            "generation": 0
+          },
+          "appearanceState": null,
+          "appearanceStates": [],
+          "annotationFlags": 4,
+          "action": null,
+          "additionalActions": null
+        }
+      ]
+    },
+    {
+      "index": 23,
+      "name": "NAME OF PRIMARY REGISTRANT Last First Middle or Business Name",
+      "handler": "NAME OF PRIMARY REGISTRANT Last First Middle or Business Name",
+      "alternateName": "NAME OF PRIMARY REGISTRANT (Last, First, Middle or Business Name",
+      "mappingName": null,
+      "type": "text",
+      "typeCode": "/Tx",
+      "subtype": "text",
+      "isTerminal": true,
+      "fillable": true,
+      "childFields": [],
+      "flags": 8388608,
+      "flagNames": [
+        "doNotScroll"
+      ],
+      "currentValue": null,
+      "defaultValue": null,
+      "maxLength": null,
+      "options": null,
+      "exportValues": [],
+      "action": null,
+      "additionalActions": null,
+      "widgets": [
+        {
+          "page": 1,
+          "pageSizePoints": {
+            "width": 612.0,
+            "height": 792.0
+          },
+          "rectPdfBottomLeft": {
+            "x1": 33.92,
+            "y1": 585.24,
+            "x2": 323.32,
+            "y2": 602.56,
+            "width": 289.4,
+            "height": 17.319999999999936
+          },
+          "rectTopLeft": {
+            "x": 33.92,
+            "y": 189.44000000000005,
+            "width": 289.4,
+            "height": 17.319999999999936
+          },
+          "objectReference": {
+            "object": 1069,
+            "generation": 0
+          },
+          "appearanceState": null,
+          "appearanceStates": [],
+          "annotationFlags": 4,
+          "action": null,
+          "additionalActions": null
+        },
+        {
+          "page": 2,
+          "pageSizePoints": {
+            "width": 612.0,
+            "height": 792.0
+          },
+          "rectPdfBottomLeft": {
+            "x1": 224.463,
+            "y1": 775.74,
+            "x2": 513.863,
+            "y2": 790.06,
+            "width": 289.4000000000001,
+            "height": 14.319999999999936
+          },
+          "rectTopLeft": {
+            "x": 224.463,
+            "y": 1.9400000000000546,
+            "width": 289.4000000000001,
+            "height": 14.319999999999936
+          },
+          "objectReference": {
+            "object": 1067,
+            "generation": 0
+          },
+          "appearanceState": null,
+          "appearanceStates": [],
+          "annotationFlags": 4,
+          "action": null,
+          "additionalActions": null
+        }
+      ]
+    },
+    {
+      "index": 24,
+      "name": "NAME OF COREGISTRANT Last First Middle",
+      "handler": "NAME OF COREGISTRANT Last First Middle",
+      "alternateName": "NAME OF CO-REGISTRANT (Last, First, Middle)",
+      "mappingName": null,
+      "type": "text",
+      "typeCode": "/Tx",
+      "subtype": "text",
+      "isTerminal": true,
+      "fillable": true,
+      "childFields": [],
+      "flags": 8388608,
+      "flagNames": [
+        "doNotScroll"
+      ],
+      "currentValue": null,
+      "defaultValue": null,
+      "maxLength": null,
+      "options": null,
+      "exportValues": [],
+      "action": null,
+      "additionalActions": null,
+      "widgets": [
+        {
+          "page": 1,
+          "pageSizePoints": {
+            "width": 612.0,
+            "height": 792.0
+          },
+          "rectPdfBottomLeft": {
+            "x1": 33.92,
+            "y1": 528.739,
+            "x2": 328.32,
+            "y2": 546.059,
+            "width": 294.4,
+            "height": 17.319999999999936
+          },
+          "rectTopLeft": {
+            "x": 33.92,
+            "y": 245.94100000000003,
+            "width": 294.4,
+            "height": 17.319999999999936
+          },
+          "objectReference": {
+            "object": 1247,
+            "generation": 0
+          },
+          "appearanceState": null,
+          "appearanceStates": [],
+          "annotationFlags": 4,
+          "action": null,
+          "additionalActions": null
+        }
+      ]
+    },
+    {
+      "index": 25,
+      "name": "PRIMARY OWNER DATE OF BIRTH Year",
+      "handler": "PRIMARY OWNER DATE OF BIRTH Year",
+      "alternateName": "PRIMARY OWNER DATE OF BIRTH Year",
+      "mappingName": null,
+      "type": "text",
+      "typeCode": "/Tx",
+      "subtype": "text",
+      "isTerminal": true,
+      "fillable": true,
+      "childFields": [],
+      "flags": 29360128,
+      "flagNames": [
+        "doNotSpellCheck",
+        "doNotScroll",
+        "comb"
+      ],
+      "currentValue": null,
+      "defaultValue": null,
+      "maxLength": null,
+      "options": null,
+      "exportValues": [],
+      "action": null,
+      "additionalActions": null,
+      "widgets": [
+        {
+          "page": 1,
+          "pageSizePoints": {
+            "width": 612.0,
+            "height": 792.0
+          },
+          "rectPdfBottomLeft": {
+            "x1": 488.525,
+            "y1": 216.393,
+            "x2": 540.325,
+            "y2": 229.753,
+            "width": 51.80000000000007,
+            "height": 13.359999999999985
+          },
+          "rectTopLeft": {
+            "x": 488.525,
+            "y": 562.2470000000001,
+            "width": 51.80000000000007,
+            "height": 13.359999999999985
+          },
+          "objectReference": {
+            "object": 1101,
+            "generation": 0
+          },
+          "appearanceState": null,
+          "appearanceStates": [],
+          "annotationFlags": 4,
+          "action": null,
+          "additionalActions": null
+        }
+      ]
+    },
+    {
+      "index": 26,
+      "name": "Maximum Gross Weight",
+      "handler": "Maximum Gross Weight",
+      "alternateName": "Maximum Gross Weight",
+      "mappingName": null,
+      "type": "text",
+      "typeCode": "/Tx",
+      "subtype": "text",
+      "isTerminal": true,
+      "fillable": true,
+      "childFields": [],
+      "flags": 8388608,
+      "flagNames": [
+        "doNotScroll"
+      ],
+      "currentValue": null,
+      "defaultValue": null,
+      "maxLength": null,
+      "options": null,
+      "exportValues": [],
+      "action": null,
+      "additionalActions": null,
+      "widgets": [
+        {
+          "page": 1,
+          "pageSizePoints": {
+            "width": 612.0,
+            "height": 792.0
+          },
+          "rectPdfBottomLeft": {
+            "x1": 122.92,
+            "y1": 349.68,
+            "x2": 188.68,
+            "y2": 366.72,
+            "width": 65.76,
+            "height": 17.04000000000002
+          },
+          "rectTopLeft": {
+            "x": 122.92,
+            "y": 425.28,
+            "width": 65.76,
+            "height": 17.04000000000002
+          },
+          "objectReference": {
+            "object": 1136,
+            "generation": 0
+          },
+          "appearanceState": null,
+          "appearanceStates": [],
+          "annotationFlags": 4,
+          "action": null,
+          "additionalActions": null
+        }
+      ]
+    },
+    {
+      "index": 27,
+      "name": "VEHICLE DESCRIPTION Year",
+      "handler": "VEHICLE DESCRIPTION Year",
+      "alternateName": "VEHICLE DESCRIPTION Year",
+      "mappingName": null,
+      "type": "text",
+      "typeCode": "/Tx",
+      "subtype": "text",
+      "isTerminal": true,
+      "fillable": true,
+      "childFields": [],
+      "flags": 8388608,
+      "flagNames": [
+        "doNotScroll"
+      ],
+      "currentValue": null,
+      "defaultValue": null,
+      "maxLength": null,
+      "options": null,
+      "exportValues": [],
+      "action": null,
+      "additionalActions": null,
+      "widgets": [
+        {
+          "page": 1,
+          "pageSizePoints": {
+            "width": 612.0,
+            "height": 792.0
+          },
+          "rectPdfBottomLeft": {
+            "x1": 352.101,
+            "y1": 402.554,
+            "x2": 393.861,
+            "y2": 415.954,
+            "width": 41.75999999999999,
+            "height": 13.400000000000034
+          },
+          "rectTopLeft": {
+            "x": 352.101,
+            "y": 376.046,
+            "width": 41.75999999999999,
+            "height": 13.400000000000034
+          },
+          "objectReference": {
+            "object": 1190,
+            "generation": 0
+          },
+          "appearanceState": null,
+          "appearanceStates": [],
+          "annotationFlags": 4,
+          "action": null,
+          "additionalActions": null
+        }
+      ]
+    },
+    {
+      "index": 28,
+      "name": "VEHICLE DESCRIPTION Make",
+      "handler": "VEHICLE DESCRIPTION Make",
+      "alternateName": "VEHICLE DESCRIPTION Make",
+      "mappingName": null,
+      "type": "text",
+      "typeCode": "/Tx",
+      "subtype": "text",
+      "isTerminal": true,
+      "fillable": true,
+      "childFields": [],
+      "flags": 8388608,
+      "flagNames": [
+        "doNotScroll"
+      ],
+      "currentValue": null,
+      "defaultValue": null,
+      "maxLength": null,
+      "options": null,
+      "exportValues": [],
+      "action": null,
+      "additionalActions": null,
+      "widgets": [
+        {
+          "page": 1,
+          "pageSizePoints": {
+            "width": 612.0,
+            "height": 792.0
+          },
+          "rectPdfBottomLeft": {
+            "x1": 394.483,
+            "y1": 402.554,
+            "x2": 451.243,
+            "y2": 415.954,
+            "width": 56.75999999999999,
+            "height": 13.400000000000034
+          },
+          "rectTopLeft": {
+            "x": 394.483,
+            "y": 376.046,
+            "width": 56.75999999999999,
+            "height": 13.400000000000034
+          },
+          "objectReference": {
+            "object": 1188,
+            "generation": 0
+          },
+          "appearanceState": null,
+          "appearanceStates": [],
+          "annotationFlags": 4,
+          "action": null,
+          "additionalActions": null
+        }
+      ]
+    },
+    {
+      "index": 29,
+      "name": "Reset Clear",
+      "handler": "Reset Clear",
+      "alternateName": "Reset/Clear",
+      "mappingName": null,
+      "type": "button",
+      "typeCode": "/Btn",
+      "subtype": "pushButton",
+      "isTerminal": true,
+      "fillable": false,
+      "childFields": [],
+      "flags": 65536,
+      "flagNames": [
+        "pushButton"
+      ],
+      "currentValue": null,
+      "defaultValue": null,
+      "maxLength": null,
+      "options": null,
+      "exportValues": [],
+      "action": null,
+      "additionalActions": null,
+      "widgets": [
+        {
+          "page": 2,
+          "pageSizePoints": {
+            "width": 612.0,
+            "height": 792.0
+          },
+          "rectPdfBottomLeft": {
+            "x1": 409.991,
+            "y1": 2.11734,
+            "x2": 497.991,
+            "y2": 25.1173,
+            "width": 88.0,
+            "height": 22.99996
+          },
+          "rectTopLeft": {
+            "x": 409.991,
+            "y": 766.8827,
+            "width": 88.0,
+            "height": 22.99996
+          },
+          "objectReference": {
+            "object": 992,
+            "generation": 0
+          },
+          "appearanceState": null,
+          "appearanceStates": [],
+          "annotationFlags": 4,
+          "action": {
+            "/Fields": [],
+            "/Flags": 1,
+            "/S": "/ResetForm"
+          },
+          "additionalActions": null
+        }
+      ]
+    },
+    {
+      "index": 30,
+      "name": "Print Name in Full if registering in a business name, print your full name and title",
+      "handler": "Print Name in Full if registering in a business name, print your full name and title",
+      "alternateName": "(Print Name in Full - if registering in a business name, print your full name and title)",
+      "mappingName": null,
+      "type": "text",
+      "typeCode": "/Tx",
+      "subtype": "text",
+      "isTerminal": true,
+      "fillable": true,
+      "childFields": [],
+      "flags": 8388608,
+      "flagNames": [
+        "doNotScroll"
+      ],
+      "currentValue": null,
+      "defaultValue": null,
+      "maxLength": null,
+      "options": null,
+      "exportValues": [],
+      "action": null,
+      "additionalActions": null,
+      "widgets": [
+        {
+          "page": 2,
+          "pageSizePoints": {
+            "width": 612.0,
+            "height": 792.0
+          },
+          "rectPdfBottomLeft": {
+            "x1": 82.08,
+            "y1": 95.76,
+            "x2": 306.12,
+            "y2": 110.2,
+            "width": 224.04000000000002,
+            "height": 14.439999999999998
+          },
+          "rectTopLeft": {
+            "x": 82.08,
+            "y": 681.8,
+            "width": 224.04000000000002,
+            "height": 14.439999999999998
+          },
+          "objectReference": {
+            "object": 1002,
+            "generation": 0
+          },
+          "appearanceState": null,
+          "appearanceStates": [],
+          "annotationFlags": 4,
+          "action": null,
+          "additionalActions": null
+        }
+      ]
+    },
+    {
+      "index": 31,
+      "name": "Print Additional Name in Full",
+      "handler": "Print Additional Name in Full",
+      "alternateName": "(Print Additional Name in Full)",
+      "mappingName": null,
+      "type": "text",
+      "typeCode": "/Tx",
+      "subtype": "text",
+      "isTerminal": true,
+      "fillable": true,
+      "childFields": [],
+      "flags": 8388608,
+      "flagNames": [
+        "doNotScroll"
+      ],
+      "currentValue": null,
+      "defaultValue": null,
+      "maxLength": null,
+      "options": null,
+      "exportValues": [],
+      "action": null,
+      "additionalActions": null,
+      "widgets": [
+        {
+          "page": 2,
+          "pageSizePoints": {
+            "width": 612.0,
+            "height": 792.0
+          },
+          "rectPdfBottomLeft": {
+            "x1": 384.72,
+            "y1": 95.76,
+            "x2": 586.44,
+            "y2": 110.2,
+            "width": 201.72000000000003,
+            "height": 14.439999999999998
+          },
+          "rectTopLeft": {
+            "x": 384.72,
+            "y": 681.8,
+            "width": 201.72000000000003,
+            "height": 14.439999999999998
+          },
+          "objectReference": {
+            "object": 998,
+            "generation": 0
+          },
+          "appearanceState": null,
+          "appearanceStates": [],
+          "annotationFlags": 4,
+          "action": null,
+          "additionalActions": null
+        }
+      ]
+    },
+    {
+      "index": 32,
+      "name": "Other describe the use",
+      "handler": "Other describe the use",
+      "alternateName": "Other - describe the use:",
+      "mappingName": null,
+      "type": "text",
+      "typeCode": "/Tx",
+      "subtype": "text",
+      "isTerminal": true,
+      "fillable": true,
+      "childFields": [],
+      "flags": 8388608,
+      "flagNames": [
+        "doNotScroll"
+      ],
+      "currentValue": null,
+      "defaultValue": null,
+      "maxLength": null,
+      "options": null,
+      "exportValues": [],
+      "action": null,
+      "additionalActions": null,
+      "widgets": [
+        {
+          "page": 2,
+          "pageSizePoints": {
+            "width": 612.0,
+            "height": 792.0
+          },
+          "rectPdfBottomLeft": {
+            "x1": 406.752,
+            "y1": 398.24,
+            "x2": 588.792,
+            "y2": 412.68,
+            "width": 182.04000000000002,
+            "height": 14.439999999999998
+          },
+          "rectTopLeft": {
+            "x": 406.752,
+            "y": 379.32,
+            "width": 182.04000000000002,
+            "height": 14.439999999999998
+          },
+          "objectReference": {
+            "object": 1019,
+            "generation": 0
+          },
+          "appearanceState": null,
+          "appearanceStates": [],
+          "annotationFlags": 4,
+          "action": null,
+          "additionalActions": null
+        }
+      ]
+    },
+    {
+      "index": 33,
+      "name": "Submit and record the NYS DOT Permit andor the Federal DOT Permit number",
+      "handler": "Submit and record the NYS DOT Permit andor the Federal DOT Permit number",
+      "alternateName": "Submit and record the NYS DOT Permit and/or the Federal DOT Permit number",
+      "mappingName": null,
+      "type": "text",
+      "typeCode": "/Tx",
+      "subtype": "text",
+      "isTerminal": true,
+      "fillable": true,
+      "childFields": [],
+      "flags": 8388608,
+      "flagNames": [
+        "doNotScroll"
+      ],
+      "currentValue": null,
+      "defaultValue": null,
+      "maxLength": null,
+      "options": null,
+      "exportValues": [],
+      "action": null,
+      "additionalActions": null,
+      "widgets": [
+        {
+          "page": 2,
+          "pageSizePoints": {
+            "width": 612.0,
+            "height": 792.0
+          },
+          "rectPdfBottomLeft": {
+            "x1": 386.4,
+            "y1": 328.96,
+            "x2": 589.44,
+            "y2": 343.2,
+            "width": 203.04000000000008,
+            "height": 14.240000000000009
+          },
+          "rectTopLeft": {
+            "x": 386.4,
+            "y": 448.8,
+            "width": 203.04000000000008,
+            "height": 14.240000000000009
+          },
+          "objectReference": {
+            "object": 1011,
+            "generation": 0
+          },
+          "appearanceState": null,
+          "appearanceStates": [],
+          "annotationFlags": 4,
+          "action": null,
+          "additionalActions": null
+        }
+      ]
+    },
+    {
+      "index": 34,
+      "name": "Has this vehicle been modified from the original manufacturer specifications without extending the chassis or lengthening the wheel base Examples include: color changes added seats permanently mounted camping equipment multi stage vehicles If Yes describe the modifications",
+      "handler": "Has this vehicle been modified from the original manufacturer specifications without extending the chassis or lengthening the wheel base Examples include: color changes added seats permanently mounted camping equipment multi stage vehicles If Yes describe the modifications",
+      "alternateName": "Has this vehicle been modified from the original manufacturer specifications without extending the chassis or lengthening the wheel base? (Examples include: color changes, added seats, permanently mounted camping equipment, multi-stage vehicles.) If \u201cYes,\u201d describe the modifications:",
+      "mappingName": null,
+      "type": "text",
+      "typeCode": "/Tx",
+      "subtype": "text",
+      "isTerminal": true,
+      "fillable": true,
+      "childFields": [],
+      "flags": 8392704,
+      "flagNames": [
+        "multiline",
+        "doNotScroll"
+      ],
+      "currentValue": null,
+      "defaultValue": null,
+      "maxLength": null,
+      "options": null,
+      "exportValues": [],
+      "action": null,
+      "additionalActions": null,
+      "widgets": [
+        {
+          "page": 2,
+          "pageSizePoints": {
+            "width": 612.0,
+            "height": 792.0
+          },
+          "rectPdfBottomLeft": {
+            "x1": 37.56,
+            "y1": 605.831,
+            "x2": 519.48,
+            "y2": 635.671,
+            "width": 481.92,
+            "height": 29.840000000000032
+          },
+          "rectTopLeft": {
+            "x": 37.56,
+            "y": 156.32899999999995,
+            "width": 481.92,
+            "height": 29.840000000000032
+          },
+          "objectReference": {
+            "object": 1055,
+            "generation": 0
+          },
+          "appearanceState": null,
+          "appearanceStates": [],
+          "annotationFlags": 4,
+          "action": null,
+          "additionalActions": null
+        }
+      ]
+    },
+    {
+      "index": 35,
+      "name": "THE ADDRESS WHERE PRIMARY REGISTRANT GETS MAIL",
+      "handler": "THE ADDRESS WHERE PRIMARY REGISTRANT GETS MAIL",
+      "alternateName": "THE ADDRESS WHERE PRIMARY REGISTRANT GETS MAIL",
+      "mappingName": null,
+      "type": "text",
+      "typeCode": "/Tx",
+      "subtype": "text",
+      "isTerminal": true,
+      "fillable": true,
+      "childFields": [],
+      "flags": 8388608,
+      "flagNames": [
+        "doNotScroll"
+      ],
+      "currentValue": null,
+      "defaultValue": null,
+      "maxLength": null,
+      "options": null,
+      "exportValues": [],
+      "action": null,
+      "additionalActions": null,
+      "widgets": [
+        {
+          "page": 1,
+          "pageSizePoints": {
+            "width": 612.0,
+            "height": 792.0
+          },
+          "rectPdfBottomLeft": {
+            "x1": 34.4797,
+            "y1": 467.682,
+            "x2": 292.88,
+            "y2": 485.002,
+            "width": 258.4003,
+            "height": 17.319999999999993
+          },
+          "rectTopLeft": {
+            "x": 34.4797,
+            "y": 306.998,
+            "width": 258.4003,
+            "height": 17.319999999999993
+          },
+          "objectReference": {
+            "object": 1215,
+            "generation": 0
+          },
+          "appearanceState": null,
+          "appearanceStates": [],
+          "annotationFlags": 4,
+          "action": null,
+          "additionalActions": null
+        }
+      ]
+    },
+    {
+      "index": 36,
+      "name": "THE ADDRESS WHERE PRIMARY REGISTRANT RESIDES IF DIFFERENT FROM THE MAILING ADDRESS",
+      "handler": "THE ADDRESS WHERE PRIMARY REGISTRANT RESIDES IF DIFFERENT FROM THE MAILING ADDRESS",
+      "alternateName": "THE ADDRESS WHERE PRIMARY REGISTRANT RESIDES IF DIFFERENT FROM THE MAILING ADDRESS",
+      "mappingName": null,
+      "type": "text",
+      "typeCode": "/Tx",
+      "subtype": "text",
+      "isTerminal": true,
+      "fillable": true,
+      "childFields": [],
+      "flags": 8388608,
+      "flagNames": [
+        "doNotScroll"
+      ],
+      "currentValue": null,
+      "defaultValue": null,
+      "maxLength": null,
+      "options": null,
+      "exportValues": [],
+      "action": null,
+      "additionalActions": null,
+      "widgets": [
+        {
+          "page": 1,
+          "pageSizePoints": {
+            "width": 612.0,
+            "height": 792.0
+          },
+          "rectPdfBottomLeft": {
+            "x1": 34.92,
+            "y1": 438.623,
+            "x2": 293.32,
+            "y2": 455.943,
+            "width": 258.4,
+            "height": 17.319999999999993
+          },
+          "rectTopLeft": {
+            "x": 34.92,
+            "y": 336.057,
+            "width": 258.4,
+            "height": 17.319999999999993
+          },
+          "objectReference": {
+            "object": 1203,
+            "generation": 0
+          },
+          "appearanceState": null,
+          "appearanceStates": [],
+          "annotationFlags": 4,
+          "action": null,
+          "additionalActions": null
+        }
+      ]
+    },
+    {
+      "index": 37,
+      "name": "NAME OF COOWNER",
+      "handler": "NAME OF COOWNER",
+      "alternateName": "NAME OF CO-OWNER",
+      "mappingName": null,
+      "type": "text",
+      "typeCode": "/Tx",
+      "subtype": "text",
+      "isTerminal": true,
+      "fillable": true,
+      "childFields": [],
+      "flags": 8388608,
+      "flagNames": [
+        "doNotScroll"
+      ],
+      "currentValue": null,
+      "defaultValue": null,
+      "maxLength": null,
+      "options": null,
+      "exportValues": [],
+      "action": null,
+      "additionalActions": null,
+      "widgets": [
+        {
+          "page": 1,
+          "pageSizePoints": {
+            "width": 612.0,
+            "height": 792.0
+          },
+          "rectPdfBottomLeft": {
+            "x1": 78.48,
+            "y1": 166.56,
+            "x2": 355.92,
+            "y2": 183.96,
+            "width": 277.44,
+            "height": 17.400000000000006
+          },
+          "rectTopLeft": {
+            "x": 78.48,
+            "y": 608.04,
+            "width": 277.44,
+            "height": 17.400000000000006
+          },
+          "objectReference": {
+            "object": 1078,
+            "generation": 0
+          },
+          "appearanceState": null,
+          "appearanceStates": [],
+          "annotationFlags": 4,
+          "action": null,
+          "additionalActions": null
+        }
+      ]
+    },
+    {
+      "index": 38,
+      "name": "THE ADDRESS WHERE PRIMARY OWNER GETS MAIL",
+      "handler": "THE ADDRESS WHERE PRIMARY OWNER GETS MAIL",
+      "alternateName": "THE ADDRESS WHERE PRIMARY OWNER GETS MAIL",
+      "mappingName": null,
+      "type": "text",
+      "typeCode": "/Tx",
+      "subtype": "text",
+      "isTerminal": true,
+      "fillable": true,
+      "childFields": [],
+      "flags": 8388608,
+      "flagNames": [
+        "doNotScroll"
+      ],
+      "currentValue": null,
+      "defaultValue": null,
+      "maxLength": null,
+      "options": null,
+      "exportValues": [],
+      "action": null,
+      "additionalActions": null,
+      "widgets": [
+        {
+          "page": 1,
+          "pageSizePoints": {
+            "width": 612.0,
+            "height": 792.0
+          },
+          "rectPdfBottomLeft": {
+            "x1": 33.6437,
+            "y1": 187.833,
+            "x2": 251.084,
+            "y2": 205.233,
+            "width": 217.4403,
+            "height": 17.400000000000006
+          },
+          "rectTopLeft": {
+            "x": 33.6437,
+            "y": 586.767,
+            "width": 217.4403,
+            "height": 17.400000000000006
+          },
+          "objectReference": {
+            "object": 1092,
+            "generation": 0
+          },
+          "appearanceState": null,
+          "appearanceStates": [],
+          "annotationFlags": 4,
+          "action": null,
+          "additionalActions": null
+        }
+      ]
+    },
+    {
+      "index": 39,
+      "name": "Signature of ALL owners Date",
+      "handler": "Signature of ALL owners Date",
+      "alternateName": "Signature of ALL owner(s) Date",
+      "mappingName": null,
+      "type": "text",
+      "typeCode": "/Tx",
+      "subtype": "text",
+      "isTerminal": true,
+      "fillable": true,
+      "childFields": [],
+      "flags": 8388608,
+      "flagNames": [
+        "doNotScroll"
+      ],
+      "currentValue": null,
+      "defaultValue": null,
+      "maxLength": null,
+      "options": null,
+      "exportValues": [],
+      "action": null,
+      "additionalActions": null,
+      "widgets": [
+        {
+          "page": 1,
+          "pageSizePoints": {
+            "width": 612.0,
+            "height": 792.0
+          },
+          "rectPdfBottomLeft": {
+            "x1": 468.704,
+            "y1": 137.518,
+            "x2": 594.068,
+            "y2": 152.918,
+            "width": 125.36399999999998,
+            "height": 15.400000000000006
+          },
+          "rectTopLeft": {
+            "x": 468.704,
+            "y": 639.082,
+            "width": 125.36399999999998,
+            "height": 15.400000000000006
+          },
+          "objectReference": {
+            "object": 1073,
+            "generation": 0
+          },
+          "appearanceState": null,
+          "appearanceStates": [],
+          "annotationFlags": 4,
+          "action": null,
+          "additionalActions": null
+        }
+      ]
+    },
+    {
+      "index": 40,
+      "name": "Is this vehicle being registered only for personal use",
+      "handler": "Is this vehicle being registered only for personal use",
+      "alternateName": "Is this vehicle being registered only for personal use?",
+      "mappingName": null,
+      "type": "button",
+      "typeCode": "/Btn",
+      "subtype": "radio",
+      "isTerminal": true,
+      "fillable": true,
+      "childFields": [],
+      "flags": 49152,
+      "flagNames": [
+        "noToggleToOff",
+        "radio"
+      ],
+      "currentValue": null,
+      "defaultValue": null,
+      "maxLength": null,
+      "options": null,
+      "exportValues": [
+        "/No",
+        "/Yes"
+      ],
+      "action": null,
+      "additionalActions": null,
+      "widgets": [
+        {
+          "page": 1,
+          "pageSizePoints": {
+            "width": 612.0,
+            "height": 792.0
+          },
+          "rectPdfBottomLeft": {
+            "x1": 255.952,
+            "y1": 725.808,
+            "x2": 268.301,
+            "y2": 741.226,
+            "width": 12.34899999999999,
+            "height": 15.418000000000006
+          },
+          "rectTopLeft": {
+            "x": 255.952,
+            "y": 50.774,
+            "width": 12.34899999999999,
+            "height": 15.418000000000006
+          },
+          "objectReference": {
+            "object": 1300,
+            "generation": 0
+          },
+          "appearanceState": "/Off",
+          "appearanceStates": [
+            "/Yes"
+          ],
+          "annotationFlags": 4,
+          "action": null,
+          "additionalActions": null
+        },
+        {
+          "page": 1,
+          "pageSizePoints": {
+            "width": 612.0,
+            "height": 792.0
+          },
+          "rectPdfBottomLeft": {
+            "x1": 283.634,
+            "y1": 725.808,
+            "x2": 295.983,
+            "y2": 741.226,
+            "width": 12.34899999999999,
+            "height": 15.418000000000006
+          },
+          "rectTopLeft": {
+            "x": 283.634,
+            "y": 50.774,
+            "width": 12.34899999999999,
+            "height": 15.418000000000006
+          },
+          "objectReference": {
+            "object": 1298,
+            "generation": 0
+          },
+          "appearanceState": "/Off",
+          "appearanceStates": [
+            "/No"
+          ],
+          "annotationFlags": 4,
+          "action": null,
+          "additionalActions": null
+        }
+      ]
+    },
+    {
+      "index": 41,
+      "name": "Plates Eligibility",
+      "handler": "Plates Eligibility",
+      "alternateName": "Plates Eligibility",
+      "mappingName": null,
+      "type": "button",
+      "typeCode": "/Btn",
+      "subtype": "radio",
+      "isTerminal": true,
+      "fillable": true,
+      "childFields": [],
+      "flags": 49152,
+      "flagNames": [
+        "noToggleToOff",
+        "radio"
+      ],
+      "currentValue": null,
+      "defaultValue": null,
+      "maxLength": null,
+      "options": null,
+      "exportValues": [
+        "/Commercial Plates",
+        "/Passenger Plates"
+      ],
+      "action": null,
+      "additionalActions": null,
+      "widgets": [
+        {
+          "page": 1,
+          "pageSizePoints": {
+            "width": 612.0,
+            "height": 792.0
+          },
+          "rectPdfBottomLeft": {
+            "x1": 125.043,
+            "y1": 680.935,
+            "x2": 137.392,
+            "y2": 696.353,
+            "width": 12.34899999999999,
+            "height": 15.418000000000006
+          },
+          "rectTopLeft": {
+            "x": 125.043,
+            "y": 95.64700000000005,
+            "width": 12.34899999999999,
+            "height": 15.418000000000006
+          },
+          "objectReference": {
+            "object": 1295,
+            "generation": 0
+          },
+          "appearanceState": "/Off",
+          "appearanceStates": [
+            "/Passenger Plates"
+          ],
+          "annotationFlags": 4,
+          "action": null,
+          "additionalActions": null
+        },
+        {
+          "page": 1,
+          "pageSizePoints": {
+            "width": 612.0,
+            "height": 792.0
+          },
+          "rectPdfBottomLeft": {
+            "x1": 215.725,
+            "y1": 680.935,
+            "x2": 228.074,
+            "y2": 696.353,
+            "width": 12.349000000000018,
+            "height": 15.418000000000006
+          },
+          "rectTopLeft": {
+            "x": 215.725,
+            "y": 95.64700000000005,
+            "width": 12.349000000000018,
+            "height": 15.418000000000006
+          },
+          "objectReference": {
+            "object": 1293,
+            "generation": 0
+          },
+          "appearanceState": "/Off",
+          "appearanceStates": [
+            "/Commercial Plates"
+          ],
+          "annotationFlags": 4,
+          "action": null,
+          "additionalActions": null
+        }
+      ]
+    },
+    {
+      "index": 42,
+      "name": "CHANGE A REGISTRATION",
+      "handler": "CHANGE A REGISTRATION",
+      "alternateName": "CHANGE A REGISTRATION",
+      "mappingName": null,
+      "type": "button",
+      "typeCode": "/Btn",
+      "subtype": "checkbox",
+      "isTerminal": true,
+      "fillable": true,
+      "childFields": [],
+      "flags": 0,
+      "flagNames": [],
+      "currentValue": null,
+      "defaultValue": null,
+      "maxLength": null,
+      "options": null,
+      "exportValues": [
+        "/On"
+      ],
+      "action": null,
+      "additionalActions": null,
+      "widgets": [
+        {
+          "page": 1,
+          "pageSizePoints": {
+            "width": 612.0,
+            "height": 792.0
+          },
+          "rectPdfBottomLeft": {
+            "x1": 106.76,
+            "y1": 614.6,
+            "x2": 119.6,
+            "y2": 629.44,
+            "width": 12.83999999999999,
+            "height": 14.840000000000032
+          },
+          "rectTopLeft": {
+            "x": 106.76,
+            "y": 162.55999999999995,
+            "width": 12.83999999999999,
+            "height": 14.840000000000032
+          },
+          "objectReference": {
+            "object": 1284,
+            "generation": 0
+          },
+          "appearanceState": "/Off",
+          "appearanceStates": [
+            "/On"
+          ],
+          "annotationFlags": 4,
+          "action": null,
+          "additionalActions": null
+        }
+      ]
+    },
+    {
+      "index": 43,
+      "name": "Other fuel specify",
+      "handler": "Other fuel specify",
+      "alternateName": "Other fuel - specify",
+      "mappingName": null,
+      "type": "text",
+      "typeCode": "/Tx",
+      "subtype": "text",
+      "isTerminal": true,
+      "fillable": true,
+      "childFields": [],
+      "flags": 8388608,
+      "flagNames": [
+        "doNotScroll"
+      ],
+      "currentValue": null,
+      "defaultValue": null,
+      "maxLength": null,
+      "options": null,
+      "exportValues": [],
+      "action": null,
+      "additionalActions": null,
+      "widgets": [
+        {
+          "page": 1,
+          "pageSizePoints": {
+            "width": 612.0,
+            "height": 792.0
+          },
+          "rectPdfBottomLeft": {
+            "x1": 390.12,
+            "y1": 379.76,
+            "x2": 446.88,
+            "y2": 394.16,
+            "width": 56.75999999999999,
+            "height": 14.400000000000034
+          },
+          "rectTopLeft": {
+            "x": 390.12,
+            "y": 397.84,
+            "width": 56.75999999999999,
+            "height": 14.400000000000034
+          },
+          "objectReference": {
+            "object": 1140,
+            "generation": 0
+          },
+          "appearanceState": null,
+          "appearanceStates": [],
+          "annotationFlags": 4,
+          "action": null,
+          "additionalActions": null
+        }
+      ]
+    },
+    {
+      "index": 44,
+      "name": "Body Type",
+      "handler": "Body Type",
+      "alternateName": "Body Type",
+      "mappingName": null,
+      "type": "button",
+      "typeCode": "/Btn",
+      "subtype": "radio",
+      "isTerminal": true,
+      "fillable": true,
+      "childFields": [],
+      "flags": 49152,
+      "flagNames": [
+        "noToggleToOff",
+        "radio"
+      ],
+      "currentValue": null,
+      "defaultValue": null,
+      "maxLength": null,
+      "options": null,
+      "exportValues": [
+        "/2-Door",
+        "/4-Door",
+        "/Convertible",
+        "/Limo",
+        "/Motorcycle",
+        "/Other",
+        "/Pick-up",
+        "/Suburban/SUV",
+        "/Tow",
+        "/Trailer",
+        "/Van"
+      ],
+      "action": null,
+      "additionalActions": null,
+      "widgets": [
+        {
+          "page": 1,
+          "pageSizePoints": {
+            "width": 612.0,
+            "height": 792.0
+          },
+          "rectPdfBottomLeft": {
+            "x1": 457.69,
+            "y1": 411.255,
+            "x2": 467.872,
+            "y2": 423.109,
+            "width": 10.182000000000016,
+            "height": 11.853999999999985
+          },
+          "rectTopLeft": {
+            "x": 457.69,
+            "y": 368.891,
+            "width": 10.182000000000016,
+            "height": 11.853999999999985
+          },
+          "objectReference": {
+            "object": 1167,
+            "generation": 0
+          },
+          "appearanceState": "/Off",
+          "appearanceStates": [
+            "/2-Door"
+          ],
+          "annotationFlags": 4,
+          "action": null,
+          "additionalActions": null
+        },
+        {
+          "page": 1,
+          "pageSizePoints": {
+            "width": 612.0,
+            "height": 792.0
+          },
+          "rectPdfBottomLeft": {
+            "x1": 457.69,
+            "y1": 400.237,
+            "x2": 467.872,
+            "y2": 412.092,
+            "width": 10.182000000000016,
+            "height": 11.854999999999961
+          },
+          "rectTopLeft": {
+            "x": 457.69,
+            "y": 379.908,
+            "width": 10.182000000000016,
+            "height": 11.854999999999961
+          },
+          "objectReference": {
+            "object": 1168,
+            "generation": 0
+          },
+          "appearanceState": "/Off",
+          "appearanceStates": [
+            "/4-Door"
+          ],
+          "annotationFlags": 4,
+          "action": null,
+          "additionalActions": null
+        },
+        {
+          "page": 1,
+          "pageSizePoints": {
+            "width": 612.0,
+            "height": 792.0
+          },
+          "rectPdfBottomLeft": {
+            "x1": 457.69,
+            "y1": 389.873,
+            "x2": 467.872,
+            "y2": 401.728,
+            "width": 10.182000000000016,
+            "height": 11.855000000000018
+          },
+          "rectTopLeft": {
+            "x": 457.69,
+            "y": 390.272,
+            "width": 10.182000000000016,
+            "height": 11.855000000000018
+          },
+          "objectReference": {
+            "object": 1176,
+            "generation": 0
+          },
+          "appearanceState": "/Off",
+          "appearanceStates": [
+            "/Pick-up"
+          ],
+          "annotationFlags": 4,
+          "action": null,
+          "additionalActions": null
+        },
+        {
+          "page": 1,
+          "pageSizePoints": {
+            "width": 612.0,
+            "height": 792.0
+          },
+          "rectPdfBottomLeft": {
+            "x1": 457.69,
+            "y1": 378.963,
+            "x2": 467.872,
+            "y2": 390.818,
+            "width": 10.182000000000016,
+            "height": 11.854999999999961
+          },
+          "rectTopLeft": {
+            "x": 457.69,
+            "y": 401.182,
+            "width": 10.182000000000016,
+            "height": 11.854999999999961
+          },
+          "objectReference": {
+            "object": 1171,
+            "generation": 0
+          },
+          "appearanceState": "/Off",
+          "appearanceStates": [
+            "/Van"
+          ],
+          "annotationFlags": 4,
+          "action": null,
+          "additionalActions": null
+        },
+        {
+          "page": 1,
+          "pageSizePoints": {
+            "width": 612.0,
+            "height": 792.0
+          },
+          "rectPdfBottomLeft": {
+            "x1": 491.182,
+            "y1": 410.254,
+            "x2": 501.364,
+            "y2": 422.109,
+            "width": 10.18199999999996,
+            "height": 11.854999999999961
+          },
+          "rectTopLeft": {
+            "x": 491.182,
+            "y": 369.891,
+            "width": 10.18199999999996,
+            "height": 11.854999999999961
+          },
+          "objectReference": {
+            "object": 1169,
+            "generation": 0
+          },
+          "appearanceState": "/Off",
+          "appearanceStates": [
+            "/Convertible"
+          ],
+          "annotationFlags": 4,
+          "action": null,
+          "additionalActions": null
+        },
+        {
+          "page": 1,
+          "pageSizePoints": {
+            "width": 612.0,
+            "height": 792.0
+          },
+          "rectPdfBottomLeft": {
+            "x1": 491.182,
+            "y1": 399.237,
+            "x2": 501.364,
+            "y2": 411.092,
+            "width": 10.18199999999996,
+            "height": 11.854999999999961
+          },
+          "rectTopLeft": {
+            "x": 491.182,
+            "y": 380.908,
+            "width": 10.18199999999996,
+            "height": 11.854999999999961
+          },
+          "objectReference": {
+            "object": 1172,
+            "generation": 0
+          },
+          "appearanceState": "/Off",
+          "appearanceStates": [
+            "/Suburban/SUV"
+          ],
+          "annotationFlags": 4,
+          "action": null,
+          "additionalActions": null
+        },
+        {
+          "page": 1,
+          "pageSizePoints": {
+            "width": 612.0,
+            "height": 792.0
+          },
+          "rectPdfBottomLeft": {
+            "x1": 491.182,
+            "y1": 388.873,
+            "x2": 501.364,
+            "y2": 400.728,
+            "width": 10.18199999999996,
+            "height": 11.855000000000018
+          },
+          "rectTopLeft": {
+            "x": 491.182,
+            "y": 391.272,
+            "width": 10.18199999999996,
+            "height": 11.855000000000018
+          },
+          "objectReference": {
+            "object": 1174,
+            "generation": 0
+          },
+          "appearanceState": "/Off",
+          "appearanceStates": [
+            "/Limo"
+          ],
+          "annotationFlags": 4,
+          "action": null,
+          "additionalActions": null
+        },
+        {
+          "page": 1,
+          "pageSizePoints": {
+            "width": 612.0,
+            "height": 792.0
+          },
+          "rectPdfBottomLeft": {
+            "x1": 491.182,
+            "y1": 377.418,
+            "x2": 501.363,
+            "y2": 389.273,
+            "width": 10.180999999999983,
+            "height": 11.855000000000018
+          },
+          "rectTopLeft": {
+            "x": 491.182,
+            "y": 402.727,
+            "width": 10.180999999999983,
+            "height": 11.855000000000018
+          },
+          "objectReference": {
+            "object": 1173,
+            "generation": 0
+          },
+          "appearanceState": "/Off",
+          "appearanceStates": [
+            "/Other"
+          ],
+          "annotationFlags": 4,
+          "action": null,
+          "additionalActions": null
+        },
+        {
+          "page": 1,
+          "pageSizePoints": {
+            "width": 612.0,
+            "height": 792.0
+          },
+          "rectPdfBottomLeft": {
+            "x1": 547.581,
+            "y1": 410.254,
+            "x2": 557.763,
+            "y2": 422.109,
+            "width": 10.182000000000016,
+            "height": 11.854999999999961
+          },
+          "rectTopLeft": {
+            "x": 547.581,
+            "y": 369.891,
+            "width": 10.182000000000016,
+            "height": 11.854999999999961
+          },
+          "objectReference": {
+            "object": 1175,
+            "generation": 0
+          },
+          "appearanceState": "/Off",
+          "appearanceStates": [
+            "/Trailer"
+          ],
+          "annotationFlags": 4,
+          "action": null,
+          "additionalActions": null
+        },
+        {
+          "page": 1,
+          "pageSizePoints": {
+            "width": 612.0,
+            "height": 792.0
+          },
+          "rectPdfBottomLeft": {
+            "x1": 547.581,
+            "y1": 400.237,
+            "x2": 557.763,
+            "y2": 412.092,
+            "width": 10.182000000000016,
+            "height": 11.854999999999961
+          },
+          "rectTopLeft": {
+            "x": 547.581,
+            "y": 379.908,
+            "width": 10.182000000000016,
+            "height": 11.854999999999961
+          },
+          "objectReference": {
+            "object": 1170,
+            "generation": 0
+          },
+          "appearanceState": "/Off",
+          "appearanceStates": [
+            "/Motorcycle"
+          ],
+          "annotationFlags": 4,
+          "action": null,
+          "additionalActions": null
+        },
+        {
+          "page": 1,
+          "pageSizePoints": {
+            "width": 612.0,
+            "height": 792.0
+          },
+          "rectPdfBottomLeft": {
+            "x1": 547.581,
+            "y1": 388.873,
+            "x2": 557.763,
+            "y2": 400.728,
+            "width": 10.182000000000016,
+            "height": 11.855000000000018
+          },
+          "rectTopLeft": {
+            "x": 547.581,
+            "y": 391.272,
+            "width": 10.182000000000016,
+            "height": 11.855000000000018
+          },
+          "objectReference": {
+            "object": 1165,
+            "generation": 0
+          },
+          "appearanceState": "/Off",
+          "appearanceStates": [
+            "/Tow"
+          ],
+          "annotationFlags": 4,
+          "action": null,
+          "additionalActions": null
+        }
+      ]
+    },
+    {
+      "index": 45,
+      "name": "Other Body Type specify",
+      "handler": "Other Body Type specify",
+      "alternateName": "Other Body Type - specify",
+      "mappingName": null,
+      "type": "text",
+      "typeCode": "/Tx",
+      "subtype": "text",
+      "isTerminal": true,
+      "fillable": true,
+      "childFields": [],
+      "flags": 8388608,
+      "flagNames": [
+        "doNotScroll"
+      ],
+      "currentValue": null,
+      "defaultValue": null,
+      "maxLength": null,
+      "options": null,
+      "exportValues": [],
+      "action": null,
+      "additionalActions": null,
+      "widgets": [
+        {
+          "page": 1,
+          "pageSizePoints": {
+            "width": 612.0,
+            "height": 792.0
+          },
+          "rectPdfBottomLeft": {
+            "x1": 517.996,
+            "y1": 377.72,
+            "x2": 591.676,
+            "y2": 389.8,
+            "width": 73.68000000000006,
+            "height": 12.079999999999984
+          },
+          "rectTopLeft": {
+            "x": 517.996,
+            "y": 402.2,
+            "width": 73.68000000000006,
+            "height": 12.079999999999984
+          },
+          "objectReference": {
+            "object": 1163,
+            "generation": 0
+          },
+          "appearanceState": null,
+          "appearanceStates": [],
+          "annotationFlags": 4,
+          "action": null,
+          "additionalActions": null
+        }
+      ]
+    },
+    {
+      "index": 46,
+      "name": "PRIMARY REGISTRANT Date of Birth Month",
+      "handler": "PRIMARY REGISTRANT Date of Birth Month",
+      "alternateName": "PRIMARY REGISTRANT Date of Birth Month",
+      "mappingName": null,
+      "type": "choice",
+      "typeCode": "/Ch",
+      "subtype": "comboBox",
+      "isTerminal": true,
+      "fillable": true,
+      "childFields": [],
+      "flags": 131072,
+      "flagNames": [
+        "combo"
+      ],
+      "currentValue": null,
+      "defaultValue": null,
+      "maxLength": null,
+      "options": [
+        "01",
+        "02",
+        "03",
+        "04",
+        "05",
+        "06",
+        "07",
+        "08",
+        "09",
+        "10",
+        "11",
+        "12"
+      ],
+      "exportValues": [],
+      "action": null,
+      "additionalActions": null,
+      "widgets": [
+        {
+          "page": 1,
+          "pageSizePoints": {
+            "width": 612.0,
+            "height": 792.0
+          },
+          "rectPdfBottomLeft": {
+            "x1": 257.836,
+            "y1": 568.68,
+            "x2": 290.629,
+            "y2": 556.8,
+            "width": 32.793000000000006,
+            "height": -11.879999999999995
+          },
+          "rectTopLeft": {
+            "x": 257.836,
+            "y": 235.20000000000005,
+            "width": 32.793000000000006,
+            "height": -11.879999999999995
+          },
+          "objectReference": {
+            "object": 1264,
+            "generation": 0
+          },
+          "appearanceState": null,
+          "appearanceStates": [],
+          "annotationFlags": 4,
+          "action": null,
+          "additionalActions": null
+        }
+      ]
+    },
+    {
+      "index": 47,
+      "name": "PRIMARY REGISTRANT Date of Birth Day",
+      "handler": "PRIMARY REGISTRANT Date of Birth Day",
+      "alternateName": "PRIMARY REGISTRANT Date of Birth Day",
+      "mappingName": null,
+      "type": "choice",
+      "typeCode": "/Ch",
+      "subtype": "comboBox",
+      "isTerminal": true,
+      "fillable": true,
+      "childFields": [],
+      "flags": 131072,
+      "flagNames": [
+        "combo"
+      ],
+      "currentValue": null,
+      "defaultValue": null,
+      "maxLength": null,
+      "options": [
+        "01",
+        "02",
+        "03",
+        "04",
+        "05",
+        "06",
+        "07",
+        "08",
+        "09",
+        "10",
+        "11",
+        "12",
+        "13",
+        "14",
+        "15",
+        "16",
+        "17",
+        "18",
+        "19",
+        "20",
+        "21",
+        "22",
+        "23",
+        "24",
+        "25",
+        "26",
+        "27",
+        "28",
+        "29",
+        "30",
+        "31"
+      ],
+      "exportValues": [],
+      "action": null,
+      "additionalActions": null,
+      "widgets": [
+        {
+          "page": 1,
+          "pageSizePoints": {
+            "width": 612.0,
+            "height": 792.0
+          },
+          "rectPdfBottomLeft": {
+            "x1": 290.574,
+            "y1": 568.68,
+            "x2": 328.374,
+            "y2": 556.8,
+            "width": 37.80000000000001,
+            "height": -11.879999999999995
+          },
+          "rectTopLeft": {
+            "x": 290.574,
+            "y": 235.20000000000005,
+            "width": 37.80000000000001,
+            "height": -11.879999999999995
+          },
+          "objectReference": {
+            "object": 1262,
+            "generation": 0
+          },
+          "appearanceState": null,
+          "appearanceStates": [],
+          "annotationFlags": 4,
+          "action": null,
+          "additionalActions": null
+        }
+      ]
+    },
+    {
+      "index": 48,
+      "name": "PRIMARY REGISTRANT DATE OF BIRTH Year",
+      "handler": "PRIMARY REGISTRANT DATE OF BIRTH Year",
+      "alternateName": "PRIMARY REGISTRANT DATE OF BIRTH Year",
+      "mappingName": null,
+      "type": "text",
+      "typeCode": "/Tx",
+      "subtype": "text",
+      "isTerminal": true,
+      "fillable": true,
+      "childFields": [],
+      "flags": 29360128,
+      "flagNames": [
+        "doNotSpellCheck",
+        "doNotScroll",
+        "comb"
+      ],
+      "currentValue": null,
+      "defaultValue": null,
+      "maxLength": null,
+      "options": null,
+      "exportValues": [],
+      "action": null,
+      "additionalActions": null,
+      "widgets": [
+        {
+          "page": 1,
+          "pageSizePoints": {
+            "width": 612.0,
+            "height": 792.0
+          },
+          "rectPdfBottomLeft": {
+            "x1": 328.575,
+            "y1": 556.8,
+            "x2": 395.272,
+            "y2": 568.68,
+            "width": 66.697,
+            "height": 11.879999999999995
+          },
+          "rectTopLeft": {
+            "x": 328.575,
+            "y": 223.32000000000005,
+            "width": 66.697,
+            "height": 11.879999999999995
+          },
+          "objectReference": {
+            "object": 1260,
+            "generation": 0
+          },
+          "appearanceState": null,
+          "appearanceStates": [],
+          "annotationFlags": 4,
+          "action": null,
+          "additionalActions": null
+        }
+      ]
+    },
+    {
+      "index": 49,
+      "name": "PRIMARY REGISTRANT SEX",
+      "handler": "PRIMARY REGISTRANT SEX",
+      "alternateName": "PRIMARY REGISTRANT SEX",
+      "mappingName": null,
+      "type": "button",
+      "typeCode": "/Btn",
+      "subtype": "radio",
+      "isTerminal": true,
+      "fillable": true,
+      "childFields": [],
+      "flags": 49152,
+      "flagNames": [
+        "noToggleToOff",
+        "radio"
+      ],
+      "currentValue": null,
+      "defaultValue": null,
+      "maxLength": null,
+      "options": null,
+      "exportValues": [
+        "/F (Female)",
+        "/M (Male)",
+        "/X (Undesignated)"
+      ],
+      "action": null,
+      "additionalActions": null,
+      "widgets": [
+        {
+          "page": 1,
+          "pageSizePoints": {
+            "width": 612.0,
+            "height": 792.0
+          },
+          "rectPdfBottomLeft": {
+            "x1": 402.788,
+            "y1": 557.062,
+            "x2": 415.137,
+            "y2": 571.48,
+            "width": 12.34899999999999,
+            "height": 14.418000000000006
+          },
+          "rectTopLeft": {
+            "x": 402.788,
+            "y": 220.51999999999998,
+            "width": 12.34899999999999,
+            "height": 14.418000000000006
+          },
+          "objectReference": {
+            "object": 1255,
+            "generation": 0
+          },
+          "appearanceState": "/Off",
+          "appearanceStates": [
+            "/M (Male)"
+          ],
+          "annotationFlags": 4,
+          "action": null,
+          "additionalActions": null
+        },
+        {
+          "page": 1,
+          "pageSizePoints": {
+            "width": 612.0,
+            "height": 792.0
+          },
+          "rectPdfBottomLeft": {
+            "x1": 421.456,
+            "y1": 557.062,
+            "x2": 433.805,
+            "y2": 571.48,
+            "width": 12.34899999999999,
+            "height": 14.418000000000006
+          },
+          "rectTopLeft": {
+            "x": 421.456,
+            "y": 220.51999999999998,
+            "width": 12.34899999999999,
+            "height": 14.418000000000006
+          },
+          "objectReference": {
+            "object": 1256,
+            "generation": 0
+          },
+          "appearanceState": "/Off",
+          "appearanceStates": [
+            "/F (Female)"
+          ],
+          "annotationFlags": 4,
+          "action": null,
+          "additionalActions": null
+        },
+        {
+          "page": 1,
+          "pageSizePoints": {
+            "width": 612.0,
+            "height": 792.0
+          },
+          "rectPdfBottomLeft": {
+            "x1": 439.865,
+            "y1": 557.062,
+            "x2": 452.214,
+            "y2": 571.48,
+            "width": 12.34899999999999,
+            "height": 14.418000000000006
+          },
+          "rectTopLeft": {
+            "x": 439.865,
+            "y": 220.51999999999998,
+            "width": 12.34899999999999,
+            "height": 14.418000000000006
+          },
+          "objectReference": {
+            "object": 1253,
+            "generation": 0
+          },
+          "appearanceState": "/Off",
+          "appearanceStates": [
+            "/X (Undesignated)"
+          ],
+          "annotationFlags": 4,
+          "action": null,
+          "additionalActions": null
+        }
+      ]
+    },
+    {
+      "index": 50,
+      "name": "PRIMARY REGISTRANT Name Change",
+      "handler": "PRIMARY REGISTRANT Name Change",
+      "alternateName": "PRIMARY REGISTRANT Name Change",
+      "mappingName": null,
+      "type": "button",
+      "typeCode": "/Btn",
+      "subtype": "radio",
+      "isTerminal": true,
+      "fillable": true,
+      "childFields": [],
+      "flags": 49152,
+      "flagNames": [
+        "noToggleToOff",
+        "radio"
+      ],
+      "currentValue": null,
+      "defaultValue": null,
+      "maxLength": null,
+      "options": null,
+      "exportValues": [
+        "/No",
+        "/Yes"
+      ],
+      "action": null,
+      "additionalActions": null,
+      "widgets": [
+        {
+          "page": 1,
+          "pageSizePoints": {
+            "width": 612.0,
+            "height": 792.0
+          },
+          "rectPdfBottomLeft": {
+            "x1": 340.261,
+            "y1": 585.208,
+            "x2": 350.61,
+            "y2": 596.626,
+            "width": 10.34899999999999,
+            "height": 11.418000000000006
+          },
+          "rectTopLeft": {
+            "x": 340.261,
+            "y": 195.37400000000002,
+            "width": 10.34899999999999,
+            "height": 11.418000000000006
+          },
+          "objectReference": {
+            "object": 1274,
+            "generation": 0
+          },
+          "appearanceState": "/Off",
+          "appearanceStates": [
+            "/Yes"
+          ],
+          "annotationFlags": 4,
+          "action": null,
+          "additionalActions": null
+        },
+        {
+          "page": 1,
+          "pageSizePoints": {
+            "width": 612.0,
+            "height": 792.0
+          },
+          "rectPdfBottomLeft": {
+            "x1": 364.602,
+            "y1": 585.208,
+            "x2": 374.951,
+            "y2": 596.626,
+            "width": 10.349000000000046,
+            "height": 11.418000000000006
+          },
+          "rectTopLeft": {
+            "x": 364.602,
+            "y": 195.37400000000002,
+            "width": 10.349000000000046,
+            "height": 11.418000000000006
+          },
+          "objectReference": {
+            "object": 1272,
+            "generation": 0
+          },
+          "appearanceState": "/Off",
+          "appearanceStates": [
+            "/No"
+          ],
+          "annotationFlags": 4,
+          "action": null,
+          "additionalActions": null
+        }
+      ]
+    },
+    {
+      "index": 51,
+      "name": "COREGISTRANT Name Change",
+      "handler": "COREGISTRANT Name Change",
+      "alternateName": "CO-REGISTRANT Name Change",
+      "mappingName": null,
+      "type": "button",
+      "typeCode": "/Btn",
+      "subtype": "radio",
+      "isTerminal": true,
+      "fillable": true,
+      "childFields": [],
+      "flags": 49152,
+      "flagNames": [
+        "noToggleToOff",
+        "radio"
+      ],
+      "currentValue": null,
+      "defaultValue": null,
+      "maxLength": null,
+      "options": null,
+      "exportValues": [
+        "/No",
+        "/Yes"
+      ],
+      "action": null,
+      "additionalActions": null,
+      "widgets": [
+        {
+          "page": 1,
+          "pageSizePoints": {
+            "width": 612.0,
+            "height": 792.0
+          },
+          "rectPdfBottomLeft": {
+            "x1": 353.043,
+            "y1": 528.917,
+            "x2": 362.956,
+            "y2": 540.335,
+            "width": 9.913000000000011,
+            "height": 11.418000000000006
+          },
+          "rectTopLeft": {
+            "x": 353.043,
+            "y": 251.66499999999996,
+            "width": 9.913000000000011,
+            "height": 11.418000000000006
+          },
+          "objectReference": {
+            "object": 1244,
+            "generation": 0
+          },
+          "appearanceState": "/Off",
+          "appearanceStates": [
+            "/Yes"
+          ],
+          "annotationFlags": 4,
+          "action": null,
+          "additionalActions": null
+        },
+        {
+          "page": 1,
+          "pageSizePoints": {
+            "width": 612.0,
+            "height": 792.0
+          },
+          "rectPdfBottomLeft": {
+            "x1": 382.383,
+            "y1": 528.917,
+            "x2": 392.732,
+            "y2": 540.335,
+            "width": 10.349000000000046,
+            "height": 11.418000000000006
+          },
+          "rectTopLeft": {
+            "x": 382.383,
+            "y": 251.66499999999996,
+            "width": 10.349000000000046,
+            "height": 11.418000000000006
+          },
+          "objectReference": {
+            "object": 1242,
+            "generation": 0
+          },
+          "appearanceState": "/Off",
+          "appearanceStates": [
+            "/No"
+          ],
+          "annotationFlags": 4,
+          "action": null,
+          "additionalActions": null
+        }
+      ]
+    },
+    {
+      "index": 52,
+      "name": "COREGISTRANT No ID Identification Number",
+      "handler": "COREGISTRANT No ID Identification Number",
+      "alternateName": "CO-REGISTRANT No ID (Identification) Number",
+      "mappingName": null,
+      "type": "button",
+      "typeCode": "/Btn",
+      "subtype": "checkbox",
+      "isTerminal": true,
+      "fillable": true,
+      "childFields": [],
+      "flags": 0,
+      "flagNames": [],
+      "currentValue": null,
+      "defaultValue": null,
+      "maxLength": null,
+      "options": null,
+      "exportValues": [
+        "/On"
+      ],
+      "action": null,
+      "additionalActions": null,
+      "widgets": [
+        {
+          "page": 1,
+          "pageSizePoints": {
+            "width": 612.0,
+            "height": 792.0
+          },
+          "rectPdfBottomLeft": {
+            "x1": 213.453,
+            "y1": 517.926,
+            "x2": 225.293,
+            "y2": 528.766,
+            "width": 11.840000000000003,
+            "height": 10.839999999999918
+          },
+          "rectTopLeft": {
+            "x": 213.453,
+            "y": 263.23400000000004,
+            "width": 11.840000000000003,
+            "height": 10.839999999999918
+          },
+          "objectReference": {
+            "object": 1235,
+            "generation": 0
+          },
+          "appearanceState": "/Off",
+          "appearanceStates": [
+            "/On"
+          ],
+          "annotationFlags": 4,
+          "action": null,
+          "additionalActions": null
+        }
+      ]
+    },
+    {
+      "index": 53,
+      "name": "COREGISTRANT Date of Birth Month",
+      "handler": "COREGISTRANT Date of Birth Month",
+      "alternateName": "CO-REGISTRANT Date of Birth Month",
+      "mappingName": null,
+      "type": "choice",
+      "typeCode": "/Ch",
+      "subtype": "comboBox",
+      "isTerminal": true,
+      "fillable": true,
+      "childFields": [],
+      "flags": 131072,
+      "flagNames": [
+        "combo"
+      ],
+      "currentValue": null,
+      "defaultValue": null,
+      "maxLength": null,
+      "options": [
+        "01",
+        "02",
+        "03",
+        "04",
+        "05",
+        "06",
+        "07",
+        "08",
+        "09",
+        "10",
+        "11",
+        "12"
+      ],
+      "exportValues": [],
+      "action": null,
+      "additionalActions": null,
+      "widgets": [
+        {
+          "page": 1,
+          "pageSizePoints": {
+            "width": 612.0,
+            "height": 792.0
+          },
+          "rectPdfBottomLeft": {
+            "x1": 257.836,
+            "y1": 511.2,
+            "x2": 290.629,
+            "y2": 498.84,
+            "width": 32.793000000000006,
+            "height": -12.360000000000014
+          },
+          "rectTopLeft": {
+            "x": 257.836,
+            "y": 293.16,
+            "width": 32.793000000000006,
+            "height": -12.360000000000014
+          },
+          "objectReference": {
+            "object": 1233,
+            "generation": 0
+          },
+          "appearanceState": null,
+          "appearanceStates": [],
+          "annotationFlags": 4,
+          "action": null,
+          "additionalActions": null
+        }
+      ]
+    },
+    {
+      "index": 54,
+      "name": "COREGISTRANT Date of Birth Day",
+      "handler": "COREGISTRANT Date of Birth Day",
+      "alternateName": "CO-REGISTRANT Date of Birth Day",
+      "mappingName": null,
+      "type": "choice",
+      "typeCode": "/Ch",
+      "subtype": "comboBox",
+      "isTerminal": true,
+      "fillable": true,
+      "childFields": [],
+      "flags": 131072,
+      "flagNames": [
+        "combo"
+      ],
+      "currentValue": null,
+      "defaultValue": null,
+      "maxLength": null,
+      "options": [
+        "01",
+        "02",
+        "03",
+        "04",
+        "05",
+        "06",
+        "07",
+        "08",
+        "09",
+        "10",
+        "11",
+        "12",
+        "13",
+        "14",
+        "15",
+        "16",
+        "17",
+        "18",
+        "19",
+        "20",
+        "21",
+        "22",
+        "23",
+        "24",
+        "25",
+        "26",
+        "27",
+        "28",
+        "29",
+        "30",
+        "31"
+      ],
+      "exportValues": [],
+      "action": null,
+      "additionalActions": null,
+      "widgets": [
+        {
+          "page": 1,
+          "pageSizePoints": {
+            "width": 612.0,
+            "height": 792.0
+          },
+          "rectPdfBottomLeft": {
+            "x1": 290.574,
+            "y1": 511.2,
+            "x2": 328.374,
+            "y2": 498.84,
+            "width": 37.80000000000001,
+            "height": -12.360000000000014
+          },
+          "rectTopLeft": {
+            "x": 290.574,
+            "y": 293.16,
+            "width": 37.80000000000001,
+            "height": -12.360000000000014
+          },
+          "objectReference": {
+            "object": 1231,
+            "generation": 0
+          },
+          "appearanceState": null,
+          "appearanceStates": [],
+          "annotationFlags": 4,
+          "action": null,
+          "additionalActions": null
+        }
+      ]
+    },
+    {
+      "index": 55,
+      "name": "COREGISTRANT DATE OF BIRTH Year",
+      "handler": "COREGISTRANT DATE OF BIRTH Year",
+      "alternateName": "CO-REGISTRANT DATE OF BIRTH Year",
+      "mappingName": null,
+      "type": "text",
+      "typeCode": "/Tx",
+      "subtype": "text",
+      "isTerminal": true,
+      "fillable": true,
+      "childFields": [],
+      "flags": 29360128,
+      "flagNames": [
+        "doNotSpellCheck",
+        "doNotScroll",
+        "comb"
+      ],
+      "currentValue": null,
+      "defaultValue": null,
+      "maxLength": null,
+      "options": null,
+      "exportValues": [],
+      "action": null,
+      "additionalActions": null,
+      "widgets": [
+        {
+          "page": 1,
+          "pageSizePoints": {
+            "width": 612.0,
+            "height": 792.0
+          },
+          "rectPdfBottomLeft": {
+            "x1": 327.472,
+            "y1": 498.84,
+            "x2": 394.272,
+            "y2": 511.2,
+            "width": 66.80000000000001,
+            "height": 12.360000000000014
+          },
+          "rectTopLeft": {
+            "x": 327.472,
+            "y": 280.8,
+            "width": 66.80000000000001,
+            "height": 12.360000000000014
+          },
+          "objectReference": {
+            "object": 1229,
+            "generation": 0
+          },
+          "appearanceState": null,
+          "appearanceStates": [],
+          "annotationFlags": 4,
+          "action": null,
+          "additionalActions": null
+        }
+      ]
+    },
+    {
+      "index": 56,
+      "name": "COREGISTRANT SEX",
+      "handler": "COREGISTRANT SEX",
+      "alternateName": "CO-REGISTRANT SEX",
+      "mappingName": null,
+      "type": "button",
+      "typeCode": "/Btn",
+      "subtype": "radio",
+      "isTerminal": true,
+      "fillable": true,
+      "childFields": [],
+      "flags": 49152,
+      "flagNames": [
+        "noToggleToOff",
+        "radio"
+      ],
+      "currentValue": null,
+      "defaultValue": null,
+      "maxLength": null,
+      "options": null,
+      "exportValues": [
+        "/F (Female)",
+        "/M (Male)",
+        "/X (Undesignated)"
+      ],
+      "action": null,
+      "additionalActions": null,
+      "widgets": [
+        {
+          "page": 1,
+          "pageSizePoints": {
+            "width": 612.0,
+            "height": 792.0
+          },
+          "rectPdfBottomLeft": {
+            "x1": 402.788,
+            "y1": 499.135,
+            "x2": 415.137,
+            "y2": 513.553,
+            "width": 12.34899999999999,
+            "height": 14.418000000000006
+          },
+          "rectTopLeft": {
+            "x": 402.788,
+            "y": 278.447,
+            "width": 12.34899999999999,
+            "height": 14.418000000000006
+          },
+          "objectReference": {
+            "object": 1224,
+            "generation": 0
+          },
+          "appearanceState": "/Off",
+          "appearanceStates": [
+            "/M (Male)"
+          ],
+          "annotationFlags": 4,
+          "action": null,
+          "additionalActions": null
+        },
+        {
+          "page": 1,
+          "pageSizePoints": {
+            "width": 612.0,
+            "height": 792.0
+          },
+          "rectPdfBottomLeft": {
+            "x1": 421.456,
+            "y1": 499.135,
+            "x2": 433.805,
+            "y2": 513.553,
+            "width": 12.34899999999999,
+            "height": 14.418000000000006
+          },
+          "rectTopLeft": {
+            "x": 421.456,
+            "y": 278.447,
+            "width": 12.34899999999999,
+            "height": 14.418000000000006
+          },
+          "objectReference": {
+            "object": 1225,
+            "generation": 0
+          },
+          "appearanceState": "/Off",
+          "appearanceStates": [
+            "/F (Female)"
+          ],
+          "annotationFlags": 4,
+          "action": null,
+          "additionalActions": null
+        },
+        {
+          "page": 1,
+          "pageSizePoints": {
+            "width": 612.0,
+            "height": 792.0
+          },
+          "rectPdfBottomLeft": {
+            "x1": 439.865,
+            "y1": 499.135,
+            "x2": 452.214,
+            "y2": 513.553,
+            "width": 12.34899999999999,
+            "height": 14.418000000000006
+          },
+          "rectTopLeft": {
+            "x": 439.865,
+            "y": 278.447,
+            "width": 12.34899999999999,
+            "height": 14.418000000000006
+          },
+          "objectReference": {
+            "object": 1222,
+            "generation": 0
+          },
+          "appearanceState": "/Off",
+          "appearanceStates": [
+            "/X (Undesignated)"
+          ],
+          "annotationFlags": 4,
+          "action": null,
+          "additionalActions": null
+        }
+      ]
+    },
+    {
+      "index": 57,
+      "name": "PRIMARY REGISTRANT No ID Identification Number",
+      "handler": "PRIMARY REGISTRANT No ID Identification Number",
+      "alternateName": "PRIMARY REGISTRANT No ID (Identification) Number",
+      "mappingName": null,
+      "type": "button",
+      "typeCode": "/Btn",
+      "subtype": "checkbox",
+      "isTerminal": true,
+      "fillable": true,
+      "childFields": [],
+      "flags": 0,
+      "flagNames": [],
+      "currentValue": null,
+      "defaultValue": null,
+      "maxLength": null,
+      "options": null,
+      "exportValues": [
+        "/On"
+      ],
+      "action": null,
+      "additionalActions": null,
+      "widgets": [
+        {
+          "page": 1,
+          "pageSizePoints": {
+            "width": 612.0,
+            "height": 792.0
+          },
+          "rectPdfBottomLeft": {
+            "x1": 212.034,
+            "y1": 576.18,
+            "x2": 223.874,
+            "y2": 587.02,
+            "width": 11.840000000000003,
+            "height": 10.840000000000032
+          },
+          "rectTopLeft": {
+            "x": 212.034,
+            "y": 204.98000000000002,
+            "width": 11.840000000000003,
+            "height": 10.840000000000032
+          },
+          "objectReference": {
+            "object": 1266,
+            "generation": 0
+          },
+          "appearanceState": "/Off",
+          "appearanceStates": [
+            "/On"
+          ],
+          "annotationFlags": 4,
+          "action": null,
+          "additionalActions": null
+        }
+      ]
+    },
+    {
+      "index": 58,
+      "name": "PRIMARY REGISTRANT FORMER NAME If name was changed you must present proof",
+      "handler": "PRIMARY REGISTRANT FORMER NAME If name was changed you must present proof",
+      "alternateName": "PRIMARY REGISTRANT FORMER NAME (If name was changed you must present proof)",
+      "mappingName": null,
+      "type": "text",
+      "typeCode": "/Tx",
+      "subtype": "text",
+      "isTerminal": true,
+      "fillable": true,
+      "childFields": [],
+      "flags": 8388608,
+      "flagNames": [
+        "doNotScroll"
+      ],
+      "currentValue": null,
+      "defaultValue": null,
+      "maxLength": null,
+      "options": null,
+      "exportValues": [],
+      "action": null,
+      "additionalActions": null,
+      "widgets": [
+        {
+          "page": 1,
+          "pageSizePoints": {
+            "width": 612.0,
+            "height": 792.0
+          },
+          "rectPdfBottomLeft": {
+            "x1": 378.122,
+            "y1": 585.24,
+            "x2": 594.206,
+            "y2": 602.56,
+            "width": 216.084,
+            "height": 17.319999999999936
+          },
+          "rectTopLeft": {
+            "x": 378.122,
+            "y": 189.44000000000005,
+            "width": 216.084,
+            "height": 17.319999999999936
+          },
+          "objectReference": {
+            "object": 1270,
+            "generation": 0
+          },
+          "appearanceState": null,
+          "appearanceStates": [],
+          "annotationFlags": 4,
+          "action": null,
+          "additionalActions": null
+        }
+      ]
+    },
+    {
+      "index": 59,
+      "name": "PRIMARY REGISTRANT Area Code",
+      "handler": "PRIMARY REGISTRANT Area Code",
+      "alternateName": "PRIMARY REGISTRANT Area Code",
+      "mappingName": null,
+      "type": "text",
+      "typeCode": "/Tx",
+      "subtype": "text",
+      "isTerminal": true,
+      "fillable": true,
+      "childFields": [],
+      "flags": 8388608,
+      "flagNames": [
+        "doNotScroll"
+      ],
+      "currentValue": null,
+      "defaultValue": null,
+      "maxLength": null,
+      "options": null,
+      "exportValues": [],
+      "action": null,
+      "additionalActions": null,
+      "widgets": [
+        {
+          "page": 1,
+          "pageSizePoints": {
+            "width": 612.0,
+            "height": 792.0
+          },
+          "rectPdfBottomLeft": {
+            "x1": 462.097,
+            "y1": 556.8,
+            "x2": 489.977,
+            "y2": 569.2,
+            "width": 27.879999999999995,
+            "height": 12.400000000000091
+          },
+          "rectTopLeft": {
+            "x": 462.097,
+            "y": 222.79999999999995,
+            "width": 27.879999999999995,
+            "height": 12.400000000000091
+          },
+          "objectReference": {
+            "object": 1251,
+            "generation": 0
+          },
+          "appearanceState": null,
+          "appearanceStates": [],
+          "annotationFlags": 4,
+          "action": null,
+          "additionalActions": null
+        }
+      ]
+    },
+    {
+      "index": 60,
+      "name": "PRIMARY REGISTRANT TELEPHONE or MOBILE PHONE NUMBER",
+      "handler": "PRIMARY REGISTRANT TELEPHONE or MOBILE PHONE NUMBER",
+      "alternateName": "PRIMARY REGISTRANT TELEPHONE or MOBILE PHONE NUMBER",
+      "mappingName": null,
+      "type": "text",
+      "typeCode": "/Tx",
+      "subtype": "text",
+      "isTerminal": true,
+      "fillable": true,
+      "childFields": [],
+      "flags": 8388608,
+      "flagNames": [
+        "doNotScroll"
+      ],
+      "currentValue": null,
+      "defaultValue": null,
+      "maxLength": null,
+      "options": null,
+      "exportValues": [],
+      "action": null,
+      "additionalActions": null,
+      "widgets": [
+        {
+          "page": 1,
+          "pageSizePoints": {
+            "width": 612.0,
+            "height": 792.0
+          },
+          "rectPdfBottomLeft": {
+            "x1": 491.52,
+            "y1": 556.8,
+            "x2": 593.4,
+            "y2": 570.2,
+            "width": 101.88,
+            "height": 13.400000000000091
+          },
+          "rectTopLeft": {
+            "x": 491.52,
+            "y": 221.79999999999995,
+            "width": 101.88,
+            "height": 13.400000000000091
+          },
+          "objectReference": {
+            "object": 1249,
+            "generation": 0
+          },
+          "appearanceState": null,
+          "appearanceStates": [],
+          "annotationFlags": 4,
+          "action": null,
+          "additionalActions": null
+        }
+      ]
+    },
+    {
+      "index": 61,
+      "name": "COREGISTRANT EMAIL",
+      "handler": "COREGISTRANT EMAIL",
+      "alternateName": "CO-REGISTRANT EMAIL",
+      "mappingName": null,
+      "type": "text",
+      "typeCode": "/Tx",
+      "subtype": "text",
+      "isTerminal": true,
+      "fillable": true,
+      "childFields": [],
+      "flags": 8388608,
+      "flagNames": [
+        "doNotScroll"
+      ],
+      "currentValue": null,
+      "defaultValue": null,
+      "maxLength": null,
+      "options": null,
+      "exportValues": [],
+      "action": null,
+      "additionalActions": null,
+      "widgets": [
+        {
+          "page": 1,
+          "pageSizePoints": {
+            "width": 612.0,
+            "height": 792.0
+          },
+          "rectPdfBottomLeft": {
+            "x1": 397.08,
+            "y1": 528.36,
+            "x2": 593.16,
+            "y2": 545.52,
+            "width": 196.07999999999998,
+            "height": 17.159999999999968
+          },
+          "rectTopLeft": {
+            "x": 397.08,
+            "y": 246.48000000000002,
+            "width": 196.07999999999998,
+            "height": 17.159999999999968
+          },
+          "objectReference": {
+            "object": 1240,
+            "generation": 0
+          },
+          "appearanceState": null,
+          "appearanceStates": [],
+          "annotationFlags": 4,
+          "action": null,
+          "additionalActions": null
+        }
+      ]
+    },
+    {
+      "index": 62,
+      "name": "COREGISTRANT ADDRESS CHANGE",
+      "handler": "COREGISTRANT ADDRESS CHANGE",
+      "alternateName": "CO-REGISTRANT ADDRESS CHANGE?",
+      "mappingName": null,
+      "type": "button",
+      "typeCode": "/Btn",
+      "subtype": "radio",
+      "isTerminal": true,
+      "fillable": true,
+      "childFields": [],
+      "flags": 49152,
+      "flagNames": [
+        "noToggleToOff",
+        "radio"
+      ],
+      "currentValue": null,
+      "defaultValue": null,
+      "maxLength": null,
+      "options": null,
+      "exportValues": [
+        "/NO",
+        "/YES"
+      ],
+      "action": null,
+      "additionalActions": null,
+      "widgets": [
+        {
+          "page": 1,
+          "pageSizePoints": {
+            "width": 612.0,
+            "height": 792.0
+          },
+          "rectPdfBottomLeft": {
+            "x1": 536.952,
+            "y1": 506.662,
+            "x2": 547.301,
+            "y2": 518.08,
+            "width": 10.349000000000046,
+            "height": 11.418000000000063
+          },
+          "rectTopLeft": {
+            "x": 536.952,
+            "y": 273.91999999999996,
+            "width": 10.349000000000046,
+            "height": 11.418000000000063
+          },
+          "objectReference": {
+            "object": 1219,
+            "generation": 0
+          },
+          "appearanceState": "/Off",
+          "appearanceStates": [
+            "/YES"
+          ],
+          "annotationFlags": 4,
+          "action": null,
+          "additionalActions": null
+        },
+        {
+          "page": 1,
+          "pageSizePoints": {
+            "width": 612.0,
+            "height": 792.0
+          },
+          "rectPdfBottomLeft": {
+            "x1": 569.292,
+            "y1": 506.662,
+            "x2": 579.641,
+            "y2": 518.08,
+            "width": 10.348999999999933,
+            "height": 11.418000000000063
+          },
+          "rectTopLeft": {
+            "x": 569.292,
+            "y": 273.91999999999996,
+            "width": 10.348999999999933,
+            "height": 11.418000000000063
+          },
+          "objectReference": {
+            "object": 1217,
+            "generation": 0
+          },
+          "appearanceState": "/Off",
+          "appearanceStates": [
+            "/NO"
+          ],
+          "annotationFlags": 4,
+          "action": null,
+          "additionalActions": null
+        }
+      ]
+    },
+    {
+      "index": 63,
+      "name": "THE ADDRESS WHERE PRIMARY REGISTRANT GETS MAIL Apartment Number",
+      "handler": "THE ADDRESS WHERE PRIMARY REGISTRANT GETS MAIL Apartment Number",
+      "alternateName": "THE ADDRESS WHERE PRIMARY REGISTRANT GETS MAIL Apartment Number",
+      "mappingName": null,
+      "type": "text",
+      "typeCode": "/Tx",
+      "subtype": "text",
+      "isTerminal": true,
+      "fillable": true,
+      "childFields": [],
+      "flags": 8388608,
+      "flagNames": [
+        "doNotScroll"
+      ],
+      "currentValue": null,
+      "defaultValue": null,
+      "maxLength": null,
+      "options": null,
+      "exportValues": [],
+      "action": null,
+      "additionalActions": null,
+      "widgets": [
+        {
+          "page": 1,
+          "pageSizePoints": {
+            "width": 612.0,
+            "height": 792.0
+          },
+          "rectPdfBottomLeft": {
+            "x1": 293.891,
+            "y1": 467.76,
+            "x2": 328.331,
+            "y2": 479.52,
+            "width": 34.44,
+            "height": 11.759999999999991
+          },
+          "rectTopLeft": {
+            "x": 293.891,
+            "y": 312.48,
+            "width": 34.44,
+            "height": 11.759999999999991
+          },
+          "objectReference": {
+            "object": 1213,
+            "generation": 0
+          },
+          "appearanceState": null,
+          "appearanceStates": [],
+          "annotationFlags": 4,
+          "action": null,
+          "additionalActions": null
+        }
+      ]
+    },
+    {
+      "index": 64,
+      "name": "THE ADDRESS WHERE PRIMARY REGISTRANT GETS MAIL City or Town",
+      "handler": "THE ADDRESS WHERE PRIMARY REGISTRANT GETS MAIL City or Town",
+      "alternateName": "THE ADDRESS WHERE PRIMARY REGISTRANT GETS MAIL City or Town",
+      "mappingName": null,
+      "type": "text",
+      "typeCode": "/Tx",
+      "subtype": "text",
+      "isTerminal": true,
+      "fillable": true,
+      "childFields": [],
+      "flags": 8388608,
+      "flagNames": [
+        "doNotScroll"
+      ],
+      "currentValue": null,
+      "defaultValue": null,
+      "maxLength": null,
+      "options": null,
+      "exportValues": [],
+      "action": null,
+      "additionalActions": null,
+      "widgets": [
+        {
+          "page": 1,
+          "pageSizePoints": {
+            "width": 612.0,
+            "height": 792.0
+          },
+          "rectPdfBottomLeft": {
+            "x1": 328.476,
+            "y1": 467.76,
+            "x2": 429.316,
+            "y2": 479.52,
+            "width": 100.83999999999997,
+            "height": 11.759999999999991
+          },
+          "rectTopLeft": {
+            "x": 328.476,
+            "y": 312.48,
+            "width": 100.83999999999997,
+            "height": 11.759999999999991
+          },
+          "objectReference": {
+            "object": 1211,
+            "generation": 0
+          },
+          "appearanceState": null,
+          "appearanceStates": [],
+          "annotationFlags": 4,
+          "action": null,
+          "additionalActions": null
+        }
+      ]
+    },
+    {
+      "index": 65,
+      "name": "THE ADDRESS WHERE PRIMARY REGISTRANT GETS MAIL State",
+      "handler": "THE ADDRESS WHERE PRIMARY REGISTRANT GETS MAIL State",
+      "alternateName": "THE ADDRESS WHERE PRIMARY REGISTRANT GETS MAIL State",
+      "mappingName": null,
+      "type": "choice",
+      "typeCode": "/Ch",
+      "subtype": "comboBox",
+      "isTerminal": true,
+      "fillable": true,
+      "childFields": [],
+      "flags": 131072,
+      "flagNames": [
+        "combo"
+      ],
+      "currentValue": null,
+      "defaultValue": null,
+      "maxLength": null,
+      "options": [
+        "NY",
+        "AL",
+        "AK",
+        "AZ",
+        "AR",
+        "CA",
+        "CO",
+        "CT",
+        "DE",
+        "DC",
+        "FL",
+        "GA",
+        "HI",
+        "ID",
+        "IL",
+        "IN",
+        "IA",
+        "KS",
+        "KY",
+        "LA",
+        "ME",
+        "MD",
+        "MA",
+        "MI",
+        "MN",
+        "MS",
+        "MO",
+        "MT",
+        "NE",
+        "NV",
+        "NH",
+        "NJ",
+        "NM",
+        "NC",
+        "ND",
+        "OH",
+        "OK",
+        "OR",
+        "PA",
+        "RI",
+        "SC",
+        "SD",
+        "TN",
+        "TX",
+        "UT",
+        "VA",
+        "VT",
+        "WA",
+        "WV",
+        "WI",
+        "WY"
+      ],
+      "exportValues": [],
+      "action": null,
+      "additionalActions": null,
+      "widgets": [
+        {
+          "page": 1,
+          "pageSizePoints": {
+            "width": 612.0,
+            "height": 792.0
+          },
+          "rectPdfBottomLeft": {
+            "x1": 429.738,
+            "y1": 468.196,
+            "x2": 475.931,
+            "y2": 479.956,
+            "width": 46.192999999999984,
+            "height": 11.759999999999991
+          },
+          "rectTopLeft": {
+            "x": 429.738,
+            "y": 312.044,
+            "width": 46.192999999999984,
+            "height": 11.759999999999991
+          },
+          "objectReference": {
+            "object": 1209,
+            "generation": 0
+          },
+          "appearanceState": null,
+          "appearanceStates": [],
+          "annotationFlags": 4,
+          "action": null,
+          "additionalActions": null
+        }
+      ]
+    },
+    {
+      "index": 66,
+      "name": "THE ADDRESS WHERE PRIMARY REGISTRANT GETS MAIL Zip Code",
+      "handler": "THE ADDRESS WHERE PRIMARY REGISTRANT GETS MAIL Zip Code",
+      "alternateName": "THE ADDRESS WHERE PRIMARY REGISTRANT GETS MAIL Zip Code",
+      "mappingName": null,
+      "type": "text",
+      "typeCode": "/Tx",
+      "subtype": "text",
+      "isTerminal": true,
+      "fillable": true,
+      "childFields": [],
+      "flags": 8388608,
+      "flagNames": [
+        "doNotScroll"
+      ],
+      "currentValue": null,
+      "defaultValue": null,
+      "maxLength": null,
+      "options": null,
+      "exportValues": [],
+      "action": null,
+      "additionalActions": null,
+      "widgets": [
+        {
+          "page": 1,
+          "pageSizePoints": {
+            "width": 612.0,
+            "height": 792.0
+          },
+          "rectPdfBottomLeft": {
+            "x1": 473.28,
+            "y1": 467.76,
+            "x2": 533.16,
+            "y2": 479.52,
+            "width": 59.879999999999995,
+            "height": 11.759999999999991
+          },
+          "rectTopLeft": {
+            "x": 473.28,
+            "y": 312.48,
+            "width": 59.879999999999995,
+            "height": 11.759999999999991
+          },
+          "objectReference": {
+            "object": 1207,
+            "generation": 0
+          },
+          "appearanceState": null,
+          "appearanceStates": [],
+          "annotationFlags": 4,
+          "action": null,
+          "additionalActions": null
+        }
+      ]
+    },
+    {
+      "index": 67,
+      "name": "THE ADDRESS WHERE PRIMARY REGISTRANT RESIDES IF DIFFERENT FROM THE MAILING ADDRESS Apartment Number",
+      "handler": "THE ADDRESS WHERE PRIMARY REGISTRANT RESIDES IF DIFFERENT FROM THE MAILING ADDRESS Apartment Number",
+      "alternateName": "THE ADDRESS WHERE PRIMARY REGISTRANT RESIDES IF DIFFERENT FROM THE MAILING ADDRESS Apartment Number",
+      "mappingName": null,
+      "type": "text",
+      "typeCode": "/Tx",
+      "subtype": "text",
+      "isTerminal": true,
+      "fillable": true,
+      "childFields": [],
+      "flags": 8388608,
+      "flagNames": [
+        "doNotScroll"
+      ],
+      "currentValue": null,
+      "defaultValue": null,
+      "maxLength": null,
+      "options": null,
+      "exportValues": [],
+      "action": null,
+      "additionalActions": null,
+      "widgets": [
+        {
+          "page": 1,
+          "pageSizePoints": {
+            "width": 612.0,
+            "height": 792.0
+          },
+          "rectPdfBottomLeft": {
+            "x1": 293.891,
+            "y1": 437.651,
+            "x2": 328.331,
+            "y2": 450.411,
+            "width": 34.44,
+            "height": 12.759999999999991
+          },
+          "rectTopLeft": {
+            "x": 293.891,
+            "y": 341.589,
+            "width": 34.44,
+            "height": 12.759999999999991
+          },
+          "objectReference": {
+            "object": 1201,
+            "generation": 0
+          },
+          "appearanceState": null,
+          "appearanceStates": [],
+          "annotationFlags": 4,
+          "action": null,
+          "additionalActions": null
+        }
+      ]
+    },
+    {
+      "index": 68,
+      "name": "THE ADDRESS WHERE PRIMARY REGISTRANT RESIDES IF DIFFERENT FROM THE MAILING ADDRESS City or Town",
+      "handler": "THE ADDRESS WHERE PRIMARY REGISTRANT RESIDES IF DIFFERENT FROM THE MAILING ADDRESS City or Town",
+      "alternateName": "THE ADDRESS WHERE PRIMARY REGISTRANT RESIDES IF DIFFERENT FROM THE MAILING ADDRESS City or Town",
+      "mappingName": null,
+      "type": "text",
+      "typeCode": "/Tx",
+      "subtype": "text",
+      "isTerminal": true,
+      "fillable": true,
+      "childFields": [],
+      "flags": 8388608,
+      "flagNames": [
+        "doNotScroll"
+      ],
+      "currentValue": null,
+      "defaultValue": null,
+      "maxLength": null,
+      "options": null,
+      "exportValues": [],
+      "action": null,
+      "additionalActions": null,
+      "widgets": [
+        {
+          "page": 1,
+          "pageSizePoints": {
+            "width": 612.0,
+            "height": 792.0
+          },
+          "rectPdfBottomLeft": {
+            "x1": 328.476,
+            "y1": 437.651,
+            "x2": 429.316,
+            "y2": 450.411,
+            "width": 100.83999999999997,
+            "height": 12.759999999999991
+          },
+          "rectTopLeft": {
+            "x": 328.476,
+            "y": 341.589,
+            "width": 100.83999999999997,
+            "height": 12.759999999999991
+          },
+          "objectReference": {
+            "object": 1199,
+            "generation": 0
+          },
+          "appearanceState": null,
+          "appearanceStates": [],
+          "annotationFlags": 4,
+          "action": null,
+          "additionalActions": null
+        }
+      ]
+    },
+    {
+      "index": 69,
+      "name": "THE ADDRESS WHERE PRIMARY REGISTRANT RESIDES IF DIFFERENT FROM THE MAILING ADDRESS State",
+      "handler": "THE ADDRESS WHERE PRIMARY REGISTRANT RESIDES IF DIFFERENT FROM THE MAILING ADDRESS State",
+      "alternateName": "THE ADDRESS WHERE PRIMARY REGISTRANT RESIDES IF DIFFERENT FROM THE MAILING ADDRESS State",
+      "mappingName": null,
+      "type": "choice",
+      "typeCode": "/Ch",
+      "subtype": "comboBox",
+      "isTerminal": true,
+      "fillable": true,
+      "childFields": [],
+      "flags": 131072,
+      "flagNames": [
+        "combo"
+      ],
+      "currentValue": null,
+      "defaultValue": null,
+      "maxLength": null,
+      "options": [
+        "NY",
+        "AL",
+        "AK",
+        "AZ",
+        "AR",
+        "CA",
+        "CO",
+        "CT",
+        "DE",
+        "DC",
+        "FL",
+        "GA",
+        "HI",
+        "ID",
+        "IL",
+        "IN",
+        "IA",
+        "KS",
+        "KY",
+        "LA",
+        "ME",
+        "MD",
+        "MA",
+        "MI",
+        "MN",
+        "MS",
+        "MO",
+        "MT",
+        "NE",
+        "NV",
+        "NH",
+        "NJ",
+        "NM",
+        "NC",
+        "ND",
+        "OH",
+        "OK",
+        "OR",
+        "PA",
+        "RI",
+        "SC",
+        "SD",
+        "TN",
+        "TX",
+        "UT",
+        "VA",
+        "VT",
+        "WA",
+        "WV",
+        "WI",
+        "WY"
+      ],
+      "exportValues": [],
+      "action": null,
+      "additionalActions": null,
+      "widgets": [
+        {
+          "page": 1,
+          "pageSizePoints": {
+            "width": 612.0,
+            "height": 792.0
+          },
+          "rectPdfBottomLeft": {
+            "x1": 429.301,
+            "y1": 437.651,
+            "x2": 475.494,
+            "y2": 450.411,
+            "width": 46.19300000000004,
+            "height": 12.759999999999991
+          },
+          "rectTopLeft": {
+            "x": 429.301,
+            "y": 341.589,
+            "width": 46.19300000000004,
+            "height": 12.759999999999991
+          },
+          "objectReference": {
+            "object": 1197,
+            "generation": 0
+          },
+          "appearanceState": null,
+          "appearanceStates": [],
+          "annotationFlags": 4,
+          "action": null,
+          "additionalActions": null
+        }
+      ]
+    },
+    {
+      "index": 70,
+      "name": "THE ADDRESS WHERE PRIMARY REGISTRANT RESIDES IF DIFFERENT FROM THE MAILING ADDRESS Zip Code",
+      "handler": "THE ADDRESS WHERE PRIMARY REGISTRANT RESIDES IF DIFFERENT FROM THE MAILING ADDRESS Zip Code",
+      "alternateName": "THE ADDRESS WHERE PRIMARY REGISTRANT RESIDES IF DIFFERENT FROM THE MAILING ADDRESS Zip Code",
+      "mappingName": null,
+      "type": "text",
+      "typeCode": "/Tx",
+      "subtype": "text",
+      "isTerminal": true,
+      "fillable": true,
+      "childFields": [],
+      "flags": 8388608,
+      "flagNames": [
+        "doNotScroll"
+      ],
+      "currentValue": null,
+      "defaultValue": null,
+      "maxLength": null,
+      "options": null,
+      "exportValues": [],
+      "action": null,
+      "additionalActions": null,
+      "widgets": [
+        {
+          "page": 1,
+          "pageSizePoints": {
+            "width": 612.0,
+            "height": 792.0
+          },
+          "rectPdfBottomLeft": {
+            "x1": 473.28,
+            "y1": 438.0,
+            "x2": 533.16,
+            "y2": 450.48,
+            "width": 59.879999999999995,
+            "height": 12.480000000000018
+          },
+          "rectTopLeft": {
+            "x": 473.28,
+            "y": 341.52,
+            "width": 59.879999999999995,
+            "height": 12.480000000000018
+          },
+          "objectReference": {
+            "object": 1195,
+            "generation": 0
+          },
+          "appearanceState": null,
+          "appearanceStates": [],
+          "annotationFlags": 4,
+          "action": null,
+          "additionalActions": null
+        }
+      ]
+    },
+    {
+      "index": 71,
+      "name": "Type of power Fuel",
+      "handler": "Type of power Fuel",
+      "alternateName": "Type of power (Fuel)",
+      "mappingName": null,
+      "type": "button",
+      "typeCode": "/Btn",
+      "subtype": "radio",
+      "isTerminal": true,
+      "fillable": true,
+      "childFields": [],
+      "flags": 49152,
+      "flagNames": [
+        "noToggleToOff",
+        "radio"
+      ],
+      "currentValue": null,
+      "defaultValue": null,
+      "maxLength": null,
+      "options": null,
+      "exportValues": [
+        "/CNG (Compressed Natural Gas)",
+        "/Diesel",
+        "/Electric",
+        "/Flex",
+        "/Gas",
+        "/None",
+        "/Other",
+        "/Propane"
+      ],
+      "action": null,
+      "additionalActions": null,
+      "widgets": [
+        {
+          "page": 1,
+          "pageSizePoints": {
+            "width": 612.0,
+            "height": 792.0
+          },
+          "rectPdfBottomLeft": {
+            "x1": 148.43,
+            "y1": 378.877,
+            "x2": 159.27,
+            "y2": 390.717,
+            "width": 10.840000000000003,
+            "height": 11.839999999999975
+          },
+          "rectTopLeft": {
+            "x": 148.43,
+            "y": 401.283,
+            "width": 10.840000000000003,
+            "height": 11.839999999999975
+          },
+          "objectReference": {
+            "object": 1145,
+            "generation": 0
+          },
+          "appearanceState": "/Off",
+          "appearanceStates": [
+            "/Gas"
+          ],
+          "annotationFlags": 4,
+          "action": null,
+          "additionalActions": null
+        },
+        {
+          "page": 1,
+          "pageSizePoints": {
+            "width": 612.0,
+            "height": 792.0
+          },
+          "rectPdfBottomLeft": {
+            "x1": 174.521,
+            "y1": 378.877,
+            "x2": 185.361,
+            "y2": 390.717,
+            "width": 10.840000000000003,
+            "height": 11.839999999999975
+          },
+          "rectTopLeft": {
+            "x": 174.521,
+            "y": 401.283,
+            "width": 10.840000000000003,
+            "height": 11.839999999999975
+          },
+          "objectReference": {
+            "object": 1146,
+            "generation": 0
+          },
+          "appearanceState": "/Off",
+          "appearanceStates": [
+            "/Diesel"
+          ],
+          "annotationFlags": 4,
+          "action": null,
+          "additionalActions": null
+        },
+        {
+          "page": 1,
+          "pageSizePoints": {
+            "width": 612.0,
+            "height": 792.0
+          },
+          "rectPdfBottomLeft": {
+            "x1": 207.03,
+            "y1": 378.877,
+            "x2": 217.87,
+            "y2": 390.717,
+            "width": 10.840000000000003,
+            "height": 11.839999999999975
+          },
+          "rectTopLeft": {
+            "x": 207.03,
+            "y": 401.283,
+            "width": 10.840000000000003,
+            "height": 11.839999999999975
+          },
+          "objectReference": {
+            "object": 1144,
+            "generation": 0
+          },
+          "appearanceState": "/Off",
+          "appearanceStates": [
+            "/Electric"
+          ],
+          "annotationFlags": 4,
+          "action": null,
+          "additionalActions": null
+        },
+        {
+          "page": 1,
+          "pageSizePoints": {
+            "width": 612.0,
+            "height": 792.0
+          },
+          "rectPdfBottomLeft": {
+            "x1": 242.484,
+            "y1": 378.877,
+            "x2": 253.324,
+            "y2": 390.717,
+            "width": 10.840000000000003,
+            "height": 11.839999999999975
+          },
+          "rectTopLeft": {
+            "x": 242.484,
+            "y": 401.283,
+            "width": 10.840000000000003,
+            "height": 11.839999999999975
+          },
+          "objectReference": {
+            "object": 1147,
+            "generation": 0
+          },
+          "appearanceState": "/Off",
+          "appearanceStates": [
+            "/Flex"
+          ],
+          "annotationFlags": 4,
+          "action": null,
+          "additionalActions": null
+        },
+        {
+          "page": 1,
+          "pageSizePoints": {
+            "width": 612.0,
+            "height": 792.0
+          },
+          "rectPdfBottomLeft": {
+            "x1": 268.448,
+            "y1": 378.877,
+            "x2": 279.288,
+            "y2": 390.717,
+            "width": 10.840000000000032,
+            "height": 11.839999999999975
+          },
+          "rectTopLeft": {
+            "x": 268.448,
+            "y": 401.283,
+            "width": 10.840000000000032,
+            "height": 11.839999999999975
+          },
+          "objectReference": {
+            "object": 1148,
+            "generation": 0
+          },
+          "appearanceState": "/Off",
+          "appearanceStates": [
+            "/CNG (Compressed Natural Gas)"
+          ],
+          "annotationFlags": 4,
+          "action": null,
+          "additionalActions": null
+        },
+        {
+          "page": 1,
+          "pageSizePoints": {
+            "width": 612.0,
+            "height": 792.0
+          },
+          "rectPdfBottomLeft": {
+            "x1": 297.793,
+            "y1": 378.877,
+            "x2": 308.633,
+            "y2": 390.717,
+            "width": 10.839999999999975,
+            "height": 11.839999999999975
+          },
+          "rectTopLeft": {
+            "x": 297.793,
+            "y": 401.283,
+            "width": 10.839999999999975,
+            "height": 11.839999999999975
+          },
+          "objectReference": {
+            "object": 1149,
+            "generation": 0
+          },
+          "appearanceState": "/Off",
+          "appearanceStates": [
+            "/Propane"
+          ],
+          "annotationFlags": 4,
+          "action": null,
+          "additionalActions": null
+        },
+        {
+          "page": 1,
+          "pageSizePoints": {
+            "width": 612.0,
+            "height": 792.0
+          },
+          "rectPdfBottomLeft": {
+            "x1": 336.302,
+            "y1": 378.877,
+            "x2": 347.143,
+            "y2": 390.717,
+            "width": 10.840999999999951,
+            "height": 11.839999999999975
+          },
+          "rectTopLeft": {
+            "x": 336.302,
+            "y": 401.283,
+            "width": 10.840999999999951,
+            "height": 11.839999999999975
+          },
+          "objectReference": {
+            "object": 1150,
+            "generation": 0
+          },
+          "appearanceState": "/Off",
+          "appearanceStates": [
+            "/None"
+          ],
+          "annotationFlags": 4,
+          "action": null,
+          "additionalActions": null
+        },
+        {
+          "page": 1,
+          "pageSizePoints": {
+            "width": 612.0,
+            "height": 792.0
+          },
+          "rectPdfBottomLeft": {
+            "x1": 366.084,
+            "y1": 378.877,
+            "x2": 376.924,
+            "y2": 390.717,
+            "width": 10.839999999999975,
+            "height": 11.839999999999975
+          },
+          "rectTopLeft": {
+            "x": 366.084,
+            "y": 401.283,
+            "width": 10.839999999999975,
+            "height": 11.839999999999975
+          },
+          "objectReference": {
+            "object": 1142,
+            "generation": 0
+          },
+          "appearanceState": "/Off",
+          "appearanceStates": [
+            "/Other"
+          ],
+          "annotationFlags": 4,
+          "action": null,
+          "additionalActions": null
+        }
+      ]
+    },
+    {
+      "index": 72,
+      "name": "Is this vehicle a limousine, stretch limousine or otherwise altered to increase seating capacity",
+      "handler": "Is this vehicle a limousine, stretch limousine or otherwise altered to increase seating capacity",
+      "alternateName": "Is this vehicle a limousine, stretch limousine or otherwise altered to increase seating capacity?",
+      "mappingName": null,
+      "type": "button",
+      "typeCode": "/Btn",
+      "subtype": "radio",
+      "isTerminal": true,
+      "fillable": true,
+      "childFields": [],
+      "flags": 49152,
+      "flagNames": [
+        "noToggleToOff",
+        "radio"
+      ],
+      "currentValue": null,
+      "defaultValue": null,
+      "maxLength": null,
+      "options": null,
+      "exportValues": [
+        "/No",
+        "/Yes"
+      ],
+      "action": null,
+      "additionalActions": null,
+      "widgets": [
+        {
+          "page": 1,
+          "pageSizePoints": {
+            "width": 612.0,
+            "height": 792.0
+          },
+          "rectPdfBottomLeft": {
+            "x1": 553.891,
+            "y1": 337.069,
+            "x2": 564.844,
+            "y2": 349.487,
+            "width": 10.953000000000088,
+            "height": 12.418000000000006
+          },
+          "rectTopLeft": {
+            "x": 553.891,
+            "y": 442.513,
+            "width": 10.953000000000088,
+            "height": 12.418000000000006
+          },
+          "objectReference": {
+            "object": 1124,
+            "generation": 0
+          },
+          "appearanceState": "/Off",
+          "appearanceStates": [
+            "/Yes"
+          ],
+          "annotationFlags": 4,
+          "action": null,
+          "additionalActions": null
+        },
+        {
+          "page": 1,
+          "pageSizePoints": {
+            "width": 612.0,
+            "height": 792.0
+          },
+          "rectPdfBottomLeft": {
+            "x1": 584.741,
+            "y1": 337.069,
+            "x2": 596.09,
+            "y2": 349.487,
+            "width": 11.349000000000046,
+            "height": 12.418000000000006
+          },
+          "rectTopLeft": {
+            "x": 584.741,
+            "y": 442.513,
+            "width": 11.349000000000046,
+            "height": 12.418000000000006
+          },
+          "objectReference": {
+            "object": 1122,
+            "generation": 0
+          },
+          "appearanceState": "/Off",
+          "appearanceStates": [
+            "/No"
+          ],
+          "annotationFlags": 4,
+          "action": null,
+          "additionalActions": null
+        }
+      ]
+    },
+    {
+      "index": 73,
+      "name": "Is this vehicle a limousine, stretch limousine or otherwise altered to increase seating capacity If YES is this limousine, stretch limousine or otherwise altered vehicle equipped with safety belts at all occupant seating positions",
+      "handler": "Is this vehicle a limousine, stretch limousine or otherwise altered to increase seating capacity If YES is this limousine, stretch limousine or otherwise altered vehicle equipped with safety belts at all occupant seating positions",
+      "alternateName": "Is this vehicle a limousine, stretch limousine or otherwise altered to increase seating capacity? If YES, is this limousine, stretch limousine or otherwise altered vehicle equipped with safety belts at all occupant seating positions?",
+      "mappingName": null,
+      "type": "button",
+      "typeCode": "/Btn",
+      "subtype": "radio",
+      "isTerminal": true,
+      "fillable": true,
+      "childFields": [],
+      "flags": 49152,
+      "flagNames": [
+        "noToggleToOff",
+        "radio"
+      ],
+      "currentValue": null,
+      "defaultValue": null,
+      "maxLength": null,
+      "options": null,
+      "exportValues": [
+        "/No",
+        "/Yes"
+      ],
+      "action": null,
+      "additionalActions": null,
+      "widgets": [
+        {
+          "page": 1,
+          "pageSizePoints": {
+            "width": 612.0,
+            "height": 792.0
+          },
+          "rectPdfBottomLeft": {
+            "x1": 553.891,
+            "y1": 309.25,
+            "x2": 565.24,
+            "y2": 321.668,
+            "width": 11.349000000000046,
+            "height": 12.418000000000006
+          },
+          "rectTopLeft": {
+            "x": 553.891,
+            "y": 470.332,
+            "width": 11.349000000000046,
+            "height": 12.418000000000006
+          },
+          "objectReference": {
+            "object": 1119,
+            "generation": 0
+          },
+          "appearanceState": "/Off",
+          "appearanceStates": [
+            "/Yes"
+          ],
+          "annotationFlags": 4,
+          "action": null,
+          "additionalActions": null
+        },
+        {
+          "page": 1,
+          "pageSizePoints": {
+            "width": 612.0,
+            "height": 792.0
+          },
+          "rectPdfBottomLeft": {
+            "x1": 584.741,
+            "y1": 309.25,
+            "x2": 596.09,
+            "y2": 321.668,
+            "width": 11.349000000000046,
+            "height": 12.418000000000006
+          },
+          "rectTopLeft": {
+            "x": 584.741,
+            "y": 470.332,
+            "width": 11.349000000000046,
+            "height": 12.418000000000006
+          },
+          "objectReference": {
+            "object": 1117,
+            "generation": 0
+          },
+          "appearanceState": "/Off",
+          "appearanceStates": [
+            "/No"
+          ],
+          "annotationFlags": 4,
+          "action": null,
+          "additionalActions": null
+        }
+      ]
+    },
+    {
+      "index": 74,
+      "name": "PRIMARY OWNER DATE OF BIRTH Date of Birth Day",
+      "handler": "PRIMARY OWNER DATE OF BIRTH Date of Birth Day",
+      "alternateName": "PRIMARY OWNER DATE OF BIRTH Date of Birth Day",
+      "mappingName": null,
+      "type": "choice",
+      "typeCode": "/Ch",
+      "subtype": "comboBox",
+      "isTerminal": true,
+      "fillable": true,
+      "childFields": [],
+      "flags": 131072,
+      "flagNames": [
+        "combo"
+      ],
+      "currentValue": null,
+      "defaultValue": null,
+      "maxLength": null,
+      "options": [
+        "01",
+        "02",
+        "03",
+        "04",
+        "05",
+        "06",
+        "07",
+        "08",
+        "09",
+        "10",
+        "11",
+        "12",
+        "13",
+        "14",
+        "15",
+        "16",
+        "17",
+        "18",
+        "19",
+        "20",
+        "21",
+        "22",
+        "23",
+        "24",
+        "25",
+        "26",
+        "27",
+        "28",
+        "29",
+        "30",
+        "31"
+      ],
+      "exportValues": [],
+      "action": null,
+      "additionalActions": null,
+      "widgets": [
+        {
+          "page": 1,
+          "pageSizePoints": {
+            "width": 612.0,
+            "height": 792.0
+          },
+          "rectPdfBottomLeft": {
+            "x1": 462.324,
+            "y1": 216.393,
+            "x2": 488.124,
+            "y2": 229.753,
+            "width": 25.80000000000001,
+            "height": 13.359999999999985
+          },
+          "rectTopLeft": {
+            "x": 462.324,
+            "y": 562.2470000000001,
+            "width": 25.80000000000001,
+            "height": 13.359999999999985
+          },
+          "objectReference": {
+            "object": 1103,
+            "generation": 0
+          },
+          "appearanceState": null,
+          "appearanceStates": [],
+          "annotationFlags": 4,
+          "action": null,
+          "additionalActions": null
+        }
+      ]
+    },
+    {
+      "index": 75,
+      "name": "PRIMARY OWNER DATE OF BIRTH Date of Birth Month",
+      "handler": "PRIMARY OWNER DATE OF BIRTH Date of Birth Month",
+      "alternateName": "PRIMARY OWNER DATE OF BIRTH Date of Birth Month",
+      "mappingName": null,
+      "type": "choice",
+      "typeCode": "/Ch",
+      "subtype": "comboBox",
+      "isTerminal": true,
+      "fillable": true,
+      "childFields": [],
+      "flags": 131072,
+      "flagNames": [
+        "combo"
+      ],
+      "currentValue": null,
+      "defaultValue": null,
+      "maxLength": null,
+      "options": [
+        "01",
+        "02",
+        "03",
+        "04",
+        "05",
+        "06",
+        "07",
+        "08",
+        "09",
+        "10",
+        "11",
+        "12"
+      ],
+      "exportValues": [],
+      "action": null,
+      "additionalActions": null,
+      "widgets": [
+        {
+          "page": 1,
+          "pageSizePoints": {
+            "width": 612.0,
+            "height": 792.0
+          },
+          "rectPdfBottomLeft": {
+            "x1": 437.586,
+            "y1": 216.393,
+            "x2": 462.379,
+            "y2": 229.753,
+            "width": 24.793000000000006,
+            "height": 13.359999999999985
+          },
+          "rectTopLeft": {
+            "x": 437.586,
+            "y": 562.2470000000001,
+            "width": 24.793000000000006,
+            "height": 13.359999999999985
+          },
+          "objectReference": {
+            "object": 1106,
+            "generation": 0
+          },
+          "appearanceState": null,
+          "appearanceStates": [],
+          "annotationFlags": 4,
+          "action": null,
+          "additionalActions": null
+        }
+      ]
+    },
+    {
+      "index": 76,
+      "name": "THE ADDRESS WHERE PRIMARY OWNER GETS MAIL Apartment Number",
+      "handler": "THE ADDRESS WHERE PRIMARY OWNER GETS MAIL Apartment Number",
+      "alternateName": "THE ADDRESS WHERE PRIMARY OWNER GETS MAIL Apartment Number",
+      "mappingName": null,
+      "type": "text",
+      "typeCode": "/Tx",
+      "subtype": "text",
+      "isTerminal": true,
+      "fillable": true,
+      "childFields": [],
+      "flags": 8388608,
+      "flagNames": [
+        "doNotScroll"
+      ],
+      "currentValue": null,
+      "defaultValue": null,
+      "maxLength": null,
+      "options": null,
+      "exportValues": [],
+      "action": null,
+      "additionalActions": null,
+      "widgets": [
+        {
+          "page": 1,
+          "pageSizePoints": {
+            "width": 612.0,
+            "height": 792.0
+          },
+          "rectPdfBottomLeft": {
+            "x1": 252.0,
+            "y1": 187.44,
+            "x2": 280.44,
+            "y2": 199.6,
+            "width": 28.439999999999998,
+            "height": 12.159999999999997
+          },
+          "rectTopLeft": {
+            "x": 252.0,
+            "y": 592.4,
+            "width": 28.439999999999998,
+            "height": 12.159999999999997
+          },
+          "objectReference": {
+            "object": 1090,
+            "generation": 0
+          },
+          "appearanceState": null,
+          "appearanceStates": [],
+          "annotationFlags": 4,
+          "action": null,
+          "additionalActions": null
+        }
+      ]
+    },
+    {
+      "index": 77,
+      "name": "THE ADDRESS WHERE PRIMARY OWNER GETS MAIL City or Town",
+      "handler": "THE ADDRESS WHERE PRIMARY OWNER GETS MAIL City or Town",
+      "alternateName": "THE ADDRESS WHERE PRIMARY OWNER GETS MAIL City or Town",
+      "mappingName": null,
+      "type": "text",
+      "typeCode": "/Tx",
+      "subtype": "text",
+      "isTerminal": true,
+      "fillable": true,
+      "childFields": [],
+      "flags": 8388608,
+      "flagNames": [
+        "doNotScroll"
+      ],
+      "currentValue": null,
+      "defaultValue": null,
+      "maxLength": null,
+      "options": null,
+      "exportValues": [],
+      "action": null,
+      "additionalActions": null,
+      "widgets": [
+        {
+          "page": 1,
+          "pageSizePoints": {
+            "width": 612.0,
+            "height": 792.0
+          },
+          "rectPdfBottomLeft": {
+            "x1": 281.64,
+            "y1": 187.44,
+            "x2": 411.12,
+            "y2": 199.6,
+            "width": 129.48000000000002,
+            "height": 12.159999999999997
+          },
+          "rectTopLeft": {
+            "x": 281.64,
+            "y": 592.4,
+            "width": 129.48000000000002,
+            "height": 12.159999999999997
+          },
+          "objectReference": {
+            "object": 1088,
+            "generation": 0
+          },
+          "appearanceState": null,
+          "appearanceStates": [],
+          "annotationFlags": 4,
+          "action": null,
+          "additionalActions": null
+        }
+      ]
+    },
+    {
+      "index": 78,
+      "name": "THE ADDRESS WHERE PRIMARY OWNER GETS MAIL State",
+      "handler": "THE ADDRESS WHERE PRIMARY OWNER GETS MAIL State",
+      "alternateName": "THE ADDRESS WHERE PRIMARY OWNER GETS MAIL State",
+      "mappingName": null,
+      "type": "choice",
+      "typeCode": "/Ch",
+      "subtype": "comboBox",
+      "isTerminal": true,
+      "fillable": true,
+      "childFields": [],
+      "flags": 131072,
+      "flagNames": [
+        "combo"
+      ],
+      "currentValue": null,
+      "defaultValue": null,
+      "maxLength": null,
+      "options": [
+        "NY",
+        "AL",
+        "AK",
+        "AZ",
+        "AR",
+        "CA",
+        "CO",
+        "CT",
+        "DE",
+        "DC",
+        "FL",
+        "GA",
+        "HI",
+        "ID",
+        "IL",
+        "IN",
+        "IA",
+        "KS",
+        "KY",
+        "LA",
+        "ME",
+        "MD",
+        "MA",
+        "MI",
+        "MN",
+        "MS",
+        "MO",
+        "MT",
+        "NE",
+        "NV",
+        "NH",
+        "NJ",
+        "NM",
+        "NC",
+        "ND",
+        "OH",
+        "OK",
+        "OR",
+        "PA",
+        "RI",
+        "SC",
+        "SD",
+        "TN",
+        "TX",
+        "UT",
+        "VA",
+        "VT",
+        "WA",
+        "WV",
+        "WI",
+        "WY"
+      ],
+      "exportValues": [],
+      "action": null,
+      "additionalActions": null,
+      "widgets": [
+        {
+          "page": 1,
+          "pageSizePoints": {
+            "width": 612.0,
+            "height": 792.0
+          },
+          "rectPdfBottomLeft": {
+            "x1": 411.301,
+            "y1": 198.6,
+            "x2": 451.494,
+            "y2": 187.44,
+            "width": 40.19300000000004,
+            "height": -11.159999999999997
+          },
+          "rectTopLeft": {
+            "x": 411.301,
+            "y": 604.56,
+            "width": 40.19300000000004,
+            "height": -11.159999999999997
+          },
+          "objectReference": {
+            "object": 1085,
+            "generation": 0
+          },
+          "appearanceState": null,
+          "appearanceStates": [],
+          "annotationFlags": 4,
+          "action": null,
+          "additionalActions": null
+        }
+      ]
+    },
+    {
+      "index": 79,
+      "name": "THE ADDRESS WHERE PRIMARY OWNER GETS MAIL Zip Code",
+      "handler": "THE ADDRESS WHERE PRIMARY OWNER GETS MAIL Zip Code",
+      "alternateName": "THE ADDRESS WHERE PRIMARY OWNER GETS MAIL Zip Code",
+      "mappingName": null,
+      "type": "text",
+      "typeCode": "/Tx",
+      "subtype": "text",
+      "isTerminal": true,
+      "fillable": true,
+      "childFields": [],
+      "flags": 8388608,
+      "flagNames": [
+        "doNotScroll"
+      ],
+      "currentValue": null,
+      "defaultValue": null,
+      "maxLength": null,
+      "options": null,
+      "exportValues": [],
+      "action": null,
+      "additionalActions": null,
+      "widgets": [
+        {
+          "page": 1,
+          "pageSizePoints": {
+            "width": 612.0,
+            "height": 792.0
+          },
+          "rectPdfBottomLeft": {
+            "x1": 451.64,
+            "y1": 187.44,
+            "x2": 524.76,
+            "y2": 199.6,
+            "width": 73.12,
+            "height": 12.159999999999997
+          },
+          "rectTopLeft": {
+            "x": 451.64,
+            "y": 592.4,
+            "width": 73.12,
+            "height": 12.159999999999997
+          },
+          "objectReference": {
+            "object": 1083,
+            "generation": 0
+          },
+          "appearanceState": null,
+          "appearanceStates": [],
+          "annotationFlags": 4,
+          "action": null,
+          "additionalActions": null
+        }
+      ]
+    },
+    {
+      "index": 80,
+      "name": "THE ADDRESS WHERE PRIMARY OWNER GETS MAIL County",
+      "handler": "THE ADDRESS WHERE PRIMARY OWNER GETS MAIL County",
+      "alternateName": "THE ADDRESS WHERE PRIMARY OWNER GETS MAIL County",
+      "mappingName": null,
+      "type": "text",
+      "typeCode": "/Tx",
+      "subtype": "text",
+      "isTerminal": true,
+      "fillable": true,
+      "childFields": [],
+      "flags": 8388608,
+      "flagNames": [
+        "doNotScroll"
+      ],
+      "currentValue": null,
+      "defaultValue": null,
+      "maxLength": null,
+      "options": null,
+      "exportValues": [],
+      "action": null,
+      "additionalActions": null,
+      "widgets": [
+        {
+          "page": 1,
+          "pageSizePoints": {
+            "width": 612.0,
+            "height": 792.0
+          },
+          "rectPdfBottomLeft": {
+            "x1": 525.552,
+            "y1": 187.44,
+            "x2": 592.632,
+            "y2": 200.56,
+            "width": 67.07999999999993,
+            "height": 13.120000000000005
+          },
+          "rectTopLeft": {
+            "x": 525.552,
+            "y": 591.44,
+            "width": 67.07999999999993,
+            "height": 13.120000000000005
+          },
+          "objectReference": {
+            "object": 1081,
+            "generation": 0
+          },
+          "appearanceState": null,
+          "appearanceStates": [],
+          "annotationFlags": 4,
+          "action": null,
+          "additionalActions": null
+        }
+      ]
+    },
+    {
+      "index": 81,
+      "name": "PRIMARY OWNER SEX",
+      "handler": "PRIMARY OWNER SEX",
+      "alternateName": "PRIMARY OWNER SEX",
+      "mappingName": null,
+      "type": "button",
+      "typeCode": "/Btn",
+      "subtype": "radio",
+      "isTerminal": true,
+      "fillable": true,
+      "childFields": [],
+      "flags": 49152,
+      "flagNames": [
+        "noToggleToOff",
+        "radio"
+      ],
+      "currentValue": null,
+      "defaultValue": null,
+      "maxLength": null,
+      "options": null,
+      "exportValues": [
+        "/F (Female)",
+        "/M (Male)",
+        "/X (Undesignated)"
+      ],
+      "action": null,
+      "additionalActions": null,
+      "widgets": [
+        {
+          "page": 1,
+          "pageSizePoints": {
+            "width": 612.0,
+            "height": 792.0
+          },
+          "rectPdfBottomLeft": {
+            "x1": 544.741,
+            "y1": 218.241,
+            "x2": 557.09,
+            "y2": 232.659,
+            "width": 12.349000000000046,
+            "height": 14.417999999999978
+          },
+          "rectTopLeft": {
+            "x": 544.741,
+            "y": 559.341,
+            "width": 12.349000000000046,
+            "height": 14.417999999999978
+          },
+          "objectReference": {
+            "object": 1096,
+            "generation": 0
+          },
+          "appearanceState": "/Off",
+          "appearanceStates": [
+            "/M (Male)"
+          ],
+          "annotationFlags": 4,
+          "action": null,
+          "additionalActions": null
+        },
+        {
+          "page": 1,
+          "pageSizePoints": {
+            "width": 612.0,
+            "height": 792.0
+          },
+          "rectPdfBottomLeft": {
+            "x1": 563.409,
+            "y1": 218.241,
+            "x2": 575.758,
+            "y2": 232.659,
+            "width": 12.349000000000046,
+            "height": 14.417999999999978
+          },
+          "rectTopLeft": {
+            "x": 563.409,
+            "y": 559.341,
+            "width": 12.349000000000046,
+            "height": 14.417999999999978
+          },
+          "objectReference": {
+            "object": 1097,
+            "generation": 0
+          },
+          "appearanceState": "/Off",
+          "appearanceStates": [
+            "/F (Female)"
+          ],
+          "annotationFlags": 4,
+          "action": null,
+          "additionalActions": null
+        },
+        {
+          "page": 1,
+          "pageSizePoints": {
+            "width": 612.0,
+            "height": 792.0
+          },
+          "rectPdfBottomLeft": {
+            "x1": 581.818,
+            "y1": 218.241,
+            "x2": 594.167,
+            "y2": 232.659,
+            "width": 12.349000000000046,
+            "height": 14.417999999999978
+          },
+          "rectTopLeft": {
+            "x": 581.818,
+            "y": 559.341,
+            "width": 12.349000000000046,
+            "height": 14.417999999999978
+          },
+          "objectReference": {
+            "object": 1094,
+            "generation": 0
+          },
+          "appearanceState": "/Off",
+          "appearanceStates": [
+            "/X (Undesignated)"
+          ],
+          "annotationFlags": 4,
+          "action": null,
+          "additionalActions": null
+        }
+      ]
+    },
+    {
+      "index": 82,
+      "name": "Has the vehicle been wrecked, destroyed, or damaged to such an extent that the total estimate, or actual cost, of parts o Yes o No and labor to rebuild or reconstruct the vehicle to the condition it was in before an accident, and to make the vehicle legal to operate on the road or highways, is more than 75 percent of the retail value of the vehicle at the time of loss",
+      "handler": "Has the vehicle been wrecked, destroyed, or damaged to such an extent that the total estimate, or actual cost, of parts o Yes o No and labor to rebuild or reconstruct the vehicle to the condition it was in before an accident, and to make the vehicle legal to operate on the road or highways, is more than 75 percent of the retail value of the vehicle at the time of loss",
+      "alternateName": "Has the vehicle been wrecked, destroyed, or damaged to such an extent that the total estimate, or actual cost, of parts o Yes o No and labor to rebuild or reconstruct the vehicle to the condition it was in before an accident, and to make the vehicle legal to operate on the road or highways, is more than 75 percent of the retail value of the vehicle at the time of loss?",
+      "mappingName": null,
+      "type": "button",
+      "typeCode": "/Btn",
+      "subtype": "radio",
+      "isTerminal": true,
+      "fillable": true,
+      "childFields": [],
+      "flags": 49152,
+      "flagNames": [
+        "noToggleToOff",
+        "radio"
+      ],
+      "currentValue": null,
+      "defaultValue": null,
+      "maxLength": null,
+      "options": null,
+      "exportValues": [
+        "/No",
+        "/Yes"
+      ],
+      "action": null,
+      "additionalActions": null,
+      "widgets": [
+        {
+          "page": 2,
+          "pageSizePoints": {
+            "width": 612.0,
+            "height": 792.0
+          },
+          "rectPdfBottomLeft": {
+            "x1": 529.873,
+            "y1": 743.273,
+            "x2": 542.222,
+            "y2": 756.691,
+            "width": 12.348999999999933,
+            "height": 13.418000000000006
+          },
+          "rectTopLeft": {
+            "x": 529.873,
+            "y": 35.30899999999997,
+            "width": 12.348999999999933,
+            "height": 13.418000000000006
+          },
+          "objectReference": {
+            "object": 1064,
+            "generation": 0
+          },
+          "appearanceState": "/Off",
+          "appearanceStates": [
+            "/Yes"
+          ],
+          "annotationFlags": 4,
+          "action": null,
+          "additionalActions": null
+        },
+        {
+          "page": 2,
+          "pageSizePoints": {
+            "width": 612.0,
+            "height": 792.0
+          },
+          "rectPdfBottomLeft": {
+            "x1": 567.723,
+            "y1": 743.273,
+            "x2": 580.072,
+            "y2": 756.691,
+            "width": 12.349000000000046,
+            "height": 13.418000000000006
+          },
+          "rectTopLeft": {
+            "x": 567.723,
+            "y": 35.30899999999997,
+            "width": 12.349000000000046,
+            "height": 13.418000000000006
+          },
+          "objectReference": {
+            "object": 1062,
+            "generation": 0
+          },
+          "appearanceState": "/Off",
+          "appearanceStates": [
+            "/No"
+          ],
+          "annotationFlags": 4,
+          "action": null,
+          "additionalActions": null
+        }
+      ]
+    },
+    {
+      "index": 83,
+      "name": "Has this vehicle been modified from the original manufacturer specifications without extending the chassis or lengthening the wheel base Examples include: color changes added seats permanently mounted camping equipment multi stage vehicles",
+      "handler": "Has this vehicle been modified from the original manufacturer specifications without extending the chassis or lengthening the wheel base Examples include: color changes added seats permanently mounted camping equipment multi stage vehicles",
+      "alternateName": "Has this vehicle been modified from the original manufacturer specifications without extending the chassis or lengthening the wheel base? (Examples include: color changes, added seats, permanently mounted camping equipment, multi-stage vehicles.)",
+      "mappingName": null,
+      "type": "button",
+      "typeCode": "/Btn",
+      "subtype": "radio",
+      "isTerminal": true,
+      "fillable": true,
+      "childFields": [],
+      "flags": 49152,
+      "flagNames": [
+        "noToggleToOff",
+        "radio"
+      ],
+      "currentValue": null,
+      "defaultValue": null,
+      "maxLength": null,
+      "options": null,
+      "exportValues": [
+        "/No",
+        "/Yes"
+      ],
+      "action": null,
+      "additionalActions": null,
+      "widgets": [
+        {
+          "page": 2,
+          "pageSizePoints": {
+            "width": 612.0,
+            "height": 792.0
+          },
+          "rectPdfBottomLeft": {
+            "x1": 529.873,
+            "y1": 657.2,
+            "x2": 542.222,
+            "y2": 670.618,
+            "width": 12.348999999999933,
+            "height": 13.418000000000006
+          },
+          "rectTopLeft": {
+            "x": 529.873,
+            "y": 121.38199999999995,
+            "width": 12.348999999999933,
+            "height": 13.418000000000006
+          },
+          "objectReference": {
+            "object": 1059,
+            "generation": 0
+          },
+          "appearanceState": "/Off",
+          "appearanceStates": [
+            "/Yes"
+          ],
+          "annotationFlags": 4,
+          "action": null,
+          "additionalActions": null
+        },
+        {
+          "page": 2,
+          "pageSizePoints": {
+            "width": 612.0,
+            "height": 792.0
+          },
+          "rectPdfBottomLeft": {
+            "x1": 567.723,
+            "y1": 657.2,
+            "x2": 580.072,
+            "y2": 670.618,
+            "width": 12.349000000000046,
+            "height": 13.418000000000006
+          },
+          "rectTopLeft": {
+            "x": 567.723,
+            "y": 121.38199999999995,
+            "width": 12.349000000000046,
+            "height": 13.418000000000006
+          },
+          "objectReference": {
+            "object": 1057,
+            "generation": 0
+          },
+          "appearanceState": "/Off",
+          "appearanceStates": [
+            "/No"
+          ],
+          "annotationFlags": 4,
+          "action": null,
+          "additionalActions": null
+        }
+      ]
+    },
+    {
+      "index": 84,
+      "name": "NON PERSONAL VEHICLE USE",
+      "handler": "NON PERSONAL VEHICLE USE",
+      "alternateName": "NON-PERSONAL VEHICLE USE",
+      "mappingName": null,
+      "type": "button",
+      "typeCode": "/Btn",
+      "subtype": "radio",
+      "isTerminal": true,
+      "fillable": true,
+      "childFields": [],
+      "flags": 49152,
+      "flagNames": [
+        "noToggleToOff",
+        "radio"
+      ],
+      "currentValue": null,
+      "defaultValue": null,
+      "maxLength": null,
+      "options": null,
+      "exportValues": [
+        "/A commercial tow truck with a gross vehicle weight rating of at least 8,600 pounds",
+        "/Ambulance",
+        "/Ambulette* (* Vehicles that transport passengers may require NYS DOT Operating Authority)",
+        "/Combination Hearse/Invalid Coach* (* Vehicles that transport passengers may require NYS DOT Operating Authority)",
+        "/Hearse",
+        "/Operates as a taxi* (* Vehicles that transport passengers may require NYS DOT Operating Authority) (you must complete the \u008dTaxis Only\u008e section below)",
+        "/Other",
+        "/Rented without a driver (private rental)",
+        "/Used only as a farm vehicle (form MV-260F, Part 1 must be submitted)",
+        "/Used only as an agricultural truck or agricultural trailer",
+        "/Used to pick up passengers for compensation only in jurisdictions that do not regulate taxis* (* Vehicles that transport passengers may require NYS DOT Operating Authority)",
+        "/Used to transport passengers* (* Vehicles that transport passengers may require NYS DOT Operating Authority) (Bus, Livery, School Bus, School Car)"
+      ],
+      "action": null,
+      "additionalActions": null,
+      "widgets": [
+        {
+          "page": 2,
+          "pageSizePoints": {
+            "width": 612.0,
+            "height": 792.0
+          },
+          "rectPdfBottomLeft": {
+            "x1": 37.5424,
+            "y1": 510.018,
+            "x2": 53.8914,
+            "y2": 527.436,
+            "width": 16.348999999999997,
+            "height": 17.418000000000063
+          },
+          "rectTopLeft": {
+            "x": 37.5424,
+            "y": 264.56399999999996,
+            "width": 16.348999999999997,
+            "height": 17.418000000000063
+          },
+          "objectReference": {
+            "object": 1023,
+            "generation": 0
+          },
+          "appearanceState": "/Off",
+          "appearanceStates": [
+            "/A commercial tow truck with a gross vehicle weight rating of at least 8,600 pounds"
+          ],
+          "annotationFlags": 4,
+          "action": null,
+          "additionalActions": null
+        },
+        {
+          "page": 2,
+          "pageSizePoints": {
+            "width": 612.0,
+            "height": 792.0
+          },
+          "rectPdfBottomLeft": {
+            "x1": 37.5424,
+            "y1": 474.346,
+            "x2": 53.8914,
+            "y2": 491.764,
+            "width": 16.348999999999997,
+            "height": 17.418000000000006
+          },
+          "rectTopLeft": {
+            "x": 37.5424,
+            "y": 300.236,
+            "width": 16.348999999999997,
+            "height": 17.418000000000006
+          },
+          "objectReference": {
+            "object": 1024,
+            "generation": 0
+          },
+          "appearanceState": "/Off",
+          "appearanceStates": [
+            "/Used only as a farm vehicle (form MV-260F, Part 1 must be submitted)"
+          ],
+          "annotationFlags": 4,
+          "action": null,
+          "additionalActions": null
+        },
+        {
+          "page": 2,
+          "pageSizePoints": {
+            "width": 612.0,
+            "height": 792.0
+          },
+          "rectPdfBottomLeft": {
+            "x1": 37.5424,
+            "y1": 435.891,
+            "x2": 53.8914,
+            "y2": 453.309,
+            "width": 16.348999999999997,
+            "height": 17.418000000000006
+          },
+          "rectTopLeft": {
+            "x": 37.5424,
+            "y": 338.691,
+            "width": 16.348999999999997,
+            "height": 17.418000000000006
+          },
+          "objectReference": {
+            "object": 1025,
+            "generation": 0
+          },
+          "appearanceState": "/Off",
+          "appearanceStates": [
+            "/Used only as an agricultural truck or agricultural trailer"
+          ],
+          "annotationFlags": 4,
+          "action": null,
+          "additionalActions": null
+        },
+        {
+          "page": 2,
+          "pageSizePoints": {
+            "width": 612.0,
+            "height": 792.0
+          },
+          "rectPdfBottomLeft": {
+            "x1": 37.5424,
+            "y1": 401.219,
+            "x2": 53.8914,
+            "y2": 418.637,
+            "width": 16.348999999999997,
+            "height": 17.418000000000006
+          },
+          "rectTopLeft": {
+            "x": 37.5424,
+            "y": 373.363,
+            "width": 16.348999999999997,
+            "height": 17.418000000000006
+          },
+          "objectReference": {
+            "object": 1026,
+            "generation": 0
+          },
+          "appearanceState": "/Off",
+          "appearanceStates": [
+            "/Ambulance"
+          ],
+          "annotationFlags": 4,
+          "action": null,
+          "additionalActions": null
+        },
+        {
+          "page": 2,
+          "pageSizePoints": {
+            "width": 612.0,
+            "height": 792.0
+          },
+          "rectPdfBottomLeft": {
+            "x1": 241.676,
+            "y1": 509.429,
+            "x2": 258.025,
+            "y2": 526.847,
+            "width": 16.34899999999999,
+            "height": 17.418000000000006
+          },
+          "rectTopLeft": {
+            "x": 241.676,
+            "y": 265.153,
+            "width": 16.34899999999999,
+            "height": 17.418000000000006
+          },
+          "objectReference": {
+            "object": 1027,
+            "generation": 0
+          },
+          "appearanceState": "/Off",
+          "appearanceStates": [
+            "/Ambulette* (* Vehicles that transport passengers may require NYS DOT Operating Authority)"
+          ],
+          "annotationFlags": 4,
+          "action": null,
+          "additionalActions": null
+        },
+        {
+          "page": 2,
+          "pageSizePoints": {
+            "width": 612.0,
+            "height": 792.0
+          },
+          "rectPdfBottomLeft": {
+            "x1": 242.112,
+            "y1": 480.738,
+            "x2": 258.461,
+            "y2": 498.156,
+            "width": 16.349000000000018,
+            "height": 17.418000000000006
+          },
+          "rectTopLeft": {
+            "x": 242.112,
+            "y": 293.844,
+            "width": 16.349000000000018,
+            "height": 17.418000000000006
+          },
+          "objectReference": {
+            "object": 1028,
+            "generation": 0
+          },
+          "appearanceState": "/Off",
+          "appearanceStates": [
+            "/Hearse"
+          ],
+          "annotationFlags": 4,
+          "action": null,
+          "additionalActions": null
+        },
+        {
+          "page": 2,
+          "pageSizePoints": {
+            "width": 612.0,
+            "height": 792.0
+          },
+          "rectPdfBottomLeft": {
+            "x1": 242.112,
+            "y1": 449.866,
+            "x2": 258.461,
+            "y2": 467.283,
+            "width": 16.349000000000018,
+            "height": 17.41700000000003
+          },
+          "rectTopLeft": {
+            "x": 242.112,
+            "y": 324.717,
+            "width": 16.349000000000018,
+            "height": 17.41700000000003
+          },
+          "objectReference": {
+            "object": 1029,
+            "generation": 0
+          },
+          "appearanceState": "/Off",
+          "appearanceStates": [
+            "/Combination Hearse/Invalid Coach* (* Vehicles that transport passengers may require NYS DOT Operating Authority)"
+          ],
+          "annotationFlags": 4,
+          "action": null,
+          "additionalActions": null
+        },
+        {
+          "page": 2,
+          "pageSizePoints": {
+            "width": 612.0,
+            "height": 792.0
+          },
+          "rectPdfBottomLeft": {
+            "x1": 242.112,
+            "y1": 417.138,
+            "x2": 258.461,
+            "y2": 434.556,
+            "width": 16.349000000000018,
+            "height": 17.418000000000006
+          },
+          "rectTopLeft": {
+            "x": 242.112,
+            "y": 357.444,
+            "width": 16.349000000000018,
+            "height": 17.418000000000006
+          },
+          "objectReference": {
+            "object": 1030,
+            "generation": 0
+          },
+          "appearanceState": "/Off",
+          "appearanceStates": [
+            "/Used to transport passengers* (* Vehicles that transport passengers may require NYS DOT Operating Authority) (Bus, Livery, School Bus, School Car)"
+          ],
+          "annotationFlags": 4,
+          "action": null,
+          "additionalActions": null
+        },
+        {
+          "page": 2,
+          "pageSizePoints": {
+            "width": 612.0,
+            "height": 792.0
+          },
+          "rectPdfBottomLeft": {
+            "x1": 389.168,
+            "y1": 509.89,
+            "x2": 405.517,
+            "y2": 527.308,
+            "width": 16.34899999999999,
+            "height": 17.418000000000006
+          },
+          "rectTopLeft": {
+            "x": 389.168,
+            "y": 264.692,
+            "width": 16.34899999999999,
+            "height": 17.418000000000006
+          },
+          "objectReference": {
+            "object": 1031,
+            "generation": 0
+          },
+          "appearanceState": "/Off",
+          "appearanceStates": [
+            "/Operates as a taxi* (* Vehicles that transport passengers may require NYS DOT Operating Authority) (you must complete the \u008dTaxis Only\u008e section below)"
+          ],
+          "annotationFlags": 4,
+          "action": null,
+          "additionalActions": null
+        },
+        {
+          "page": 2,
+          "pageSizePoints": {
+            "width": 612.0,
+            "height": 792.0
+          },
+          "rectPdfBottomLeft": {
+            "x1": 389.168,
+            "y1": 473.89,
+            "x2": 405.517,
+            "y2": 491.308,
+            "width": 16.34899999999999,
+            "height": 17.418000000000006
+          },
+          "rectTopLeft": {
+            "x": 389.168,
+            "y": 300.692,
+            "width": 16.34899999999999,
+            "height": 17.418000000000006
+          },
+          "objectReference": {
+            "object": 1032,
+            "generation": 0
+          },
+          "appearanceState": "/Off",
+          "appearanceStates": [
+            "/Rented without a driver (private rental)"
+          ],
+          "annotationFlags": 4,
+          "action": null,
+          "additionalActions": null
+        },
+        {
+          "page": 2,
+          "pageSizePoints": {
+            "width": 612.0,
+            "height": 792.0
+          },
+          "rectPdfBottomLeft": {
+            "x1": 389.168,
+            "y1": 442.145,
+            "x2": 405.517,
+            "y2": 459.563,
+            "width": 16.34899999999999,
+            "height": 17.418000000000006
+          },
+          "rectTopLeft": {
+            "x": 389.168,
+            "y": 332.437,
+            "width": 16.34899999999999,
+            "height": 17.418000000000006
+          },
+          "objectReference": {
+            "object": 1033,
+            "generation": 0
+          },
+          "appearanceState": "/Off",
+          "appearanceStates": [
+            "/Used to pick up passengers for compensation only in jurisdictions that do not regulate taxis* (* Vehicles that transport passengers may require NYS DOT Operating Authority)"
+          ],
+          "annotationFlags": 4,
+          "action": null,
+          "additionalActions": null
+        },
+        {
+          "page": 2,
+          "pageSizePoints": {
+            "width": 612.0,
+            "height": 792.0
+          },
+          "rectPdfBottomLeft": {
+            "x1": 389.168,
+            "y1": 409.581,
+            "x2": 405.517,
+            "y2": 426.999,
+            "width": 16.34899999999999,
+            "height": 17.418000000000006
+          },
+          "rectTopLeft": {
+            "x": 389.168,
+            "y": 365.001,
+            "width": 16.34899999999999,
+            "height": 17.418000000000006
+          },
+          "objectReference": {
+            "object": 1021,
+            "generation": 0
+          },
+          "appearanceState": "/Off",
+          "appearanceStates": [
+            "/Other"
+          ],
+          "annotationFlags": 4,
+          "action": null,
+          "additionalActions": null
+        }
+      ]
+    },
+    {
+      "index": 85,
+      "name": "TAXIS ONLY",
+      "handler": "TAXIS ONLY",
+      "alternateName": "TAXIS ONLY",
+      "mappingName": null,
+      "type": "button",
+      "typeCode": "/Btn",
+      "subtype": "radio",
+      "isTerminal": true,
+      "fillable": true,
+      "childFields": [],
+      "flags": 49152,
+      "flagNames": [
+        "noToggleToOff",
+        "radio"
+      ],
+      "currentValue": null,
+      "defaultValue": null,
+      "maxLength": null,
+      "options": null,
+      "exportValues": [
+        "/Vehicle is used as a contract carrier in NYC (commuter van with seating capacity between 9 and 14). You are eligible for LIVERY plates. ",
+        "/Vehicle is used for pick up in a jurisdiction that regulates taxis other than NYC, Westchester county, or Nassau county.",
+        "/Vehicle is used in New York City, Westchester, or Nassau counties."
+      ],
+      "action": null,
+      "additionalActions": null,
+      "widgets": [
+        {
+          "page": 2,
+          "pageSizePoints": {
+            "width": 612.0,
+            "height": 792.0
+          },
+          "rectPdfBottomLeft": {
+            "x1": 35.146,
+            "y1": 276.36,
+            "x2": 51.495,
+            "y2": 293.778,
+            "width": 16.348999999999997,
+            "height": 17.418000000000006
+          },
+          "rectTopLeft": {
+            "x": 35.146,
+            "y": 498.222,
+            "width": 16.348999999999997,
+            "height": 17.418000000000006
+          },
+          "objectReference": {
+            "object": 1006,
+            "generation": 0
+          },
+          "appearanceState": "/Off",
+          "appearanceStates": [
+            "/Vehicle is used in New York City, Westchester, or Nassau counties."
+          ],
+          "annotationFlags": 4,
+          "action": null,
+          "additionalActions": null
+        },
+        {
+          "page": 2,
+          "pageSizePoints": {
+            "width": 612.0,
+            "height": 792.0
+          },
+          "rectPdfBottomLeft": {
+            "x1": 35.146,
+            "y1": 252.633,
+            "x2": 51.495,
+            "y2": 270.051,
+            "width": 16.348999999999997,
+            "height": 17.417999999999978
+          },
+          "rectTopLeft": {
+            "x": 35.146,
+            "y": 521.9490000000001,
+            "width": 16.348999999999997,
+            "height": 17.417999999999978
+          },
+          "objectReference": {
+            "object": 1007,
+            "generation": 0
+          },
+          "appearanceState": "/Off",
+          "appearanceStates": [
+            "/Vehicle is used as a contract carrier in NYC (commuter van with seating capacity between 9 and 14). You are eligible for LIVERY plates. "
+          ],
+          "annotationFlags": 4,
+          "action": null,
+          "additionalActions": null
+        },
+        {
+          "page": 2,
+          "pageSizePoints": {
+            "width": 612.0,
+            "height": 792.0
+          },
+          "rectPdfBottomLeft": {
+            "x1": 368.963,
+            "y1": 276.36,
+            "x2": 384.876,
+            "y2": 293.778,
+            "width": 15.912999999999954,
+            "height": 17.418000000000006
+          },
+          "rectTopLeft": {
+            "x": 368.963,
+            "y": 498.222,
+            "width": 15.912999999999954,
+            "height": 17.418000000000006
+          },
+          "objectReference": {
+            "object": 1004,
+            "generation": 0
+          },
+          "appearanceState": "/Off",
+          "appearanceStates": [
+            "/Vehicle is used for pick up in a jurisdiction that regulates taxis other than NYC, Westchester county, or Nassau county."
+          ],
+          "annotationFlags": 4,
+          "action": null,
+          "additionalActions": null
+        }
+      ]
+    },
+    {
+      "index": 86,
+      "name": "PRIMARY OWNER No ID Identification Number",
+      "handler": "PRIMARY OWNER No ID Identification Number",
+      "alternateName": "PRIMARY OWNER No ID (Identification) Number",
+      "mappingName": null,
+      "type": "button",
+      "typeCode": "/Btn",
+      "subtype": "checkbox",
+      "isTerminal": true,
+      "fillable": true,
+      "childFields": [],
+      "flags": 0,
+      "flagNames": [],
+      "currentValue": null,
+      "defaultValue": null,
+      "maxLength": null,
+      "options": null,
+      "exportValues": [
+        "/On"
+      ],
+      "action": null,
+      "additionalActions": null,
+      "widgets": [
+        {
+          "page": 1,
+          "pageSizePoints": {
+            "width": 612.0,
+            "height": 792.0
+          },
+          "rectPdfBottomLeft": {
+            "x1": 168.116,
+            "y1": 235.835,
+            "x2": 179.956,
+            "y2": 246.675,
+            "width": 11.839999999999975,
+            "height": 10.840000000000003
+          },
+          "rectTopLeft": {
+            "x": 168.116,
+            "y": 545.325,
+            "width": 11.839999999999975,
+            "height": 10.840000000000003
+          },
+          "objectReference": {
+            "object": 1111,
+            "generation": 0
+          },
+          "appearanceState": "/Off",
+          "appearanceStates": [
+            "/On"
+          ],
+          "annotationFlags": 4,
+          "action": null,
+          "additionalActions": null
+        }
+      ]
+    },
+    {
+      "index": 87,
+      "name": "My signature authorizes the persons named in Section 1 to register this vehicle in that person\u2019s name",
+      "handler": "My signature authorizes the persons named in Section 1 to register this vehicle in that person\u2019s name",
+      "alternateName": "",
+      "mappingName": null,
+      "type": "group",
+      "typeCode": null,
+      "subtype": "fieldGroup",
+      "isTerminal": false,
+      "fillable": false,
+      "childFields": [
+        "My signature authorizes the persons named in Section 1 to register this vehicle in that person\u2019s name. I have provided the current ownership document"
+      ],
+      "flags": 0,
+      "flagNames": [],
+      "currentValue": null,
+      "defaultValue": null,
+      "maxLength": null,
+      "options": null,
+      "exportValues": [],
+      "action": null,
+      "additionalActions": null,
+      "widgets": []
+    },
+    {
+      "index": 88,
+      "name": "My signature authorizes the persons named in Section 1 to register this vehicle in that person\u2019s name. I have provided the current ownership document",
+      "handler": "My signature authorizes the persons named in Section 1 to register this vehicle in that person\u2019s name. I have provided the current ownership document",
+      "alternateName": "My signature authorizes the person(s) named in Section 1 to register this vehicle in that person\u2019s name. I have provided the current ownership document.",
+      "mappingName": null,
+      "type": "button",
+      "typeCode": "/Btn",
+      "subtype": "checkbox",
+      "isTerminal": true,
+      "fillable": true,
+      "childFields": [],
+      "flags": 0,
+      "flagNames": [],
+      "currentValue": null,
+      "defaultValue": null,
+      "maxLength": null,
+      "options": null,
+      "exportValues": [
+        "/On"
+      ],
+      "action": null,
+      "additionalActions": null,
+      "widgets": [
+        {
+          "page": 1,
+          "pageSizePoints": {
+            "width": 612.0,
+            "height": 792.0
+          },
+          "rectPdfBottomLeft": {
+            "x1": 485.698,
+            "y1": 173.953,
+            "x2": 497.538,
+            "y2": 184.793,
+            "width": 11.840000000000032,
+            "height": 10.840000000000003
+          },
+          "rectTopLeft": {
+            "x": 485.698,
+            "y": 607.207,
+            "width": 11.840000000000032,
+            "height": 10.840000000000003
+          },
+          "objectReference": {
+            "object": 1075,
+            "generation": 0
+          },
+          "appearanceState": "/Off",
+          "appearanceStates": [
+            "/On"
+          ],
+          "annotationFlags": 4,
+          "action": null,
+          "additionalActions": null
+        }
+      ]
+    }
+  ],
+  "unmatchedWidgetGroups": {}
+}

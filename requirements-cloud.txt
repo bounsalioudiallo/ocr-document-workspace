@@ -1,0 +1,6 @@
+transformers==5.14.1
+Pillow==12.3.0
+safetensors>=0.4
+pypdf>=6.0
+cryptography>=43.0
+google-auth[requests]>=2.35

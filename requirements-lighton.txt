@@ -1,0 +1,7 @@
+torch>=2.4
+transformers>=5.0
+Pillow>=10.4
+safetensors>=0.4
+pypdf>=6.0
+cryptography>=43.0
+google-auth[requests]>=2.35

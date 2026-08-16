@@ -1,0 +1,65 @@
+{
+  "schemaVersion": 1,
+  "template": "mv82-4.pdf",
+  "policy": {
+    "fillTextAndChoiceFieldsOnly": true,
+    "leaveCheckboxesRadiosAndSignaturesManual": true,
+    "generateFromOriginalTemplateOnDemand": true
+  },
+  "purposes": [
+    {
+      "id": "register",
+      "label": "Register a vehicle",
+      "reviewFields": ["fullName", "nysId", "dob", "street", "apartment", "city", "state", "zip", "vin", "year", "make", "bodyType", "fuelType", "color", "cylinders", "seating", "odometer", "printedName"]
+    },
+    {
+      "id": "renew",
+      "label": "Renew a registration",
+      "reviewFields": ["plate", "fullName", "nysId", "dob", "street", "apartment", "city", "state", "zip", "vin", "year", "make", "bodyType", "fuelType", "color", "printedName"]
+    },
+    {
+      "id": "title",
+      "label": "Get a title only",
+      "reviewFields": ["fullName", "nysId", "dob", "street", "apartment", "city", "state", "zip", "vin", "year", "make", "bodyType", "fuelType", "color", "cylinders", "seating", "odometer", "printedName"]
+    },
+    {
+      "id": "change",
+      "label": "Change a registration",
+      "reviewFields": ["plate", "fullName", "nysId", "dob", "changeDescription", "changeValue", "printedName"]
+    },
+    {
+      "id": "replace",
+      "label": "Replace lost or damaged items",
+      "reviewFields": ["plate", "fullName", "nysId", "dob", "apartment", "city", "state", "zip", "vin", "year", "make", "printedName"]
+    },
+    {
+      "id": "transfer",
+      "label": "Transfer plates",
+      "reviewFields": ["plate", "fullName", "nysId", "dob", "street", "apartment", "city", "state", "zip", "county", "vin", "year", "make", "bodyType", "fuelType", "color", "cylinders", "seating", "odometer", "printedName"]
+    }
+  ],
+  "fields": [
+    {"key": "plate", "label": "Current plate", "group": "Transaction", "fillMode": "text", "pdfHandlers": ["Current Plate Number"]},
+    {"key": "fullName", "label": "Full name or business name", "group": "Customer", "fillMode": "text", "pdfHandlers": ["NAME OF PRIMARY REGISTRANT Last First Middle or Business Name"]},
+    {"key": "nysId", "label": "NYS driver license / ID number", "group": "Customer", "fillMode": "text", "pdfHandlers": ["NYS driver license ID number of PRIMARY REGISTRANT"]},
+    {"key": "dob", "label": "Date of birth", "group": "Customer", "inputType": "date", "fillMode": "dateParts", "pdfHandlers": ["PRIMARY REGISTRANT Date of Birth Month", "PRIMARY REGISTRANT Date of Birth Day", "PRIMARY REGISTRANT DATE OF BIRTH Year"]},
+    {"key": "street", "label": "Mailing street address", "group": "Address", "fillMode": "text", "pdfHandlers": ["THE ADDRESS WHERE PRIMARY REGISTRANT GETS MAIL"]},
+    {"key": "apartment", "label": "Apartment", "group": "Address", "fillMode": "text", "allowBlank": true, "pdfHandlers": ["THE ADDRESS WHERE PRIMARY REGISTRANT GETS MAIL Apartment Number"]},
+    {"key": "city", "label": "City or town", "group": "Address", "fillMode": "text", "pdfHandlers": ["THE ADDRESS WHERE PRIMARY REGISTRANT GETS MAIL City or Town"]},
+    {"key": "state", "label": "State", "group": "Address", "fillMode": "choice", "pdfHandlers": ["THE ADDRESS WHERE PRIMARY REGISTRANT GETS MAIL State"]},
+    {"key": "zip", "label": "ZIP code", "group": "Address", "fillMode": "text", "pdfHandlers": ["THE ADDRESS WHERE PRIMARY REGISTRANT GETS MAIL Zip Code"]},
+    {"key": "county", "label": "County of residence", "group": "Address", "fillMode": "text", "pdfHandlers": ["County of Residence"]},
+    {"key": "vin", "label": "VIN", "group": "Vehicle", "fillMode": "text", "pdfHandlers": ["VEHICLE IDENTIFICATION NUMBER"]},
+    {"key": "year", "label": "Year", "group": "Vehicle", "fillMode": "text", "pdfHandlers": ["VEHICLE DESCRIPTION Year"]},
+    {"key": "make", "label": "Make", "group": "Vehicle", "fillMode": "text", "pdfHandlers": ["VEHICLE DESCRIPTION Make"]},
+    {"key": "bodyType", "label": "Body type", "group": "Vehicle", "fillMode": "manual", "manualReason": "The PDF uses radio buttons; staff marks this on the printed form.", "pdfHandlers": ["Body Type"]},
+    {"key": "fuelType", "label": "Fuel type", "group": "Vehicle", "fillMode": "manual", "manualReason": "The PDF uses radio buttons; staff marks this on the printed form.", "pdfHandlers": ["Type of power Fuel"]},
+    {"key": "color", "label": "Color", "group": "Vehicle", "fillMode": "text", "pdfHandlers": ["Color"]},
+    {"key": "cylinders", "label": "Cylinders", "group": "Vehicle", "fillMode": "text", "pdfHandlers": ["Cylinders"]},
+    {"key": "seating", "label": "Adult seating capacity", "group": "Vehicle", "fillMode": "text", "pdfHandlers": ["Adult Seating Capacity Including Driver"]},
+    {"key": "odometer", "label": "Odometer (miles)", "group": "Vehicle", "fillMode": "text", "pdfHandlers": ["Odometer Reading in Miles"]},
+    {"key": "printedName", "label": "Printed certification name", "group": "Certification", "fillMode": "text", "deriveFrom": "fullName", "pdfHandlers": ["Print Name in Full if registering in a business name, print your full name and title"]},
+    {"key": "changeDescription", "label": "Information being changed", "group": "Change", "fillMode": "manual", "manualReason": "This guides staff but has no dedicated MV-82 text handler.", "pdfHandlers": []},
+    {"key": "changeValue", "label": "New value", "group": "Change", "fillMode": "manual", "manualReason": "The new value belongs in the corresponding MV-82 field after staff identifies the change.", "pdfHandlers": []}
+  ]
+}

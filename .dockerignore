@@ -1,0 +1,22 @@
+**/.DS_Store
+.git
+.gitignore
+.next
+.vinext
+.venv-lighton
+.wrangler
+node_modules
+ocr-output
+outputs
+samples
+tests
+work
+*.log
+*.pem
+.env*
+MV-82 Field Checklist.pdf
+OCR_PROJECT_SUMMARY.md
+README.md
+db
+drizzle
+examples
