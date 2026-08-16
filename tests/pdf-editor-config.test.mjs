@@ -5,6 +5,7 @@ import test from "node:test";
 const automation = JSON.parse(readFileSync(new URL("../mv82-4-automation-fields.json", import.meta.url), "utf8"));
 const pdfConfig = JSON.parse(readFileSync(new URL("../mv82-4-fields.json", import.meta.url), "utf8"));
 const frontendDockerfile = readFileSync(new URL("../Dockerfile.frontend", import.meta.url), "utf8");
+const frontendCloudIgnore = readFileSync(new URL("../.gcloudignore.frontend", import.meta.url), "utf8");
 
 test("every MV-82 editor handler resolves to a positioned PDF widget", () => {
   const canonical = new Map(pdfConfig.fields.map((field) => [field.handler, field]));
@@ -39,4 +40,5 @@ test("the custom editor stays lightweight by rendering one mapped page at a time
 
 test("the production frontend image includes the PDF editor source document", () => {
   assert.match(frontendDockerfile, /COPY --from=build \/app\/public \.\/public/);
+  assert.doesNotMatch(frontendCloudIgnore, /^mv82-4\.pdf$/m);
 });
