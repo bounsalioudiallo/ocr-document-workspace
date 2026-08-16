@@ -48,4 +48,5 @@ test("the PDF editor bypasses cached template failures and offers an in-place re
   assert.match(frontendPage, /mv82-4\.pdf\?editor=/);
   assert.match(frontendPage, /cache: "no-store"/);
   assert.match(frontendPage, />Retry loading<\/button>/);
+  assert.match(frontendPage, /typeof pdf\.destroy === "function"/);
 });

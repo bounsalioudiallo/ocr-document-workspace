@@ -254,7 +254,7 @@ function PdfEditor({
           await page.render({ canvasContext: context, viewport, canvas }).promise;
           renderedPages.push(canvas.toDataURL("image/png"));
         }
-        await pdf.destroy();
+        if (typeof pdf.destroy === "function") await pdf.destroy();
         if (!cancelled) setPages(renderedPages);
       } catch (loadError) {
         console.error("MV-82 editor load failed", loadError);
