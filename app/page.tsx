@@ -1,7 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useId, useRef, useState } from "react";
-import { AUTOMATION_FIELDS, EMPTY_CASE_DATA, PURPOSES, inferCaseData, mergeOrganizedDocuments, reconcileOrganizedData, toPdfFields, type CaseData } from "./automation";
+import { AUTOMATION_FIELDS, EMPTY_CASE_DATA, PURPOSES, inferCaseData, mergeOrganizedDocuments, pdfDownloadFilename, reconcileOrganizedData, toPdfFields, type CaseData } from "./automation";
 
 type Box = { x: number; y: number; w: number; h: number };
 type Region = Box & { id: number };
@@ -763,7 +763,7 @@ export default function Home() {
   const missingFields = AUTOMATION_FIELDS.filter((field) => purposeKeys.has(field.key) && !field.allowBlank && !caseData[field.key]?.trim());
   const visibleFields = AUTOMATION_FIELDS.filter((field) => field.group !== "Change" || purposeId === "change");
   const fieldGroups = [...new Set(visibleFields.map((field) => field.group))];
-  const downloadName = `MV-82-${purposeId}-${caseData.plate || caseData.vin || "filled"}.pdf`;
+  const downloadName = pdfDownloadFilename(caseData.fullName);
 
   return (
     <main className="workspace-app">

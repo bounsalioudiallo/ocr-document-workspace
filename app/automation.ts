@@ -36,6 +36,31 @@ export function mergeOrganizedDocuments(documents: Array<CaseData | null>, curre
 }
 
 const clean = (value: string) => value.replace(/\s+/g, " ").replace(/^[:|\-\s]+|[:|\-\s]+$/g, "").trim();
+
+export function normalizeOrganizedCustomerName(value: string) {
+  const normalized = clean(value);
+  if (!normalized) return "";
+  const [lastName, ...remainingParts] = normalized.split(",");
+  if (remainingParts.length) {
+    const givenNames = clean(remainingParts.join(" ").replace(/,/g, " "));
+    return givenNames ? `${clean(lastName)}, ${givenNames}` : clean(lastName);
+  }
+  const nameParts = normalized.split(" ").filter(Boolean);
+  return nameParts.length > 1 ? `${nameParts[0]}, ${nameParts.slice(1).join(" ")}` : normalized;
+}
+
+export function pdfDownloadFilename(fullName: string, date = new Date()) {
+  const safeName = clean(fullName)
+    .replace(/[<>:"/\\|?*\u0000-\u001f]/g, "")
+    .replace(/[. ]+$/g, "") || "Customer";
+  const dateStamp = [
+    date.getFullYear(),
+    String(date.getMonth() + 1).padStart(2, "0"),
+    String(date.getDate()).padStart(2, "0"),
+  ].join("-");
+  return `${safeName} - ${dateStamp}.pdf`;
+}
+
 const firstMatch = (text: string, expression: RegExp, group = 1) => clean(text.match(expression)?.[group] || "");
 const withoutTableSeparators = (value: string) => clean(value.replace(/\s*\|\s*/g, " "));
 const FUEL_CODES = new Set(["G", "D", "E", "F", "C", "P", "N", "O"]);
@@ -179,6 +204,10 @@ export function reconcileOrganizedData(organized: CaseData, text: string): CaseD
   // JM028525 must never be promoted to the customer's driver-license field.
   const normalizedNysId = (reconciled.nysId || "").replace(/\D/g, "");
   reconciled.nysId = normalizedNysId.length === 9 ? normalizedNysId : inferred.nysId;
+
+  const sourceName = inferred.fullName.includes(",") ? inferred.fullName : reconciled.fullName;
+  reconciled.fullName = normalizeOrganizedCustomerName(sourceName);
+  if (reconciled.fullName) reconciled.printedName = reconciled.fullName;
 
   return reconciled;
 }

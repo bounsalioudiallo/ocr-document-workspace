@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 
-import { EMPTY_CASE_DATA, inferCaseData, mergeOrganizedDocuments, reconcileOrganizedData } from "../app/automation.ts";
+import { EMPTY_CASE_DATA, inferCaseData, mergeOrganizedDocuments, pdfDownloadFilename, reconcileOrganizedData } from "../app/automation.ts";
 
 test("extracts an unlabelled two-line name immediately before the street address", () => {
   const result = inferCaseData([`ID 747 930 754
@@ -60,6 +60,22 @@ Wt/Seats Fuel/Cyl STH BRK65C`;
   assert.equal(result.fuelType, "G");
   assert.equal(result.cylinders, "4");
   assert.equal(result.seating, "7");
+});
+
+test("restores the surname comma after Gemini organizes a customer name", () => {
+  const result = reconcileOrganizedData(
+    { ...EMPTY_CASE_DATA, fullName: "CAMARA SEKOU", printedName: "CAMARA SEKOU" },
+    "CAMARA, SEKOU\n501 WYONA ST\nBROOKLYN NY 11207",
+  );
+
+  assert.equal(result.fullName, "CAMARA, SEKOU");
+  assert.equal(result.printedName, "CAMARA, SEKOU");
+});
+
+test("names generated PDFs for the customer and filing date", () => {
+  const filename = pdfDownloadFilename("CAMARA, SEKOU", new Date(2026, 7, 16));
+
+  assert.equal(filename, "CAMARA, SEKOU - 2026-08-16.pdf");
 });
 
 test("merges separately organized documents into one filing without overwriting earlier values", () => {
