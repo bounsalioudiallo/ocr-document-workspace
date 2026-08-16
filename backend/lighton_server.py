@@ -42,7 +42,6 @@ with AUTOMATION_CONFIG.open(encoding="utf-8") as config_stream:
 ALLOWED_PDF_HANDLERS = {
     handler
     for field in _automation_config["fields"]
-    if field["fillMode"] != "manual"
     for handler in field["pdfHandlers"]
 }
 ORGANIZER_FIELDS = [str(field["key"]) for field in _automation_config["fields"]]

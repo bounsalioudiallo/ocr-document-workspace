@@ -10,6 +10,7 @@ COPY build ./build
 COPY public ./public
 COPY worker ./worker
 COPY mv82-4-automation-fields.json ./
+COPY mv82-4-fields.json ./
 COPY next.config.ts postcss.config.mjs tsconfig.json vite.config.ts ./
 RUN npm run build
 

@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useId, useRef, useState } from "react";
+import pdfFieldConfig from "../mv82-4-fields.json" with { type: "json" };
 import { AUTOMATION_FIELDS, EMPTY_CASE_DATA, PURPOSES, inferCaseData, mergeOrganizedDocuments, reconcileOrganizedData, toPdfFields, type CaseData } from "./automation";
 
 type Box = { x: number; y: number; w: number; h: number };
@@ -37,6 +38,44 @@ type DocumentItem = {
   durationMs: number;
 };
 type SelectOption = { value: string; label: string };
+type PdfWidget = {
+  page: number;
+  pageSizePoints: { width: number; height: number };
+  rectTopLeft: { x: number; y: number; width: number; height: number };
+  appearanceStates: string[];
+};
+type PdfFormField = {
+  handler: string;
+  type: "text" | "choice" | "button" | "group";
+  subtype: string;
+  fillable: boolean;
+  options: string[] | null;
+  widgets: PdfWidget[];
+};
+
+const PDF_FORM_FIELDS = pdfFieldConfig.fields as PdfFormField[];
+const EDITOR_HANDLER_KEYS = new Map(
+  AUTOMATION_FIELDS.flatMap((field) => field.pdfHandlers.map((handler) => [handler, field.key] as const)),
+);
+const PDF_EDITOR_FIELDS = PDF_FORM_FIELDS.filter((field) => field.fillable && EDITOR_HANDLER_KEYS.has(field.handler));
+const BODY_TYPE_TO_PDF: Record<string, string> = {
+  "2DSD": "/2-Door", "4DSD": "/4-Door", CONV: "/Convertible", LIMO: "/Limo",
+  MCY: "/Motorcycle", PICK: "/Pick-up", SUBN: "/Suburban/SUV", TOW: "/Tow",
+  TRL: "/Trailer", VAN: "/Van", OTHER: "/Other",
+};
+const PDF_TO_BODY_TYPE = Object.fromEntries(Object.entries(BODY_TYPE_TO_PDF).map(([key, value]) => [value, key]));
+const FUEL_TYPE_TO_PDF: Record<string, string> = {
+  G: "/Gas", D: "/Diesel", E: "/Electric", F: "/Flex", C: "/CNG (Compressed Natural Gas)",
+  P: "/Propane", N: "/None", O: "/Other",
+};
+const PDF_TO_FUEL_TYPE = Object.fromEntries(Object.entries(FUEL_TYPE_TO_PDF).map(([key, value]) => [value, key]));
+
+const caseDataToPdfEditorValues = (data: CaseData) => {
+  const values = toPdfFields(data);
+  if (BODY_TYPE_TO_PDF[data.bodyType]) values["Body Type"] = BODY_TYPE_TO_PDF[data.bodyType];
+  if (FUEL_TYPE_TO_PDF[data.fuelType]) values["Type of power Fuel"] = FUEL_TYPE_TO_PDF[data.fuelType];
+  return values;
+};
 
 const loadHtmlImage = (src: string) => new Promise<HTMLImageElement>((resolve, reject) => {
   const image = new Image();
@@ -171,6 +210,135 @@ function PdfPreview({ data }: { data: Uint8Array }) {
   );
 }
 
+function PdfEditor({
+  values,
+  onChange,
+  onClose,
+  onDownload,
+  downloading,
+  error,
+}: {
+  values: Record<string, string>;
+  onChange: (handler: string, value: string) => void;
+  onClose: () => void;
+  onDownload: () => void;
+  downloading: boolean;
+  error: string;
+}) {
+  const [pages, setPages] = useState<string[]>([]);
+  const [renderError, setRenderError] = useState("");
+  const [pageNumber, setPageNumber] = useState(1);
+  const [editorZoom, setEditorZoom] = useState(.95);
+
+  useEffect(() => {
+    let cancelled = false;
+    void (async () => {
+      try {
+        const response = await fetch("/mv82-4.pdf");
+        if (!response.ok) throw new Error("Template unavailable");
+        const pdfjs = await import("pdfjs-dist/legacy/build/pdf.mjs");
+        pdfjs.GlobalWorkerOptions.workerSrc = new URL("pdfjs-dist/legacy/build/pdf.worker.min.mjs", import.meta.url).toString();
+        const pdf = await pdfjs.getDocument({ data: new Uint8Array(await response.arrayBuffer()) }).promise;
+        const renderedPages: string[] = [];
+        for (let currentPage = 1; currentPage <= pdf.numPages; currentPage += 1) {
+          const page = await pdf.getPage(currentPage);
+          const viewport = page.getViewport({ scale: 2 });
+          const canvas = window.document.createElement("canvas");
+          canvas.width = viewport.width;
+          canvas.height = viewport.height;
+          const context = canvas.getContext("2d");
+          if (!context) throw new Error("Canvas unavailable");
+          await page.render({ canvasContext: context, viewport, canvas }).promise;
+          renderedPages.push(canvas.toDataURL("image/png"));
+        }
+        await pdf.destroy();
+        if (!cancelled) setPages(renderedPages);
+      } catch {
+        if (!cancelled) setRenderError("The MV-82 editor could not load. Return to the form and try again.");
+      }
+    })();
+    return () => { cancelled = true; };
+  }, []);
+
+  const pageFields = PDF_EDITOR_FIELDS.flatMap((field) => field.widgets
+    .filter((widget) => widget.page === pageNumber)
+    .map((widget, widgetIndex) => ({ field, widget, widgetIndex })));
+
+  return (
+    <section className="pdf-editor-shell" role="dialog" aria-modal="true" aria-label="Editable MV-82 preview">
+      <header className="pdf-editor-toolbar">
+        <button className="pdf-editor-back" onClick={onClose}><span aria-hidden="true">←</span> Back to form</button>
+        <div className="pdf-editor-title"><strong>Editable MV-82</strong><small>Review directly on the official form</small></div>
+        <nav className="pdf-editor-pages" aria-label="PDF page">
+          <button className={pageNumber === 1 ? "active" : ""} onClick={() => setPageNumber(1)}>Page 1</button>
+          <button className={pageNumber === 2 ? "active" : ""} onClick={() => setPageNumber(2)}>Page 2</button>
+        </nav>
+        <div className="pdf-editor-zoom">
+          <button aria-label="Zoom out" onClick={() => setEditorZoom((current) => Math.max(.65, current - .1))}>−</button>
+          <span>{Math.round(editorZoom * 100)}%</span>
+          <button aria-label="Zoom in" onClick={() => setEditorZoom((current) => Math.min(1.6, current + .1))}>+</button>
+        </div>
+        <button className="primary pdf-editor-download" onClick={onDownload} disabled={downloading}>{downloading ? "Preparing…" : "Download edited PDF"}</button>
+      </header>
+      {(error || renderError) && <div className="pdf-editor-error" role="alert">{error || renderError}</div>}
+      <div className="pdf-editor-stage">
+        {!pages.length && !renderError ? <div className="pdf-editor-loading"><span /> Loading editable PDF…</div> : null}
+        {pages[pageNumber - 1] && (
+          <div className="pdf-editor-page" style={{ width: 612 * editorZoom, height: 792 * editorZoom }}>
+            <img src={pages[pageNumber - 1]} alt={`MV-82 page ${pageNumber}`} />
+            <div className="pdf-editor-fields" aria-label={`Editable fields for MV-82 page ${pageNumber}`}>
+              {pageFields.map(({ field, widget, widgetIndex }) => {
+                const pageWidth = widget.pageSizePoints.width;
+                const pageHeight = widget.pageSizePoints.height;
+                const rawRect = widget.rectTopLeft;
+                const top = rawRect.height < 0 ? rawRect.y + rawRect.height : rawRect.y;
+                const height = Math.abs(rawRect.height);
+                const style = {
+                  left: `${rawRect.x / pageWidth * 100}%`,
+                  top: `${top / pageHeight * 100}%`,
+                  width: `${rawRect.width / pageWidth * 100}%`,
+                  height: `${height / pageHeight * 100}%`,
+                  fontSize: Math.max(7, 9 * editorZoom),
+                };
+                const value = values[field.handler] || "";
+                const key = `${field.handler}-${pageNumber}-${widgetIndex}`;
+                if (field.type === "button") {
+                  const option = widget.appearanceStates[0] || "/On";
+                  const checked = value === option;
+                  return <button
+                    key={key}
+                    type="button"
+                    className={`pdf-editor-check ${checked ? "checked" : ""}`}
+                    style={style}
+                    aria-pressed={checked}
+                    aria-label={`${field.handler}: ${option.replace(/^\//, "")}`}
+                    onClick={() => onChange(field.handler, checked ? "" : option)}
+                  >{checked ? "✓" : ""}</button>;
+                }
+                if (field.type === "choice" && field.options?.length) {
+                  return <select key={key} className="pdf-editor-field" style={style} value={value} aria-label={field.handler} onChange={(event) => onChange(field.handler, event.target.value)}>
+                    <option value="" />
+                    {field.options.map((option) => <option key={option} value={option}>{option}</option>)}
+                  </select>;
+                }
+                return <input
+                  key={key}
+                  className="pdf-editor-field"
+                  style={style}
+                  value={value}
+                  aria-label={field.handler}
+                  onChange={(event) => onChange(field.handler, event.target.value)}
+                  autoComplete="off"
+                />;
+              })}
+            </div>
+          </div>
+        )}
+      </div>
+    </section>
+  );
+}
+
 function CustomSelect({
   value,
   options,
@@ -285,6 +453,8 @@ export default function Home() {
   const [pdfUrl, setPdfUrl] = useState<string | null>(null);
   const [pdfData, setPdfData] = useState<Uint8Array | null>(null);
   const [previewMode, setPreviewMode] = useState<"source" | "raw" | "pdf">("source");
+  const [pdfEditorOpen, setPdfEditorOpen] = useState(false);
+  const [pdfEditorValues, setPdfEditorValues] = useState<Record<string, string>>({});
   const extracting = extractingEngine !== null;
   const importing = importStatus !== null;
   const activeDocument = documents.find((document) => document.id === activeId) || null;
@@ -667,15 +837,48 @@ export default function Home() {
     setPdfData(null);
   };
 
-  const generatePdf = async () => {
+  const openPdfEditor = () => {
+    setPdfError("");
+    setPdfEditorValues(caseDataToPdfEditorValues(caseData));
+    setPdfEditorOpen(true);
+  };
+
+  const updatePdfEditorField = (handler: string, value: string) => {
+    const key = EDITOR_HANDLER_KEYS.get(handler);
+    const nextValues = { ...pdfEditorValues, [handler]: value };
+    if (key === "fullName") {
+      nextValues["Print Name in Full if registering in a business name, print your full name and title"] = value;
+    }
+    setPdfEditorValues(nextValues);
+    if (!key) return;
+    if (key === "dob") {
+      const month = nextValues["PRIMARY REGISTRANT Date of Birth Month"] || "";
+      const day = nextValues["PRIMARY REGISTRANT Date of Birth Day"] || "";
+      const year = nextValues["PRIMARY REGISTRANT DATE OF BIRTH Year"] || "";
+      if (month && day && /^\d{4}$/.test(year)) updateCaseField("dob", `${year}-${month}-${day}`);
+      return;
+    }
+    if (key === "bodyType") {
+      updateCaseField(key, PDF_TO_BODY_TYPE[value] || "");
+      return;
+    }
+    if (key === "fuelType") {
+      updateCaseField(key, PDF_TO_FUEL_TYPE[value] || "");
+      return;
+    }
+    updateCaseField(key, value);
+  };
+
+  const generatePdf = async (editorValues?: Record<string, string>, download = false) => {
     if (generatingPdf) return;
     setGeneratingPdf(true);
     setPdfError("");
     try {
+      const fields = { ...toPdfFields(caseData), ...(editorValues || {}) };
       const response = await fetch(backendEndpoint("fill-mv82"), {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ fields: toPdfFields(caseData) }),
+        body: JSON.stringify({ fields }),
       });
       const result = await response.json() as { pdf?: string; error?: string };
       if (!response.ok || !result.pdf) throw new Error(result.error || "Unable to generate MV-82");
@@ -688,6 +891,12 @@ export default function Home() {
       setPdfUrl(url);
       setPdfData(bytes);
       setPreviewMode("pdf");
+      if (download) {
+        const anchor = window.document.createElement("a");
+        anchor.href = url;
+        anchor.download = `MV-82-${purposeId}-${caseData.plate || caseData.vin || "filled"}.pdf`;
+        anchor.click();
+      }
     } catch (error) {
       setPdfError(error instanceof Error ? error.message : "Unable to generate MV-82");
     } finally {
@@ -729,6 +938,8 @@ export default function Home() {
     setPdfUrl(null);
     setPdfData(null);
     setPdfError("");
+    setPdfEditorOpen(false);
+    setPdfEditorValues({});
     setReorganizeError("");
     setPreviewMode("source");
     if (fileInputRef.current) fileInputRef.current.value = "";
@@ -748,11 +959,13 @@ export default function Home() {
 
   useEffect(() => {
     const onKeyDown = (event: KeyboardEvent) => {
-      if (event.key === "Escape" && activeId !== null) closeDocument();
+      if (event.key !== "Escape") return;
+      if (pdfEditorOpen) setPdfEditorOpen(false);
+      else if (activeId !== null) closeDocument();
     };
     window.addEventListener("keydown", onKeyDown);
     return () => window.removeEventListener("keydown", onKeyDown);
-  });
+  }, [activeId, pdfEditorOpen]);
 
   useEffect(() => () => {
     objectUrlsRef.current.forEach((src) => URL.revokeObjectURL(src));
@@ -841,7 +1054,7 @@ export default function Home() {
               <div className={`review-readiness ${missingFields.length ? "incomplete" : "ready"}`}>
                 {missingFields.length ? `${missingFields.length} to review` : "Ready"}
               </div>
-              <button className="primary preview-mv82" onClick={() => void generatePdf()} disabled={generatingPdf}>{generatingPdf ? "Generating…" : "Preview MV-82"}</button>
+              <button className="primary preview-mv82" onClick={openPdfEditor}>Preview MV-82</button>
             </section>
             <span className="review-toolbar-divider" aria-hidden="true" />
             <section className="document-view-controls" aria-label="Document view">
@@ -905,6 +1118,15 @@ export default function Home() {
       )}
 
       {view === "form" && reorganizeError && <div className="gemini-error-toast" role="alert">{reorganizeError}</div>}
+
+      {pdfEditorOpen && <PdfEditor
+        values={pdfEditorValues}
+        onChange={updatePdfEditorField}
+        onClose={() => setPdfEditorOpen(false)}
+        onDownload={() => void generatePdf(pdfEditorValues, true)}
+        downloading={generatingPdf}
+        error={pdfError}
+      />}
 
       {activeDocument && (
         <div className="document-modal" onClick={(event) => { if (event.target === event.currentTarget) window.setTimeout(closeDocument, 0); }}>
