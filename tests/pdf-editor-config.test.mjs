@@ -4,6 +4,7 @@ import test from "node:test";
 
 const automation = JSON.parse(readFileSync(new URL("../mv82-4-automation-fields.json", import.meta.url), "utf8"));
 const pdfConfig = JSON.parse(readFileSync(new URL("../mv82-4-fields.json", import.meta.url), "utf8"));
+const frontendDockerfile = readFileSync(new URL("../Dockerfile.frontend", import.meta.url), "utf8");
 
 test("every MV-82 editor handler resolves to a positioned PDF widget", () => {
   const canonical = new Map(pdfConfig.fields.map((field) => [field.handler, field]));
@@ -34,4 +35,8 @@ test("the custom editor stays lightweight by rendering one mapped page at a time
 
   assert.deepEqual(widgetCounts, [38, 2]);
   assert.ok(Math.max(...widgetCounts) < 50);
+});
+
+test("the production frontend image includes the PDF editor source document", () => {
+  assert.match(frontendDockerfile, /COPY --from=build \/app\/public \.\/public/);
 });
