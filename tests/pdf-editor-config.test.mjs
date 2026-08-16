@@ -28,7 +28,7 @@ test("every MV-82 editor handler resolves to a positioned PDF widget", () => {
   }
 });
 
-test("the custom editor stays lightweight by rendering one mapped page at a time", () => {
+test("the custom editor keeps each vertically displayed page's overlays bounded", () => {
   const mappedHandlers = new Set(automation.fields.flatMap((field) => field.pdfHandlers));
   const widgetCounts = [1, 2].map((page) => pdfConfig.fields
     .filter((field) => mappedHandlers.has(field.handler))
@@ -37,6 +37,8 @@ test("the custom editor stays lightweight by rendering one mapped page at a time
 
   assert.deepEqual(widgetCounts, [38, 2]);
   assert.ok(Math.max(...widgetCounts) < 50);
+  assert.match(frontendPage, /className="pdf-editor-document"/);
+  assert.doesNotMatch(frontendPage, /pdf-editor-pages/);
 });
 
 test("the production frontend image includes the PDF editor source document", () => {

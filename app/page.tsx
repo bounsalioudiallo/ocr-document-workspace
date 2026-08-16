@@ -228,7 +228,6 @@ function PdfEditor({
   const [pages, setPages] = useState<string[]>([]);
   const [renderError, setRenderError] = useState("");
   const [loadAttempt, setLoadAttempt] = useState(0);
-  const [pageNumber, setPageNumber] = useState(1);
   const [editorZoom, setEditorZoom] = useState(.95);
 
   useEffect(() => {
@@ -265,19 +264,11 @@ function PdfEditor({
     return () => { cancelled = true; };
   }, [loadAttempt]);
 
-  const pageFields = PDF_EDITOR_FIELDS.flatMap((field) => field.widgets
-    .filter((widget) => widget.page === pageNumber)
-    .map((widget, widgetIndex) => ({ field, widget, widgetIndex })));
-
   return (
     <section className="pdf-editor-shell" role="dialog" aria-modal="true" aria-label="Editable MV-82 preview">
       <header className="pdf-editor-toolbar">
         <button className="pdf-editor-back" onClick={onClose}><span aria-hidden="true">←</span> Back to form</button>
         <div className="pdf-editor-title"><strong>Editable MV-82</strong><small>Review directly on the official form</small></div>
-        <nav className="pdf-editor-pages" aria-label="PDF page">
-          <button className={pageNumber === 1 ? "active" : ""} onClick={() => setPageNumber(1)}>Page 1</button>
-          <button className={pageNumber === 2 ? "active" : ""} onClick={() => setPageNumber(2)}>Page 2</button>
-        </nav>
         <div className="pdf-editor-zoom">
           <button aria-label="Zoom out" onClick={() => setEditorZoom((current) => Math.max(.65, current - .1))}>−</button>
           <span>{Math.round(editorZoom * 100)}%</span>
@@ -292,11 +283,16 @@ function PdfEditor({
       </div>}
       <div className="pdf-editor-stage">
         {!pages.length && !renderError ? <div className="pdf-editor-loading"><span /> Loading editable PDF…</div> : null}
-        {pages[pageNumber - 1] && (
-          <div className="pdf-editor-page" style={{ width: 612 * editorZoom, height: 792 * editorZoom }}>
-            <img src={pages[pageNumber - 1]} alt={`MV-82 page ${pageNumber}`} />
-            <div className="pdf-editor-fields" aria-label={`Editable fields for MV-82 page ${pageNumber}`}>
-              {pageFields.map(({ field, widget, widgetIndex }) => {
+        {pages.length > 0 && <div className="pdf-editor-document" aria-label="Editable MV-82 document">
+          {pages.map((pageSource, pageIndex) => {
+            const pageNumber = pageIndex + 1;
+            const pageFields = PDF_EDITOR_FIELDS.flatMap((field) => field.widgets
+              .filter((widget) => widget.page === pageNumber)
+              .map((widget, widgetIndex) => ({ field, widget, widgetIndex })));
+            return <div key={pageNumber} className="pdf-editor-page" style={{ width: 612 * editorZoom, height: 792 * editorZoom }}>
+              <img src={pageSource} alt={`MV-82 page ${pageNumber}`} />
+              <div className="pdf-editor-fields" aria-label={`Editable fields for MV-82 page ${pageNumber}`}>
+                {pageFields.map(({ field, widget, widgetIndex }) => {
                 const pageWidth = widget.pageSizePoints.width;
                 const pageHeight = widget.pageSizePoints.height;
                 const rawRect = widget.rectTopLeft;
@@ -339,10 +335,11 @@ function PdfEditor({
                   onChange={(event) => onChange(field.handler, event.target.value)}
                   autoComplete="off"
                 />;
-              })}
+                })}
+              </div>
             </div>
-          </div>
-        )}
+          })}
+        </div>}
       </div>
     </section>
   );
