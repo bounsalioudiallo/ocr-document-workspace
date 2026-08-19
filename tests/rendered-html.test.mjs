@@ -19,7 +19,8 @@ test("renders the OCR workspace", async () => {
   const html = await response.text();
   assert.match(html, /<title>OCR Workspace<\/title>/i);
   assert.match(html, /OCR Workspace/);
-  assert.match(html, /Add files/);
+  assert.match(html, /Add customer/);
+  assert.match(html, /Clear workspace/);
   assert.doesNotMatch(html, /Extract Google/);
   assert.match(html, /Form/);
   assert.doesNotMatch(html, /codex-preview|react-loading-skeleton/);

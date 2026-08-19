@@ -1,10 +1,12 @@
 "use client";
 
+/* eslint-disable react-hooks/refs -- pointer handlers intentionally read and write drag refs only after user events */
+
 import { useCallback, useEffect, useId, useRef, useState } from "react";
 import { AUTOMATION_FIELDS, EMPTY_CASE_DATA, PURPOSES, inferCaseData, mergeOrganizedDocuments, pdfDownloadFilename, reconcileOrganizedData, toPdfFields, type CaseData } from "./automation";
+import { clearWorkspaceStorage, estimateWorkspaceStorage, loadWorkspace, requestPersistentWorkspaceStorage, saveWorkspace } from "./workspace-storage";
+import { createCustomer, mergeCustomerDocuments, uniqueCustomerName, type Box, type CustomerItem, type DocumentItem, type OcrEngine, type Region } from "./workspace-types";
 
-type Box = { x: number; y: number; w: number; h: number };
-type Region = Box & { id: number };
 type ResizeCorner = "nw" | "ne" | "sw" | "se";
 type RegionDrag = Region & {
   clientX: number;
@@ -12,8 +14,6 @@ type RegionDrag = Region & {
   mode: "move" | "resize";
   corner?: ResizeCorner;
 };
-type OcrEngine = "lighton" | "google";
-type DocumentState = "idle" | "extracting" | "done" | "failed";
 // Google Vision remains implemented for future benchmarks, but is intentionally
 // hidden from operators while LightOn is the active UI engine.
 const SHOW_GOOGLE_OCR_TEST = false;
@@ -21,20 +21,6 @@ const backendEndpoint = (path: string) => {
   const localBrowser = typeof window !== "undefined"
     && (window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1");
   return localBrowser ? `http://127.0.0.1:8765/${path}` : `/api/${path}`;
-};
-type DocumentItem = {
-  id: number;
-  name: string;
-  pageLabel: string | null;
-  src: string;
-  rotation: number;
-  regions: Region[];
-  text: string;
-  rawText: string;
-  state: DocumentState;
-  organizedData: CaseData | null;
-  organizer: "local" | "gemini" | null;
-  durationMs: number;
 };
 type SelectOption = { value: string; label: string };
 
@@ -76,15 +62,34 @@ const cropCanvas = (source: HTMLCanvasElement, box: Box) => {
   return canvas.toDataURL("image/png");
 };
 
-const canvasObjectUrl = (canvas: HTMLCanvasElement) => new Promise<string>((resolve, reject) => {
+const canvasBlob = (canvas: HTMLCanvasElement) => new Promise<Blob>((resolve, reject) => {
   canvas.toBlob((blob) => {
     if (!blob) {
       reject(new Error("Unable to render PDF page"));
       return;
     }
-    resolve(URL.createObjectURL(blob));
+    resolve(blob);
   }, "image/png");
 });
+
+const renderPdfPage = async (blob: Blob, pageNumber: number) => {
+  const pdfjs = await import("pdfjs-dist/legacy/build/pdf.mjs");
+  pdfjs.GlobalWorkerOptions.workerSrc = new URL("pdfjs-dist/legacy/build/pdf.worker.min.mjs", import.meta.url).toString();
+  const pdf = await pdfjs.getDocument({ data: await blob.arrayBuffer() }).promise;
+  try {
+    const page = await pdf.getPage(pageNumber);
+    const viewport = page.getViewport({ scale: 3 });
+    const canvas = window.document.createElement("canvas");
+    canvas.width = viewport.width;
+    canvas.height = viewport.height;
+    const context = canvas.getContext("2d");
+    if (!context) throw new Error("Canvas unavailable");
+    await page.render({ canvasContext: context, viewport, canvas }).promise;
+    return canvasBlob(canvas);
+  } finally {
+    await (pdf as unknown as { destroy(): Promise<void> }).destroy();
+  }
+};
 
 const createCenteredRegion = (width: number, height: number): Region => {
   const w = Math.max(1, width * .6);
@@ -135,8 +140,6 @@ function PdfPreview({ data }: { data: Uint8Array }) {
 
   useEffect(() => {
     let cancelled = false;
-    setPages([]);
-    setError("");
     void (async () => {
       try {
         const pdfjs = await import("pdfjs-dist/legacy/build/pdf.mjs");
@@ -259,41 +262,71 @@ export default function Home() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const stageRef = useRef<HTMLElement>(null);
   const regionDrag = useRef<RegionDrag | null>(null);
-  const closeGuard = useRef(0);
+  const closeGuard = useRef(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
+  const fileInputCustomerRef = useRef<string | null>(null);
   const objectUrlsRef = useRef<string[]>([]);
   const pdfUrlRef = useRef<string | null>(null);
-  const manuallyEditedFieldsRef = useRef(new Set<string>());
+  const persistenceTimerRef = useRef<number | null>(null);
+  const persistenceRequestedRef = useRef(false);
+  const [customers, setCustomers] = useState<CustomerItem[]>([]);
   const [documents, setDocuments] = useState<DocumentItem[]>([]);
+  const [nextCustomerSequence, setNextCustomerSequence] = useState(1);
+  const [selectedCustomerId, setSelectedCustomerId] = useState<string | null>(null);
   const [importStatus, setImportStatus] = useState<string | null>(null);
   const [activeId, setActiveId] = useState<number | null>(null);
   const [zoom, setZoom] = useState(1);
   const [baseSize, setBaseSize] = useState<{ width: number; height: number } | null>(null);
+  const [sourceCanvasSize, setSourceCanvasSize] = useState<{ width: number; height: number } | null>(null);
   const [extractingEngine, setExtractingEngine] = useState<OcrEngine | null>(null);
-  const [resultEngine, setResultEngine] = useState<OcrEngine>("lighton");
+  const [extractingCustomerId, setExtractingCustomerId] = useState<string | null>(null);
   const [view, setView] = useState<"files" | "form">("files");
   const [selectedSourceId, setSelectedSourceId] = useState<number | null>(null);
-  const [rerunArmed, setRerunArmed] = useState(false);
-  const [newOcrArmed, setNewOcrArmed] = useState(false);
+  const [rerunArmedCustomerId, setRerunArmedCustomerId] = useState<string | null>(null);
+  const [clearWorkspaceOpen, setClearWorkspaceOpen] = useState(false);
+  const [removedDocument, setRemovedDocument] = useState<{ document: DocumentItem; index: number } | null>(null);
   const [reorganizing, setReorganizing] = useState(false);
   const [reorganizeError, setReorganizeError] = useState("");
-  const [caseData, setCaseData] = useState<CaseData>({ ...EMPTY_CASE_DATA });
-  const [conflictingFields, setConflictingFields] = useState<Set<string>>(new Set());
-  const [purposeId, setPurposeId] = useState(PURPOSES[0].id);
   const [generatingPdf, setGeneratingPdf] = useState(false);
   const [pdfError, setPdfError] = useState("");
   const [pdfUrl, setPdfUrl] = useState<string | null>(null);
   const [pdfData, setPdfData] = useState<Uint8Array | null>(null);
   const [previewMode, setPreviewMode] = useState<"source" | "raw" | "pdf">("source");
+  const [workspaceHydrated, setWorkspaceHydrated] = useState(false);
+  const [storageStatus, setStorageStatus] = useState<"idle" | "saved" | "error">("idle");
   const extracting = extractingEngine !== null;
   const importing = importStatus !== null;
   const activeDocument = documents.find((document) => document.id === activeId) || null;
-  const selectedSource = documents.find((document) => document.id === selectedSourceId) || documents[0] || null;
+  const selectedCustomer = customers.find((customer) => customer.id === selectedCustomerId) || null;
+  const formDocuments = selectedCustomer ? documents.filter((document) => document.customerId === selectedCustomer.id) : [];
+  const caseData = selectedCustomer?.caseData || EMPTY_CASE_DATA;
+  const conflictingFields = new Set(selectedCustomer?.conflictingFields || []);
+  const purposeId = selectedCustomer?.purposeId || PURPOSES[0].id;
+  const selectedSource = formDocuments.find((document) => document.id === selectedSourceId) || formDocuments[0] || null;
   const selectedPurpose = PURPOSES.find((purpose) => purpose.id === purposeId) || PURPOSES[0];
-  const combinedOcrText = documents
+  const combinedOcrText = formDocuments
     .filter((document) => document.text.trim())
     .map((document, index) => `===== DOCUMENT ${index + 1}: ${document.name} =====\n\n${document.text}`)
     .join("\n\n");
+
+  const updateCustomer = useCallback((id: string, updater: (customer: CustomerItem) => CustomerItem) => {
+    setCustomers((current) => current.map((customer) => customer.id === id ? updater(customer) : customer));
+  }, []);
+
+  const resetPdfPreview = useCallback(() => {
+    if (pdfUrlRef.current) URL.revokeObjectURL(pdfUrlRef.current);
+    pdfUrlRef.current = null;
+    setPdfUrl(null);
+    setPdfData(null);
+    setPdfError("");
+    setPreviewMode("source");
+  }, []);
+
+  const selectCustomerForForm = (customerId: string) => {
+    resetPdfPreview();
+    setSelectedCustomerId(customerId);
+    setSelectedSourceId(documents.find((document) => document.customerId === customerId)?.id || null);
+  };
 
   const updateDocument = useCallback((id: number, changes: Partial<DocumentItem>) => {
     setDocuments((current) => current.map((document) => document.id === id ? { ...document, ...changes } : document));
@@ -319,6 +352,7 @@ export default function Home() {
       canvas.height = rendered.height;
       const context = canvas.getContext("2d");
       context?.drawImage(rendered, 0, 0);
+      setSourceCanvasSize({ width: rendered.width, height: rendered.height });
       if (!activeDocument.regions.length) {
         const region = createCenteredRegion(rendered.width, rendered.height);
         updateDocument(activeDocument.id, { regions: [region], text: "", rawText: "", state: "idle", organizedData: null, organizer: null, durationMs: 0 });
@@ -338,14 +372,15 @@ export default function Home() {
     return () => observer.disconnect();
   }, [activeId, updateDisplaySize]);
 
-  const addFiles = async (files: FileList | File[]) => {
-    if (importing) return;
+  const addFiles = async (files: FileList | File[], customerId: string) => {
+    if (importing || !customers.some((customer) => customer.id === customerId)) return;
     const additions: DocumentItem[] = [];
     const selectedFiles = Array.from(files);
     setImportStatus(`Preparing ${selectedFiles.length} ${selectedFiles.length === 1 ? "file" : "files"}…`);
     try {
       for (let fileIndex = 0; fileIndex < selectedFiles.length; fileIndex += 1) {
         const file = selectedFiles[fileIndex];
+        const sourceId = crypto.randomUUID();
         try {
           if (file.type === "application/pdf" || file.name.toLowerCase().endsWith(".pdf")) {
             setImportStatus(`Reading PDF ${fileIndex + 1} of ${selectedFiles.length}…`);
@@ -362,10 +397,16 @@ export default function Home() {
               const context = canvas.getContext("2d");
               if (!context) throw new Error("Canvas unavailable");
               await page.render({ canvasContext: context, viewport, canvas }).promise;
-              const src = await canvasObjectUrl(canvas);
+              const pageBlob = await canvasBlob(canvas);
+              const src = URL.createObjectURL(pageBlob);
               objectUrlsRef.current.push(src);
               additions.push({
                 id: Date.now() + additions.length,
+                customerId,
+                sourceId,
+                sourceBlob: file,
+                sourceKind: "pdf",
+                pdfPageNumber: pageNumber,
                 name: `${file.name} — Page ${pageNumber}`,
                 pageLabel: `Page ${pageNumber}`,
                 src,
@@ -379,12 +420,12 @@ export default function Home() {
                 durationMs: 0,
               });
             }
-            await pdf.destroy();
+            await (pdf as unknown as { destroy(): Promise<void> }).destroy();
           } else if (file.type.startsWith("image/")) {
             setImportStatus(`Loading image ${fileIndex + 1} of ${selectedFiles.length}…`);
             const src = URL.createObjectURL(file);
             objectUrlsRef.current.push(src);
-            additions.push({ id: Date.now() + additions.length, name: file.name, pageLabel: null, src, rotation: 0, regions: [], text: "", rawText: "", state: "idle", organizedData: null, organizer: null, durationMs: 0 });
+            additions.push({ id: Date.now() + additions.length, customerId, sourceId, sourceBlob: file, sourceKind: "image", pdfPageNumber: null, name: file.name, pageLabel: null, src, rotation: 0, regions: [], text: "", rawText: "", state: "idle", organizedData: null, organizer: null, durationMs: 0 });
           } else {
             continue;
           }
@@ -402,16 +443,34 @@ export default function Home() {
     }
   };
 
+  const addCustomer = () => {
+    const id = crypto.randomUUID();
+    const customer = createCustomer(nextCustomerSequence, id);
+    setCustomers((current) => [...current, customer]);
+    setNextCustomerSequence((current) => current + 1);
+    setSelectedCustomerId(id);
+    setView("files");
+    requestAnimationFrame(() => window.document.getElementById(`customer-${id}`)?.scrollIntoView({ behavior: "smooth", block: "start" }));
+  };
+
+  const chooseFilesForCustomer = (customerId: string) => {
+    fileInputCustomerRef.current = customerId;
+    fileInputRef.current?.click();
+  };
+
   const openDocument = (id: number) => {
-    if (extracting || Date.now() < closeGuard.current) return;
+    if (extracting || closeGuard.current) return;
     setActiveId(id);
     setZoom(1);
+    setSourceCanvasSize(null);
   };
 
   const closeDocument = () => {
-    closeGuard.current = Date.now() + 350;
+    closeGuard.current = true;
+    window.setTimeout(() => { closeGuard.current = false; }, 350);
     setActiveId(null);
     setZoom(1);
+    setSourceCanvasSize(null);
   };
 
   const rotate = (amount: number) => {
@@ -421,9 +480,8 @@ export default function Home() {
   };
 
   const boxStyle = (box: Box) => {
-    const canvas = canvasRef.current;
-    if (!canvas) return {};
-    return { left: `${box.x / canvas.width * 100}%`, top: `${box.y / canvas.height * 100}%`, width: `${box.w / canvas.width * 100}%`, height: `${box.h / canvas.height * 100}%` };
+    if (!sourceCanvasSize) return {};
+    return { left: `${box.x / sourceCanvasSize.width * 100}%`, top: `${box.y / sourceCanvasSize.height * 100}%`, width: `${box.w / sourceCanvasSize.width * 100}%`, height: `${box.h / sourceCanvasSize.height * 100}%` };
   };
 
   const onRegionPointerDown = (event: React.PointerEvent<HTMLDivElement>, region: Region) => {
@@ -517,13 +575,16 @@ export default function Home() {
     return reconcileOrganizedData({ ...EMPTY_CASE_DATA, ...result.fields }, text);
   };
 
-  const extractDocuments = async (documentIds: number[], engine: OcrEngine) => {
+  const extractDocuments = async (customerId: string, documentIds: number[], engine: OcrEngine) => {
     if (!documentIds.length || extracting) return;
+    const customer = customers.find((item) => item.id === customerId);
+    if (!customer) return;
     const requestedIds = new Set(documentIds);
-    const requestedDocuments = documents.filter((document) => requestedIds.has(document.id));
+    const requestedDocuments = documents.filter((document) => document.customerId === customerId && requestedIds.has(document.id));
     if (!requestedDocuments.length) return;
     setExtractingEngine(engine);
-    setRerunArmed(false);
+    setExtractingCustomerId(customerId);
+    setRerunArmedCustomerId(null);
     setView("files");
     setDocuments((current) => current.map((document) => requestedIds.has(document.id) ? { ...document, state: "extracting" } : document));
     const extractionResults = await Promise.all(requestedDocuments.map(async (document) => {
@@ -573,18 +634,30 @@ export default function Home() {
       };
     });
     setDocuments(nextDocuments);
-    const filing = mergeOrganizedDocuments(nextDocuments.map((document) => document.organizedData), caseData, manuallyEditedFieldsRef.current);
+    const customerDocuments = nextDocuments.filter((document) => document.customerId === customerId);
+    const filing = mergeCustomerDocuments(customer, nextDocuments);
     const filingData = filing.merged;
-    setCaseData(filingData);
-    setConflictingFields(filing.conflicts);
-    setResultEngine(engine);
+    setCustomers((current) => current.map((item) => {
+      if (item.id !== customerId) return item;
+      const extractedName = filing.conflicts.has("fullName") ? "" : filingData.fullName;
+      return {
+        ...item,
+        name: item.nameSource === "placeholder" && extractedName ? uniqueCustomerName(extractedName, current, item.id) : item.name,
+        nameSource: item.nameSource === "placeholder" && extractedName ? "ocr" : item.nameSource,
+        caseData: filingData,
+        conflictingFields: [...filing.conflicts],
+        resultEngine: engine,
+      };
+    }));
     try {
       await fetch(backendEndpoint("save-extraction"), {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           engine,
-          documents: nextDocuments.map((document) => ({
+          customerId,
+          customerName: customer.name,
+          documents: customerDocuments.map((document) => ({
             name: document.name,
             state: document.state,
             regionCount: document.regions.length,
@@ -599,47 +672,51 @@ export default function Home() {
       // Audit saving is helpful for tuning, but must not block the OCR workflow.
     }
     setExtractingEngine(null);
+    setExtractingCustomerId(null);
   };
 
-  const extractAll = (engine: OcrEngine) => void extractDocuments(documents.map((document) => document.id), engine);
-  const extractPending = (engine: OcrEngine) => void extractDocuments(
-    documents.filter((document) => document.state === "idle" || document.state === "failed").map((document) => document.id),
+  const extractAll = (customerId: string, engine: OcrEngine) => void extractDocuments(
+    customerId,
+    documents.filter((document) => document.customerId === customerId).map((document) => document.id),
     engine,
   );
-  const extractNext = () => {
-    const next = documents.find((document) => document.state === "idle" || document.state === "failed");
-    if (next) void extractDocuments([next.id], "lighton");
-  };
-
-  const allExtracted = documents.length > 0 && documents.every((document) => document.state === "done");
+  const extractPending = (customerId: string, engine: OcrEngine) => void extractDocuments(
+    customerId,
+    documents.filter((document) => document.customerId === customerId && (document.state === "idle" || document.state === "failed")).map((document) => document.id),
+    engine,
+  );
   const hasExtracted = documents.some((document) => document.state === "done");
-  const hasPending = documents.some((document) => document.state === "idle" || document.state === "failed");
 
   const openForm = () => {
     if (!hasExtracted) return;
-    setSelectedSourceId((current) => current && documents.some((document) => document.id === current) ? current : documents[0].id);
-    setRerunArmed(false);
+    const nextCustomer = selectedCustomer && documents.some((document) => document.customerId === selectedCustomer.id && document.state === "done")
+      ? selectedCustomer
+      : customers.find((customer) => documents.some((document) => document.customerId === customer.id && document.state === "done"));
+    if (!nextCustomer) return;
+    const nextDocuments = documents.filter((document) => document.customerId === nextCustomer.id);
+    if (selectedCustomerId !== nextCustomer.id) selectCustomerForForm(nextCustomer.id);
+    else setSelectedSourceId((current) => current && nextDocuments.some((document) => document.id === current) ? current : nextDocuments[0]?.id || null);
+    setRerunArmedCustomerId(null);
     setView("form");
   };
 
   const reorganizeWithGemini = async () => {
-    if (reorganizing || extracting || !hasExtracted) return;
+    if (reorganizing || extracting || !selectedCustomer || !formDocuments.some((document) => document.state === "done")) return;
     setReorganizing(true);
     setReorganizeError("");
     try {
       const nextDocuments = await Promise.all(documents.map(async (document) => {
-        if (!document.text.trim()) return document;
+        if (document.customerId !== selectedCustomer.id || !document.text.trim()) return document;
         const organizedData = await organizeWithGemini(document.text);
         return { ...document, organizedData, organizer: "gemini" as const };
       }));
       setDocuments(nextDocuments);
       const filing = mergeOrganizedDocuments(
-        nextDocuments.map((document) => document.organizedData),
-        caseData,
-        manuallyEditedFieldsRef.current,
+        nextDocuments.filter((document) => document.customerId === selectedCustomer.id).map((document) => document.organizedData),
+        selectedCustomer.caseData,
+        new Set(selectedCustomer.manuallyEditedFields),
       );
-      setCaseData(filing.merged);
-      setConflictingFields(filing.conflicts);
+      updateCustomer(selectedCustomer.id, (customer) => ({ ...customer, caseData: filing.merged, conflictingFields: [...filing.conflicts] }));
     } catch {
       setReorganizeError("Gemini could not reorganize this OCR. Your local organization was kept.");
     } finally {
@@ -648,23 +725,36 @@ export default function Home() {
   };
 
   const updateCaseField = (key: string, value: string) => {
-    manuallyEditedFieldsRef.current.add(key);
-    if (key === "fullName") manuallyEditedFieldsRef.current.add("printedName");
-    setConflictingFields((current) => {
-      const next = new Set(current);
-      next.delete(key);
-      if (key === "fullName") next.delete("printedName");
-      return next;
+    if (!selectedCustomer) return;
+    updateCustomer(selectedCustomer.id, (customer) => {
+      const manuallyEditedFields = new Set(customer.manuallyEditedFields);
+      manuallyEditedFields.add(key);
+      if (key === "fullName") manuallyEditedFields.add("printedName");
+      const nextConflicts = new Set(customer.conflictingFields);
+      nextConflicts.delete(key);
+      if (key === "fullName") nextConflicts.delete("printedName");
+      const caseData = {
+        ...customer.caseData,
+        [key]: value,
+        ...(key === "fullName" && (!customer.caseData.printedName || customer.caseData.printedName === customer.caseData.fullName) ? { printedName: value } : {}),
+      };
+      return {
+        ...customer,
+        name: key === "fullName" && value.trim() ? uniqueCustomerName(value, customers, customer.id) : customer.name,
+        nameSource: key === "fullName" && value.trim() ? "manual" : customer.nameSource,
+        caseData,
+        conflictingFields: [...nextConflicts],
+        manuallyEditedFields: [...manuallyEditedFields],
+      };
     });
-    setCaseData((current) => ({
-      ...current,
-      [key]: value,
-      ...(key === "fullName" && (!current.printedName || current.printedName === current.fullName) ? { printedName: value } : {}),
-    }));
     if (pdfUrlRef.current) URL.revokeObjectURL(pdfUrlRef.current);
     pdfUrlRef.current = null;
     setPdfUrl(null);
     setPdfData(null);
+  };
+
+  const updatePurpose = (value: string) => {
+    if (selectedCustomer) updateCustomer(selectedCustomer.id, (customer) => ({ ...customer, purposeId: value }));
   };
 
   const generatePdf = async () => {
@@ -695,56 +785,137 @@ export default function Home() {
     }
   };
 
-  const requestRerun = () => {
-    if (!rerunArmed) {
-      setRerunArmed(true);
+  const requestRerun = (customerId: string) => {
+    if (rerunArmedCustomerId !== customerId) {
+      setRerunArmedCustomerId(customerId);
       return;
     }
-    void extractAll(resultEngine);
+    const customer = customers.find((item) => item.id === customerId);
+    if (customer) extractAll(customerId, customer.resultEngine);
   };
 
-  const startNewOcr = () => {
+  const clearWorkspace = async () => {
     if (extracting) return;
-    if (!newOcrArmed) {
-      setNewOcrArmed(true);
-      return;
-    }
     objectUrlsRef.current.forEach((src) => URL.revokeObjectURL(src));
     objectUrlsRef.current = [];
     if (pdfUrlRef.current) URL.revokeObjectURL(pdfUrlRef.current);
     pdfUrlRef.current = null;
-    manuallyEditedFieldsRef.current.clear();
+    setCustomers([]);
     setDocuments([]);
+    setNextCustomerSequence(1);
     setActiveId(null);
+    setSelectedCustomerId(null);
     setSelectedSourceId(null);
     setZoom(1);
     setBaseSize(null);
     setView("files");
-    setCaseData({ ...EMPTY_CASE_DATA });
-    setConflictingFields(new Set());
-    setPurposeId(PURPOSES[0].id);
-    setResultEngine("lighton");
-    setRerunArmed(false);
-    setNewOcrArmed(false);
+    setRerunArmedCustomerId(null);
+    setClearWorkspaceOpen(false);
     setPdfUrl(null);
     setPdfData(null);
     setPdfError("");
     setReorganizeError("");
     setPreviewMode("source");
     if (fileInputRef.current) fileInputRef.current.value = "";
+    await clearWorkspaceStorage();
   };
 
   useEffect(() => {
-    if (!rerunArmed) return;
-    const timeout = window.setTimeout(() => setRerunArmed(false), 4000);
+    if (!rerunArmedCustomerId) return;
+    const timeout = window.setTimeout(() => setRerunArmedCustomerId(null), 4000);
     return () => window.clearTimeout(timeout);
-  }, [rerunArmed]);
+  }, [rerunArmedCustomerId]);
+
+  const removeDocument = (document: DocumentItem) => {
+    if (document.state === "extracting") return;
+    const index = documents.findIndex((item) => item.id === document.id);
+    const nextDocuments = documents.filter((item) => item.id !== document.id);
+    setRemovedDocument({ document, index });
+    setDocuments(nextDocuments);
+    const customer = customers.find((item) => item.id === document.customerId);
+    if (customer) {
+      const filing = mergeCustomerDocuments(customer, nextDocuments);
+      updateCustomer(customer.id, (item) => ({ ...item, caseData: filing.merged, conflictingFields: [...filing.conflicts] }));
+    }
+    if (selectedSourceId === document.id) setSelectedSourceId(null);
+  };
+
+  const undoDocumentRemoval = () => {
+    if (!removedDocument) return;
+    const nextDocuments = [...documents];
+    nextDocuments.splice(Math.min(removedDocument.index, nextDocuments.length), 0, removedDocument.document);
+    setDocuments(nextDocuments);
+    const customer = customers.find((item) => item.id === removedDocument.document.customerId);
+    if (customer) {
+      const filing = mergeCustomerDocuments(customer, nextDocuments);
+      updateCustomer(customer.id, (item) => ({ ...item, caseData: filing.merged, conflictingFields: [...filing.conflicts] }));
+    }
+    setRemovedDocument(null);
+  };
 
   useEffect(() => {
-    if (!newOcrArmed) return;
-    const timeout = window.setTimeout(() => setNewOcrArmed(false), 4000);
+    let cancelled = false;
+    void (async () => {
+      try {
+        const stored = await loadWorkspace();
+        if (!stored || cancelled) return;
+        const restoredDocuments: DocumentItem[] = [];
+        for (const document of stored.snapshot.documents) {
+          const sourceBlob = stored.sources.get(document.sourceId);
+          if (!sourceBlob) continue;
+          const previewBlob = document.sourceKind === "pdf" && document.pdfPageNumber
+            ? await renderPdfPage(sourceBlob, document.pdfPageNumber)
+            : sourceBlob;
+          const src = URL.createObjectURL(previewBlob);
+          objectUrlsRef.current.push(src);
+          restoredDocuments.push({
+            ...document,
+            sourceBlob,
+            src,
+            state: document.state === "extracting" ? "idle" : document.state,
+          });
+        }
+        if (cancelled) return;
+        setCustomers(stored.snapshot.customers);
+        setDocuments(restoredDocuments);
+        setNextCustomerSequence(stored.snapshot.nextCustomerSequence);
+        const firstExtractedCustomer = stored.snapshot.customers.find((customer) => restoredDocuments.some((document) => document.customerId === customer.id && document.state === "done"));
+        setSelectedCustomerId(firstExtractedCustomer?.id || stored.snapshot.customers[0]?.id || null);
+        setStorageStatus("saved");
+      } catch {
+        if (!cancelled) setStorageStatus("error");
+      } finally {
+        if (!cancelled) setWorkspaceHydrated(true);
+      }
+    })();
+    return () => { cancelled = true; };
+  }, []);
+
+  useEffect(() => {
+    if (!workspaceHydrated) return;
+    if (persistenceTimerRef.current) window.clearTimeout(persistenceTimerRef.current);
+    persistenceTimerRef.current = window.setTimeout(() => {
+      void saveWorkspace(customers, documents, nextCustomerSequence)
+        .then(async () => {
+          setStorageStatus("saved");
+          if (documents.length && !persistenceRequestedRef.current) {
+            persistenceRequestedRef.current = true;
+            await requestPersistentWorkspaceStorage();
+          }
+          await estimateWorkspaceStorage();
+        })
+        .catch(() => setStorageStatus("error"));
+    }, 400);
+    return () => {
+      if (persistenceTimerRef.current) window.clearTimeout(persistenceTimerRef.current);
+    };
+  }, [customers, documents, nextCustomerSequence, workspaceHydrated]);
+
+  useEffect(() => {
+    if (!removedDocument) return;
+    const timeout = window.setTimeout(() => setRemovedDocument(null), 6000);
     return () => window.clearTimeout(timeout);
-  }, [newOcrArmed]);
+  }, [removedDocument]);
 
   useEffect(() => {
     const onKeyDown = (event: KeyboardEvent) => {
@@ -770,61 +941,111 @@ export default function Home() {
       <header className="workspace-bar">
         <strong>OCR Workspace</strong>
         <div className="workspace-actions">
-          {view === "files" && <button className="add-files" onClick={() => fileInputRef.current?.click()} disabled={extracting || importing}><span aria-hidden="true">+</span>{importing ? "Adding files…" : "Add files"}</button>}
+          {view === "files" ? (
+            <button className="add-customer" onClick={addCustomer} disabled={extracting || importing}><span aria-hidden="true">+</span>Add customer</button>
+          ) : selectedCustomer ? (
+            <CustomSelect
+              className="customer-picker"
+              ariaLabel="Select customer"
+              value={selectedCustomer.id}
+              options={[
+                ...customers.map((customer) => ({ value: customer.id, label: customer.name })),
+                { value: "__add_customer__", label: "+ Add customer" },
+              ]}
+              onChange={(value) => value === "__add_customer__" ? addCustomer() : selectCustomerForForm(value)}
+            />
+          ) : null}
           <nav className="page-switcher" aria-label="Workspace view">
             <button className={view === "files" ? "active" : ""} onClick={() => setView("files")} aria-current={view === "files" ? "page" : undefined}>Files</button>
             <button className={view === "form" ? "active" : ""} onClick={openForm} disabled={!hasExtracted || importing} aria-current={view === "form" ? "page" : undefined}>Form</button>
           </nav>
           {view === "files" ? (
-            <details className="ocr-actions-menu">
-              <summary>OCR actions <span aria-hidden="true">⌄</span></summary>
-              <div>
-                {hasPending && <button onClick={extractNext} disabled={extracting || importing}>{extractingEngine === "lighton" ? "Extracting…" : "Extract next"}</button>}
-                {hasPending && documents.length > 1 && <button onClick={() => extractPending("lighton")} disabled={extracting || importing}>Extract all</button>}
-                {SHOW_GOOGLE_OCR_TEST && (!allExtracted || resultEngine !== "google") && <button className="google" onClick={() => void extractAll("google")} disabled={!documents.length || extracting}>{extractingEngine === "google" ? "Google…" : "Extract Google"}</button>}
-                {allExtracted && <button className={rerunArmed ? "rerun-confirm" : ""} onClick={requestRerun} disabled={importing}>{rerunArmed ? `Confirm ${resultEngine === "google" ? "Google" : "LightOn"}` : `Re-run ${resultEngine === "google" ? "Google" : "LightOn"}`}</button>}
-                {documents.length > 0 && <button className={newOcrArmed ? "new-ocr-confirm" : ""} onClick={startNewOcr} disabled={extracting || importing}>{newOcrArmed ? "Confirm New OCR" : "New OCR"}</button>}
-                {!documents.length && <span>No OCR actions available</span>}
-              </div>
-            </details>
+            <button className="clear-workspace" onClick={() => setClearWorkspaceOpen(true)} disabled={!customers.length || extracting || importing}>Clear workspace</button>
           ) : (
-            <button className="gemini-reorganize" onClick={() => void reorganizeWithGemini()} disabled={reorganizing || extracting || !hasExtracted}><span aria-hidden="true">✦</span>{reorganizing ? "Reorganizing…" : "Reorganize with Gemini"}</button>
+            <button className="gemini-reorganize" onClick={() => void reorganizeWithGemini()} disabled={reorganizing || extracting || !formDocuments.some((document) => document.state === "done")}><span aria-hidden="true">✦</span>{reorganizing ? "Reorganizing…" : "Reorganize with Gemini"}</button>
           )}
-          <input ref={fileInputRef} type="file" multiple accept="image/*,.pdf,application/pdf" onChange={(event) => event.target.files && void addFiles(event.target.files)} />
+          <span className={`storage-status ${storageStatus}`} role="status">{storageStatus === "error" ? "Save failed" : storageStatus === "saved" ? "Saved locally" : "Saving…"}</span>
+          <input ref={fileInputRef} type="file" multiple accept="image/*,.pdf,application/pdf" onChange={(event) => {
+            const customerId = fileInputCustomerRef.current;
+            if (event.target.files && customerId) void addFiles(event.target.files, customerId);
+          }} />
         </div>
       </header>
 
       {view === "files" ? (
         <section className="document-canvas" aria-label="Uploaded documents">
-          {!documents.length && <button className="empty-upload" onClick={() => fileInputRef.current?.click()}>Add files</button>}
+          {!customers.length && <button className="empty-upload" onClick={addCustomer}>Add customer</button>}
           {importStatus && <div className="file-import-overlay" role="status" aria-live="polite"><span className="file-import-spinner" /> <strong>{importStatus}</strong><small>Pages will appear here as soon as processing finishes.</small></div>}
-          <div className="document-grid">
-            {documents.map((document, index) => (
-              <article key={document.id} className={`document-tile ${document.state}`}>
-                <button className="document-open" onClick={() => openDocument(document.id)} aria-label={`Open uploaded file ${index + 1}`}>
-                  <DocumentThumbnail document={document} />
-                </button>
-                {document.state !== "idle" && <span className="document-state" aria-label={document.state}>{document.state === "done" ? "✓" : document.state === "failed" ? "!" : ""}</span>}
-                {document.pageLabel && <span className="document-page-label">{document.pageLabel}</span>}
-                {document.state === "done" && <span className={`organizer-status ${document.organizer || "local"}`}>{document.organizer === "gemini" ? "Organized by Gemini" : "Organized locally"}</span>}
-                <button
-                  className="document-extract"
-                  onClick={() => void extractDocuments([document.id], "lighton")}
-                  disabled={extracting}
-                >
-                  {document.state === "extracting"
-                    ? "Extracting…"
-                    : document.state === "done"
-                      ? `Re-extract ${document.pageLabel ? "page" : "file"}`
-                      : document.state === "failed"
-                        ? `Retry ${document.pageLabel ? "page" : "file"}`
-                        : `Extract this ${document.pageLabel ? "page" : "file"}`}
-                </button>
-              </article>
-            ))}
+          <div className="customer-sections">
+            {customers.map((customer) => {
+              const customerDocuments = documents.filter((document) => document.customerId === customer.id);
+              const pending = customerDocuments.filter((document) => document.state === "idle" || document.state === "failed");
+              const failed = customerDocuments.filter((document) => document.state === "failed");
+              const done = customerDocuments.filter((document) => document.state === "done");
+              const customerExtracting = extractingCustomerId === customer.id;
+              const status = customerExtracting
+                ? "Extracting…"
+                : customer.conflictingFields.includes("fullName")
+                  ? "Name needs review"
+                : failed.length
+                  ? `${failed.length} failed`
+                  : customerDocuments.length && done.length === customerDocuments.length
+                    ? "Ready"
+                    : pending.length
+                      ? `${pending.length} pending`
+                      : "No documents";
+              return (
+                <section className="customer-section" id={`customer-${customer.id}`} key={customer.id} aria-labelledby={`customer-name-${customer.id}`}>
+                  <header className="customer-section-header">
+                    <div className="customer-heading">
+                      <strong id={`customer-name-${customer.id}`}>{customer.name}</strong>
+                      <span>{customerDocuments.length} {customerDocuments.length === 1 ? "document" : "documents"}</span>
+                      <b className={status === "Ready" ? "ready" : failed.length ? "failed" : ""}>{status}</b>
+                    </div>
+                    <span className="customer-divider" aria-hidden="true" />
+                    <details className="ocr-actions-menu customer-ocr-actions">
+                      <summary>OCR actions <span aria-hidden="true">⌄</span></summary>
+                      <div>
+                        {pending.length > 0 && <button onClick={() => extractPending(customer.id, "lighton")} disabled={extracting || importing}>{customerExtracting ? "Extracting…" : failed.length ? "Retry failed and pending" : `Extract ${pending.length === customerDocuments.length ? "all" : "pending"}`}</button>}
+                        {customerDocuments.length > 0 && done.length === customerDocuments.length && <button className={rerunArmedCustomerId === customer.id ? "rerun-confirm" : ""} onClick={() => requestRerun(customer.id)} disabled={extracting || importing}>{rerunArmedCustomerId === customer.id ? "Confirm re-run OCR" : "Re-run OCR"}</button>}
+                        {SHOW_GOOGLE_OCR_TEST && customerDocuments.length > 0 && <button className="google" onClick={() => extractAll(customer.id, "google")} disabled={extracting || importing}>Extract Google</button>}
+                        {!customerDocuments.length && <span>Add files to enable OCR</span>}
+                      </div>
+                    </details>
+                    <button className="customer-add-files" onClick={() => chooseFilesForCustomer(customer.id)} disabled={extracting || importing}><span aria-hidden="true">+</span>Add files</button>
+                  </header>
+                  {customerDocuments.length ? (
+                    <div className="document-grid">
+                      {customerDocuments.map((document, index) => (
+                        <article key={document.id} className={`document-tile ${document.state}`}>
+                          <span className="document-preview-shell">
+                            <button className="document-open" onClick={() => openDocument(document.id)} aria-label={`Open ${customer.name} file ${index + 1}`}>
+                              <DocumentThumbnail document={document} />
+                            </button>
+                            <button className="document-remove" onClick={() => removeDocument(document)} disabled={document.state === "extracting"} aria-label={`Remove ${document.name}`}>×</button>
+                            {document.state !== "idle" && <span className="document-state" aria-label={document.state}>{document.state === "done" ? "✓" : document.state === "failed" ? "!" : ""}</span>}
+                          </span>
+                          {document.pageLabel && <span className="document-page-label">{document.pageLabel}</span>}
+                          {document.state === "done" && <span className={`organizer-status ${document.organizer || "local"}`}>{document.organizer === "gemini" ? "Organized by Gemini" : "Organized locally"}</span>}
+                          <button className="document-extract" onClick={() => void extractDocuments(customer.id, [document.id], "lighton")} disabled={extracting}>
+                            {document.state === "extracting"
+                              ? "Extracting…"
+                              : document.state === "done"
+                                ? `Re-extract ${document.pageLabel ? "page" : "file"}`
+                                : document.state === "failed"
+                                  ? `Retry ${document.pageLabel ? "page" : "file"}`
+                                  : `Extract this ${document.pageLabel ? "page" : "file"}`}
+                          </button>
+                        </article>
+                      ))}
+                    </div>
+                  ) : <button className="customer-empty-files" onClick={() => chooseFilesForCustomer(customer.id)}><span aria-hidden="true">+</span>Add files for {customer.name}</button>}
+                </section>
+              );
+            })}
           </div>
         </section>
-      ) : (
+      ) : selectedCustomer && formDocuments.some((document) => document.state === "done") ? (
         <section className="review-workspace">
           <header className="review-toolbar">
             <section className="filing-setup" aria-label="Filing setup">
@@ -835,7 +1056,7 @@ export default function Home() {
                   ariaLabel="Purpose"
                   value={purposeId}
                   options={PURPOSES.map((purpose) => ({ value: purpose.id, label: purpose.label }))}
-                  onChange={setPurposeId}
+                  onChange={updatePurpose}
                 />
               </div>
               <div className={`review-readiness ${missingFields.length ? "incomplete" : "ready"}`}>
@@ -855,7 +1076,7 @@ export default function Home() {
                 className="source-picker"
                 ariaLabel="Select source document"
                 value={String(selectedSource?.id ?? "")}
-                options={documents.map((document, index) => ({ value: String(document.id), label: `${index + 1}. ${document.name}` }))}
+                options={formDocuments.map((document, index) => ({ value: String(document.id), label: `${index + 1}. ${document.name}` }))}
                 onChange={(value) => setSelectedSourceId(Number(value))}
               />
               {pdfUrl
@@ -902,9 +1123,35 @@ export default function Home() {
             </div>
           </aside>
         </section>
+      ) : (
+        <section className="form-empty-state">
+          <strong>OCR required for {selectedCustomer?.name || "this customer"}</strong>
+          <span>Add and extract at least one document before reviewing the form.</span>
+          <button className="primary" onClick={() => {
+            setView("files");
+            if (selectedCustomer) requestAnimationFrame(() => window.document.getElementById(`customer-${selectedCustomer.id}`)?.scrollIntoView({ behavior: "smooth", block: "start" }));
+          }}>Return to files</button>
+        </section>
       )}
 
       {view === "form" && reorganizeError && <div className="gemini-error-toast" role="alert">{reorganizeError}</div>}
+
+      {removedDocument && (
+        <div className="undo-toast" role="status">
+          <span>{removedDocument.document.name} removed</span>
+          <button onClick={undoDocumentRemoval}>Undo</button>
+        </div>
+      )}
+
+      {clearWorkspaceOpen && (
+        <div className="confirm-overlay" role="presentation" onClick={(event) => { if (event.target === event.currentTarget) setClearWorkspaceOpen(false); }}>
+          <section className="confirm-dialog" role="dialog" aria-modal="true" aria-labelledby="clear-workspace-title">
+            <strong id="clear-workspace-title">Clear this workspace?</strong>
+            <p>All {customers.length} {customers.length === 1 ? "customer" : "customers"}, {documents.length} {documents.length === 1 ? "document" : "documents"}, OCR results, and form edits will be removed.</p>
+            <div><button onClick={() => setClearWorkspaceOpen(false)}>Cancel</button><button className="destructive" onClick={() => void clearWorkspace()}>Clear workspace</button></div>
+          </section>
+        </div>
+      )}
 
       {activeDocument && (
         <div className="document-modal" onClick={(event) => { if (event.target === event.currentTarget) window.setTimeout(closeDocument, 0); }}>
@@ -920,9 +1167,7 @@ export default function Home() {
                 aria-label="Close"
                 onClick={(event) => {
                   event.stopPropagation();
-                  closeGuard.current = Date.now() + 350;
-                  setActiveId(null);
-                  setZoom(1);
+                  closeDocument();
                 }}
               >×</button>
             </header>

@@ -6,28 +6,43 @@ Google Cloud Vision comparison code remains installed behind a disabled UI flag.
 
 ## Current workflow
 
-1. Select **Add files** and choose several images or PDFs at once. PDFs render
-   their first page.
-2. Review the image-only canvas. Uploading never starts OCR.
-3. Click an image to open the adjustment modal. The first open creates one
+1. Select **Add customer**. New filing sets begin as `Customer 1`,
+   `Customer 2`, and so on.
+2. Use **Add files** inside a customer section to choose several images or PDFs
+   at once. Every PDF page appears in that same customer section. Uploading
+   never starts OCR.
+3. Review the grouped image-only canvas. Each customer's documents, OCR state,
+   and form data remain isolated from every other customer.
+4. Click an image to open the adjustment modal. The first open creates one
    centered OCR rectangle. Drag it to move it or use its corner handles to
    resize it. The saved rectangle remains visible on the document tile.
-4. Close the modal and repeat for any other file.
-5. Select **Extract LightOn**. Documents are submitted together; the backend
-   serializes model inference so overlapping generations do not compete. The
-   browser immediately organizes the returned OCR with deterministic local
-   rules—Gemini is not called during extraction.
-6. When every file finishes, select **Form** to review the shared customer,
-   address, vehicle, and transaction data beside its source image. Use
-   **Reorganize with Gemini** only when the local result needs another pass;
+5. Close the modal and repeat for any other file.
+6. Use the customer's **OCR actions** menu to extract all pending documents, or
+   extract a single document from its tile. The backend serializes model
+   inference so overlapping generations do not compete. The browser immediately
+   organizes the returned OCR with deterministic local rules—Gemini is not
+   called during extraction.
+7. A temporary customer name is replaced when OCR finds one unambiguous full
+   name. Conflicting names remain flagged for review.
+8. Select **Form** and use the header customer selector to review that
+   customer's address, vehicle, and transaction data beside its source image.
+   Use **Reorganize with Gemini** only when the local result needs another pass;
    manually edited fields are preserved.
-7. Choose the MV-82 purpose. This changes the missing-data review only; PDF
+9. Choose the MV-82 purpose. This changes the missing-data review only; PDF
    checkboxes, radio buttons, and signatures remain manual.
-8. Select **Preview MV-82**. The local service clones the untouched official
+10. Select **Preview MV-82**. The local service clones the untouched official
    template, fills only the approved text/choice handlers, validates the values,
    and returns an embedded preview with a Download action.
-9. Each file identifies whether its fields were organized locally or by Gemini
-   and offers an **OCR Text** view. Re-running OCR requires confirmation.
+11. Each file identifies whether its fields were organized locally or by Gemini
+    and offers an **OCR Text** view. Re-running a customer's OCR requires
+    confirmation.
+
+The active workspace is saved automatically in IndexedDB, including original
+source files, customer grouping, OCR results, crop/rotation settings, filing
+purpose, and manual edits. Reloading the same browser origin restores the work.
+Generated MV-82 previews are intentionally regenerated rather than persisted.
+Use **Clear workspace** to remove all locally saved customers and documents; the
+action requires confirmation.
 
 Each engine writes separate, image-free comparison files under `ocr-output/`:
 `latest-lighton-extraction.json`, `latest-lighton-extracted-text.txt`,
